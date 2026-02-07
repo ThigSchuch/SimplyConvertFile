@@ -102,9 +102,8 @@ Version: ${APP_VERSION}
 Section: utils
 Priority: optional
 Architecture: ${ARCH}
-Depends: python3 (>= 3.8), python3-gi, gir1.2-gtk-3.0
-Recommends: ffmpeg, imagemagick, libreoffice-writer, libreoffice-calc, libreoffice-impress, pandoc, p7zip-full, libnotify-bin
-Suggests: calibre, poppler-utils, rar, lzop, xz-utils
+Depends: python3 (>= 3.8), python3-gi, gir1.2-gtk-3.0, libnotify-bin, ffmpeg, imagemagick
+Suggests: libreoffice-writer, libreoffice-calc, libreoffice-impress, pandoc, p7zip-full, calibre, poppler-utils, rar, lzop, xz-utils
 Installed-Size: ${INSTALLED_SIZE}
 Maintainer: ${MAINTAINER}
 Homepage: ${HOMEPAGE}
