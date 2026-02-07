@@ -9,11 +9,13 @@
 name: Update Settings
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - main
     paths:
       - "src/simplyconvertfile/config/settings.json"
+      - ".github/workflows/update-settings.yml"
 
 permissions:
   contents: write
