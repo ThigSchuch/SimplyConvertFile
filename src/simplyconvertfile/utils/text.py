@@ -7,11 +7,13 @@ location for all user-facing strings in the application.
 """
 
 import gettext
+import locale
+import subprocess
 from pathlib import Path
 
 from simplyconvertfile import APP_ID
 
-# Locale directory resolution:
+# Locale directory resolution (first match wins):
 # 1. Package-relative po/ directory (development / pip install)
 # 2. System locale directory (/usr/share/locale)
 # 3. User locale directory (~/.local/share/locale) - legacy
@@ -24,9 +26,53 @@ _locale_dirs = [
     str(_HOME / ".local" / "share" / "locale"),
 ]
 
-# Try binding with the new domain first, then legacy
+# Ensure system locale is applied for gettext
+try:
+    locale.setlocale(locale.LC_ALL, "")
+except locale.Error:
+    pass
+
+
+def _compile_po_files(po_dir: Path) -> None:
+    """Compile .po files to .mo if missing or outdated (dev/fallback).
+
+    This ensures translations work when running from source without
+    a prior build step. Silently skips if msgfmt is not available.
+    """
+    for po_file in po_dir.glob("*.po"):
+        lang = po_file.stem
+        out_dir = po_dir / lang / "LC_MESSAGES"
+        mo_file = out_dir / f"{APP_ID}.mo"
+
+        if mo_file.exists() and mo_file.stat().st_mtime >= po_file.stat().st_mtime:
+            continue
+
+        try:
+            out_dir.mkdir(parents=True, exist_ok=True)
+            subprocess.run(
+                ["msgfmt", "-o", str(mo_file), str(po_file)],
+                check=True,
+                capture_output=True,
+            )
+        except (subprocess.CalledProcessError, FileNotFoundError, OSError):
+            pass
+
+
+# Bind to the first locale directory that contains translation files.
+# bindtextdomain overwrites previous calls for the same domain,
+# so only the last call takes effect — we must pick the right one.
+_bound = False
 for _locale_dir in _locale_dirs:
-    gettext.bindtextdomain(APP_ID, _locale_dir)
+    _dir = Path(_locale_dir)
+    if _dir.is_dir():
+        # Auto-compile .po → .mo if needed (dev environment / first run)
+        _compile_po_files(_dir)
+        gettext.bindtextdomain(APP_ID, _locale_dir)
+        _bound = True
+        break
+
+if not _bound:
+    gettext.bindtextdomain(APP_ID, _locale_dirs[0])
 
 gettext.textdomain(APP_ID)
 

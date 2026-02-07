@@ -7,7 +7,7 @@ DESKTOP_DIR = $(DESTDIR)$(PREFIX)/share/applications
 ICON_DIR_48 = $(DESTDIR)$(PREFIX)/share/icons/hicolor/48x48/apps
 ICON_DIR_SCALABLE = $(DESTDIR)$(PREFIX)/share/icons/hicolor/scalable/apps
 
-.PHONY: install uninstall install-pip clean help deb
+.PHONY: install uninstall install-pip clean compile-po help deb
 
 help: ## Show this help message
 	@echo "SimplyConvertFile - Installation targets"
@@ -18,6 +18,7 @@ help: ## Show this help message
 	@echo "  make install-pip    Install via pip (user or venv)"
 	@echo "  make deb            Build .deb package"
 	@echo "  make clean          Clean build artifacts"
+	@echo "  make compile-po     Compile .po translation files to .mo"
 	@echo ""
 
 install: ## Install system-wide (requires sudo)
@@ -59,6 +60,16 @@ install-pip: ## Install via pip (user or venv)
 clean: ## Clean build artifacts
 	rm -rf build/ dist/ *.egg-info src/*.egg-info
 	find . -type d -name __pycache__ -exec rm -rf {} + 2>/dev/null || true
+
+compile-po: ## Compile .po translation files to .mo
+	@echo "Compiling translation files..."
+	@for po in src/simplyconvertfile/po/*.po; do \
+		lang=$$(basename "$$po" .po); \
+		mkdir -p "src/simplyconvertfile/po/$$lang/LC_MESSAGES"; \
+		msgfmt -o "src/simplyconvertfile/po/$$lang/LC_MESSAGES/simplyconvertfile.mo" "$$po"; \
+		echo "  Compiled: $$lang"; \
+	done
+	@echo "All translations compiled."
 
 deb: ## Build .deb package
 	@./packaging/build-deb.sh

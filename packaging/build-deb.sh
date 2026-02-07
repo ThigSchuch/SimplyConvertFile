@@ -70,6 +70,16 @@ cp -r "$PROJECT_DIR/src/$APP_NAME/"* "$PKG_DIR/$PYTHON_SITE/$APP_NAME/"
 find "$PKG_DIR" -type d -name "__pycache__" -exec rm -rf {} + 2>/dev/null || true
 find "$PKG_DIR" -name "*.pyc" -delete 2>/dev/null || true
 
+# --- Compile translations ---
+echo "[2.5/6] Compiling translations..."
+PO_DIR="$PKG_DIR/$PYTHON_SITE/$APP_NAME/po"
+for po_file in "$PO_DIR"/*.po; do
+    [ -f "$po_file" ] || continue
+    lang=$(basename "$po_file" .po)
+    mkdir -p "$PO_DIR/$lang/LC_MESSAGES"
+    msgfmt -o "$PO_DIR/$lang/LC_MESSAGES/$APP_NAME.mo" "$po_file"
+done
+
 # --- Create launcher script ---
 echo "[3/6] Creating launcher script..."
 cat > "$PKG_DIR/usr/bin/$APP_NAME" << 'LAUNCHER'
