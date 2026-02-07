@@ -135,12 +135,22 @@ jobs:
 
           # Regenerate package index
           mkdir -p dists/stable/main/binary-all
+          mkdir -p dists/stable/main/binary-amd64
           dpkg-scanpackages pool/ /dev/null > dists/stable/main/binary-all/Packages
+          cp dists/stable/main/binary-all/Packages dists/stable/main/binary-amd64/Packages
           gzip -kf dists/stable/main/binary-all/Packages
+          gzip -kf dists/stable/main/binary-amd64/Packages
 
-          # Generate Release file
+          # Generate Release file with proper metadata
           cd dists/stable
-          apt-ftparchive release . > Release
+          cat > release.conf <<EOF
+          APT::FTPArchive::Release::Suite "stable";
+          APT::FTPArchive::Release::Codename "stable";
+          APT::FTPArchive::Release::Architectures "all amd64";
+          APT::FTPArchive::Release::Components "main";
+          EOF
+          apt-ftparchive -c release.conf release . > Release
+          rm release.conf
 
           # Sign the Release file
           GPG_KEY_ID=$(gpg --list-keys --with-colons | grep '^pub' | head -1 | cut -d: -f5)
