@@ -469,9 +469,7 @@ class CommandExecutor:
                             stderr=text.Operations.CANCELLED_BY_USER_MESSAGE,
                             command=cmd_str,
                         )
-                    time.sleep(
-                        poll_interval / 5
-                    )
+                    time.sleep(poll_interval / 5)
 
             # Wait for drain threads to finish
             stdout_thread.join(timeout=5)

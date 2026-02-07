@@ -213,7 +213,6 @@ class BaseAction:
             logger.warning("No source format or available formats provided")
             return None
 
-
         preselect_format_by_usage = settings_manager.get(
             "preselect_format_by_usage", False
         )

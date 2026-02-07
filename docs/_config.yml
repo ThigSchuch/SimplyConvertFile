@@ -1,0 +1,45 @@
+title: SimplyConvertFile
+description: >-
+  Universal file format converter for Linux — supports 80+ formats including
+  images, videos, audio, documents, spreadsheets, presentations, markup,
+  data formats, and archives.
+
+url: https://thigschuch.github.io
+baseurl: /SimplyConvertFile
+
+theme: just-the-docs
+
+# Search
+search_enabled: true
+search.button: true
+
+# Navigation links
+aux_links:
+  "GitHub":
+    - "https://github.com/ThigSchuch/SimplyConvertFile"
+
+aux_links_new_tab: true
+
+# Footer
+footer_content: >-
+  SimplyConvertFile is released under the
+  <a href="https://www.gnu.org/licenses/gpl-3.0.html">GPL-3.0</a> license.
+
+# Color scheme
+color_scheme: default
+
+# Back to top link
+back_to_top: true
+back_to_top_text: "Back to top"
+
+# Exclude from processing
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+
+# Navigation structure
+nav_order: 1
+
+# Heading anchors
+heading_anchors: true

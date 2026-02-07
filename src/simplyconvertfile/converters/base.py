@@ -157,6 +157,7 @@ class Converter:
             'image'
         """
         from simplyconvertfile.config import format_config
+
         source_format = FileValidator.get_file_format(self.file)
 
         rule = format_config.get_conversion_rule(source_format, self.format)

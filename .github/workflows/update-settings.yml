@@ -60,3 +60,15 @@ jobs:
           git diff --cached --quiet && echo "No changes to commit" && exit 0
           git commit -m "Update settings.json from main branch"
           git push origin gh-pages
+
+      - name: Trigger docs rebuild
+        if: success()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.actions.createWorkflowDispatch({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              workflow_id: 'deploy-docs.yml',
+              ref: 'main'
+            })

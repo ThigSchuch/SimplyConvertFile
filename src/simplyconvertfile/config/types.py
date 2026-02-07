@@ -13,7 +13,7 @@ from typing import List, Optional, Set
 
 class ConverterType(Enum):
     """Enumeration of converter template categories.
-    
+
     These types determine which command template section to load from settings.json
     for the conversion. All conversions use the same Converter class but with
     different template-based commands.

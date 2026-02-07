@@ -6,7 +6,6 @@ This module provides special conversion functionality for complex conversions
 that require custom command templates or multi-step processes.
 """
 
-
 from simplyconvertfile.converters.base import TemplateBasedConverter
 from simplyconvertfile.utils.logging import logger
 

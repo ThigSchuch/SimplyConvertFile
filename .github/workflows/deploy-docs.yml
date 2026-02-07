@@ -1,0 +1,94 @@
+# =============================================================================
+# SimplyConvertFile — Build Jekyll docs & deploy to GitHub Pages
+# =============================================================================
+# Builds the Jekyll documentation site from docs/ and deploys it alongside
+# the existing APT repository and settings files on GitHub Pages.
+# =============================================================================
+
+name: Deploy Docs
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - "docs/**"
+      - ".github/workflows/deploy-docs.yml"
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: docs
+    steps:
+      - name: Checkout main branch
+        uses: actions/checkout@v4
+
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.3"
+          bundler-cache: true
+          working-directory: "${{ github.workspace }}/docs"
+
+      - name: Setup Pages
+        id: pages
+        uses: actions/configure-pages@v5
+
+      - name: Build Jekyll site
+        run: bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}"
+        env:
+          JEKYLL_ENV: production
+
+      # Merge existing gh-pages content (APT repo + settings) into the build
+      - name: Fetch existing gh-pages content
+        run: |
+          if git ls-remote --exit-code origin gh-pages >/dev/null 2>&1; then
+            git fetch origin gh-pages
+            git worktree add "${{ github.workspace }}/gh-pages-existing" origin/gh-pages
+          else
+            mkdir -p "${{ github.workspace }}/gh-pages-existing"
+          fi
+        working-directory: ${{ github.workspace }}
+
+      - name: Merge APT repo and settings into Jekyll output
+        run: |
+          SITE="${{ github.workspace }}/docs/_site"
+          EXISTING="${{ github.workspace }}/gh-pages-existing"
+
+          # Copy APT repository structure
+          [ -d "$EXISTING/pool" ]     && cp -r "$EXISTING/pool" "$SITE/pool"
+          [ -d "$EXISTING/dists" ]    && cp -r "$EXISTING/dists" "$SITE/dists"
+          [ -d "$EXISTING/settings" ] && cp -r "$EXISTING/settings" "$SITE/settings"
+          [ -f "$EXISTING/gpg.key" ]  && cp "$EXISTING/gpg.key" "$SITE/gpg.key"
+
+          echo "Merged gh-pages content into Jekyll output"
+          ls -la "$SITE/"
+        working-directory: ${{ github.workspace }}
+
+      - name: Upload combined artifact
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: docs/_site/
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

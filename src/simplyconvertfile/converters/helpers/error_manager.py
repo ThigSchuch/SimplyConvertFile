@@ -172,7 +172,7 @@ class ErrorManager:
                     command_str = " ".join(str(arg) for arg in command)
             else:
                 command_str = " ".join(str(arg) for arg in command)
-        
+
         if command_str:
             error_details += f"\n\nCommand:\n{command_str}"
 

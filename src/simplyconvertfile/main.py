@@ -73,16 +73,81 @@ def _get_supported_extensions() -> List[str]:
     except Exception:
         # Fallback list of common extensions
         return [
-            "7z", "aac", "ac3", "aiff", "alac", "avi", "avif", "bmp",
-            "caf", "cr2", "csv", "deb", "dmg", "doc", "docx", "epub",
-            "flac", "gif", "heic", "heif", "htm", "html", "ico", "iso",
-            "jpeg", "jpg", "json", "m4a", "m4v", "md", "mka", "mkv",
-            "mobi", "mov", "mp3", "mp4", "mpeg", "mpg", "mts", "odp",
-            "ods", "odt", "ogg", "opus", "pdf", "png", "ppt", "pptx",
-            "rar", "raw", "rpm", "rtf", "svg", "tar", "tar.bz2",
-            "tar.gz", "tar.lzma", "tar.lzo", "tar.xz", "tgz", "tif",
-            "tiff", "ts", "txt", "wav", "webm", "webp", "wma", "wmv",
-            "xls", "xlsx", "xml", "yaml", "yml", "zip",
+            "7z",
+            "aac",
+            "ac3",
+            "aiff",
+            "alac",
+            "avi",
+            "avif",
+            "bmp",
+            "caf",
+            "cr2",
+            "csv",
+            "deb",
+            "dmg",
+            "doc",
+            "docx",
+            "epub",
+            "flac",
+            "gif",
+            "heic",
+            "heif",
+            "htm",
+            "html",
+            "ico",
+            "iso",
+            "jpeg",
+            "jpg",
+            "json",
+            "m4a",
+            "m4v",
+            "md",
+            "mka",
+            "mkv",
+            "mobi",
+            "mov",
+            "mp3",
+            "mp4",
+            "mpeg",
+            "mpg",
+            "mts",
+            "odp",
+            "ods",
+            "odt",
+            "ogg",
+            "opus",
+            "pdf",
+            "png",
+            "ppt",
+            "pptx",
+            "rar",
+            "raw",
+            "rpm",
+            "rtf",
+            "svg",
+            "tar",
+            "tar.bz2",
+            "tar.gz",
+            "tar.lzma",
+            "tar.lzo",
+            "tar.xz",
+            "tgz",
+            "tif",
+            "tiff",
+            "ts",
+            "txt",
+            "wav",
+            "webm",
+            "webp",
+            "wma",
+            "wmv",
+            "xls",
+            "xlsx",
+            "xml",
+            "yaml",
+            "yml",
+            "zip",
         ]
 
 
@@ -93,11 +158,13 @@ def _open_file_chooser() -> Optional[List[str]]:
         Optional[List[str]]: List of selected file paths, or None if cancelled.
     """
     import gi
+
     gi.require_version("Gtk", "3.0")
     from gi.repository import Gtk
 
     # Ensure app is initialized (icon, name)
     from simplyconvertfile.ui.icons import _ensure_app_initialized
+
     _ensure_app_initialized()
 
     dialog = Gtk.FileChooserDialog(
@@ -105,8 +172,10 @@ def _open_file_chooser() -> Optional[List[str]]:
         action=Gtk.FileChooserAction.OPEN,
     )
     dialog.add_buttons(
-        text.UI.CANCEL_BUTTON_LABEL, Gtk.ResponseType.CANCEL,
-        text.UI.OK_BUTTON_LABEL, Gtk.ResponseType.OK,
+        text.UI.CANCEL_BUTTON_LABEL,
+        Gtk.ResponseType.CANCEL,
+        text.UI.OK_BUTTON_LABEL,
+        Gtk.ResponseType.OK,
     )
     dialog.set_select_multiple(True)
     dialog.set_default_response(Gtk.ResponseType.OK)

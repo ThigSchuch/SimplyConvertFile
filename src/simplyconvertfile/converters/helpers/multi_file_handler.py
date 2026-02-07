@@ -79,10 +79,9 @@ class MultiFileHandler:
             patterns = config.get("patterns", [])
 
             for pattern in patterns:
-                if (
-                    pattern.get("from") == self.source_format
-                    and self.target_format in pattern.get("to", [])
-                ):
+                if pattern.get(
+                    "from"
+                ) == self.source_format and self.target_format in pattern.get("to", []):
                     logger.debug(
                         "Found multi-file pattern: {} -> {}",
                         self.source_format,
@@ -148,7 +147,9 @@ class MultiFileHandler:
 
         return output_folder
 
-    def get_multi_file_output_pattern(self, pattern: dict, target_extension: str) -> str:
+    def get_multi_file_output_pattern(
+        self, pattern: dict, target_extension: str
+    ) -> str:
         """Get the output filename pattern for multi-file conversion.
 
         Generates the filename pattern that ImageMagick will use to create
@@ -207,9 +208,10 @@ class MultiFileHandler:
             patterns = config.get("patterns", [])
 
             for pattern in patterns:
-                if (
-                    pattern.get("from") == source_format.upper()
-                    and target_format.upper() in pattern.get("to", [])
+                if pattern.get(
+                    "from"
+                ) == source_format.upper() and target_format.upper() in pattern.get(
+                    "to", []
                 ):
                     return True
 

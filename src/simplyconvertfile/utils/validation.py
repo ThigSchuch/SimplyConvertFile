@@ -72,7 +72,7 @@ class FileValidator:
             )
 
         file_format = FileValidator.get_file_format(file_path)
-        
+
         format_group = format_config.get_format_group(file_format)
         if not format_group:
             logger.debug("Unsupported format: {}", file_format)
@@ -122,19 +122,19 @@ class FileValidator:
             return ""
 
         filename_lower = file_path.name.lower()
-        
+
         all_formats = set()
         for group in format_config._format_groups.values():
             all_formats.update(group.formats)
-        
+
         sorted_formats = sorted(all_formats, key=len, reverse=True)
-                
+
         for format_name in sorted_formats:
             extension_pattern = "." + format_name.lower()
             if filename_lower.endswith(extension_pattern):
                 logger.debug("Format recognized: {}", format_name)
                 return format_name
-        
+
         fallback_format = file_path.suffix[1:].upper()
         logger.debug("Using fallback format: {}", fallback_format)
         return fallback_format
@@ -143,18 +143,18 @@ class FileValidator:
     @lru_cache(maxsize=512)
     def get_base_name_and_extension(file_path: Path) -> tuple[str, str]:
         """Extract base name and extension from a file path.
-        
+
         Handles both simple extensions (.pdf, .jpg) and compound extensions
         (.tar.bz2, .tar.gz, .tar.xz) by using the format configuration.
-        
+
         Args:
             file_path: The file path to analyze.
-            
+
         Returns:
             tuple[str, str]: A tuple of (base_name, extension) where:
                 - base_name is the filename without any extension
                 - extension is the full extension including the dot (e.g., ".tar.xz")
-        
+
         Examples:
             >>> FileValidator.get_base_name_and_extension(Path("archive.tar.bz2"))
             ('archive', '.tar.bz2')
@@ -164,15 +164,15 @@ class FileValidator:
             ('noext', '')
         """
         file_format = FileValidator.get_file_format(file_path)
-        
+
         if file_format:
             extension = "." + file_format.lower()
             filename_lower = file_path.name.lower()
-            
+
             if filename_lower.endswith(extension):
-                base_name = file_path.name[:-len(extension)]
+                base_name = file_path.name[: -len(extension)]
                 return base_name, extension
-        
+
         return file_path.stem, file_path.suffix
 
     @staticmethod
