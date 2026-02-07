@@ -117,6 +117,11 @@ jobs:
         run: |
           echo "${{ secrets.GPG_PRIVATE_KEY }}" | gpg --batch --import
 
+      - name: Export public key
+        run: |
+          GPG_KEY_ID=$(gpg --list-keys --with-colons | grep '^pub' | head -1 | cut -d: -f5)
+          gpg --armor --export "$GPG_KEY_ID" > gh-pages/gpg.key
+
       - name: Update APT repository
         run: |
           cd gh-pages
