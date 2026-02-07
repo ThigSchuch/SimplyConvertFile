@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-File validation utilities for convert-file action.
+File validation utilities for simplyconvertfile action.
 
 This module provides centralized file validation logic used across
 single and batch conversion operations.

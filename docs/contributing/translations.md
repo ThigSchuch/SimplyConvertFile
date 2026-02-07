@@ -39,7 +39,7 @@ SimplyConvertFile supports multiple languages through gettext translations.
 
 1. Copy the template file:
    ```bash
-   cp src/simplyconvertfile/po/convert-file@thigschuch.pot src/simplyconvertfile/po/your_language.po
+   cp src/simplyconvertfile/po/simplyconvertfile.pot src/simplyconvertfile/po/your_language.po
    ```
 
 2. Translate the strings in the new `.po` file

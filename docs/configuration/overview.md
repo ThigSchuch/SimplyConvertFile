@@ -79,10 +79,6 @@ Use these placeholders in custom conversion commands:
 | `{input_name}` | Input filename with extension |
 | `{input_stem}` | Input filename without extension |
 
-## Migration from Nemo Action
-
-If you previously used the `convert-file@thigschuch` Nemo action, your settings at `~/.config/convert-file@thigschuch/` will be automatically migrated on first run.
-
 ## General Options
 
 ### Format Display

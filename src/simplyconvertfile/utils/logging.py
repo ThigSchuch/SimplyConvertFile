@@ -33,7 +33,7 @@ class Logger:
     """Conditional logger activated by DEBUG file presence.
 
     The logger checks for the existence of a DEBUG file in the user config
-    directory (~/.config/convert-file@thigschuch/DEBUG). When present, it
+    directory (~/.config/simplyconvertfile/DEBUG). When present, it
     prints formatted log messages to stdout with color coding by log level:
     - DEBUG: Cyan
     - INFO: Green

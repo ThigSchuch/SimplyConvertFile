@@ -4,7 +4,7 @@ A powerful and comprehensive file conversion tool for Linux with a GTK 3 graphic
 
 Originally developed as a [Nemo file manager action](https://github.com/linuxmint/cinnamon-spices-actions) (`convert-file@thigschuch`), now available as a **standalone Linux application**.
 
-> **📖 Full documentation: [thigschuch.github.io/SimplyConvertFile](https://thigschuch.github.io/SimplyConvertFile/)**
+> **📖 Full documentation: [thigschuch.github.io/SimplyConvertFile](https://thigschuch.github.io/SimplyConvertFile)**
 
 ## Key Features
 
@@ -43,7 +43,7 @@ sudo apt-get install -f
 pip install .
 ```
 
-See the [full installation guide](https://thigschuch.github.io/SimplyConvertFile/getting-started/installation/) for all methods.
+See the [full installation guide](https://thigschuch.github.io/SimplyConvertFile/getting-started/installation) for all methods.
 
 ## Usage
 
@@ -58,7 +58,7 @@ simplyconvertfile document.pdf
 simplyconvertfile *.heic
 ```
 
-See the [usage guide](https://thigschuch.github.io/SimplyConvertFile/usage/single-conversion/) for details.
+See the [usage guide](https://thigschuch.github.io/SimplyConvertFile/usage/single-conversion) for details.
 
 ## Supported Formats
 
@@ -72,19 +72,19 @@ See the [usage guide](https://thigschuch.github.io/SimplyConvertFile/usage/singl
 **Data:** JSON, TXT, YAML  
 **Archives:** 7Z, BZ2, DEB, DMG, GZ, ISO, LZMA, LZO, RAR, RPM, TAR, XZ, ZIP
 
-See the [full format list](https://thigschuch.github.io/SimplyConvertFile/formats/) with common conversions.
+See the [full format list](https://thigschuch.github.io/SimplyConvertFile/formats) with common conversions.
 
 ## Documentation
 
 | Topic | Link |
 |-------|------|
-| Installation | [Getting Started](https://thigschuch.github.io/SimplyConvertFile/getting-started/installation/) |
-| Dependencies | [Required Tools](https://thigschuch.github.io/SimplyConvertFile/getting-started/dependencies/) |
-| Usage Guide | [Single](https://thigschuch.github.io/SimplyConvertFile/usage/single-conversion/) · [Batch](https://thigschuch.github.io/SimplyConvertFile/usage/batch-conversion/) · [Shortcuts](https://thigschuch.github.io/SimplyConvertFile/usage/keyboard-shortcuts/) |
-| Configuration | [Overview](https://thigschuch.github.io/SimplyConvertFile/configuration/overview/) · [Templates](https://thigschuch.github.io/SimplyConvertFile/configuration/format-templates/) · [Notifications](https://thigschuch.github.io/SimplyConvertFile/configuration/notifications/) |
-| Reference | [Troubleshooting](https://thigschuch.github.io/SimplyConvertFile/reference/troubleshooting/) · [FAQ](https://thigschuch.github.io/SimplyConvertFile/reference/faq/) · [Performance](https://thigschuch.github.io/SimplyConvertFile/reference/performance/) |
-| Contributing | [Development](https://thigschuch.github.io/SimplyConvertFile/contributing/development/) · [Translations](https://thigschuch.github.io/SimplyConvertFile/contributing/translations/) |
-| Architecture | [Project Structure](https://thigschuch.github.io/SimplyConvertFile/architecture/) |
+| Installation | [Getting Started](https://thigschuch.github.io/SimplyConvertFile/getting-started/installation) |
+| Dependencies | [Required Tools](https://thigschuch.github.io/SimplyConvertFile/getting-started/dependencies) |
+| Usage Guide | [Single](https://thigschuch.github.io/SimplyConvertFile/usage/single-conversion) · [Batch](https://thigschuch.github.io/SimplyConvertFile/usage/batch-conversion) · [Shortcuts](https://thigschuch.github.io/SimplyConvertFile/usage/keyboard-shortcuts) |
+| Configuration | [Overview](https://thigschuch.github.io/SimplyConvertFile/configuration/overview) · [Templates](https://thigschuch.github.io/SimplyConvertFile/configuration/format-templates) · [Notifications](https://thigschuch.github.io/SimplyConvertFile/configuration/notifications) |
+| Reference | [Troubleshooting](https://thigschuch.github.io/SimplyConvertFile/reference/troubleshooting) · [FAQ](https://thigschuch.github.io/SimplyConvertFile/reference/faq) · [Performance](https://thigschuch.github.io/SimplyConvertFile/reference/performance) |
+| Contributing | [Development](https://thigschuch.github.io/SimplyConvertFile/contributing/development) · [Translations](https://thigschuch.github.io/SimplyConvertFile/contributing/translations) |
+| Architecture | [Project Structure](https://thigschuch.github.io/SimplyConvertFile/architecture) |
 
 ## License
 

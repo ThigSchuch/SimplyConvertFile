@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-Settings management for convert-file action.
+Settings management for simplyconvertfile action.
 
 This module handles loading and saving user configuration files,
 merging them with default settings, and providing a clean API
@@ -16,12 +16,14 @@ Settings are merged with user customizations taking precedence.
 
 import json
 import shutil
+import subprocess
 import time
 import urllib.request
 from functools import lru_cache
 from pathlib import Path
 from typing import Any, Dict, List, Optional
 
+from simplyconvertfile.utils import text
 from simplyconvertfile.utils.logging import logger
 
 # Remote settings URL (GitHub Pages)
@@ -74,42 +76,14 @@ class SettingsManager:
         self._system_config_file = self._user_config_dir / "settings.json"
         self._user_config_file = self._user_config_dir / "user_settings.json"
 
-        # Legacy config directory (for migration)
-        self._legacy_config_dir = Path.home() / ".config" / "convert-file@thigschuch"
-
         self._merged_settings: Optional[Dict[str, Any]] = None
 
         logger.debug(
             "Initializing settings manager with config dir: {}", self._user_config_dir
         )
-        self._migrate_legacy_config()
         self._ensure_user_config_exists()
         self.load_settings()
         self._check_remote_settings()
-
-    def _migrate_legacy_config(self) -> None:
-        """Migrate configuration from legacy convert-file@thigschuch directory.
-
-        If the legacy config directory exists and the new one doesn't,
-        copies all files from the legacy location to the new location.
-        This preserves user settings, usage stats, and debug configuration
-        when upgrading from the Nemo action to the standalone application.
-
-        Returns:
-            None
-        """
-        if self._legacy_config_dir.exists() and not self._user_config_dir.exists():
-            logger.info(
-                "Migrating legacy config from {} to {}",
-                self._legacy_config_dir,
-                self._user_config_dir,
-            )
-            try:
-                shutil.copytree(self._legacy_config_dir, self._user_config_dir)
-                logger.info("Legacy config migration completed successfully")
-            except Exception as e:
-                logger.warning("Legacy config migration failed: {}", str(e))
-                # Migration failure is non-fatal; fresh config will be created
 
     def _check_remote_settings(self) -> None:
         """Check for remote settings updates from GitHub Pages.
@@ -325,10 +299,21 @@ class SettingsManager:
             logger.debug("User settings file not found, using defaults")
             pass
         except json.JSONDecodeError:
-            from simplyconvertfile.ui import notification
-
-            notification.notify_corrupted_user_settings()
             logger.warning("User settings file corrupted, using defaults")
+            try:
+                subprocess.Popen(
+                    [
+                        "notify-send",
+                        "--urgency=critical",
+                        f"--app-name={text.UI.APPLICATION_TITLE}",
+                        text.Notifications.USER_SETTINGS_CORRUPTED_TITLE,
+                        text.Notifications.USER_SETTINGS_CORRUPTED_MESSAGE,
+                    ],
+                    stdout=subprocess.DEVNULL,
+                    stderr=subprocess.DEVNULL,
+                )
+            except Exception as e:
+                logger.debug("Failed to show corrupted settings notification: {}", e)
 
         if user_settings:
             self._merged_settings = self._deep_merge_dicts(

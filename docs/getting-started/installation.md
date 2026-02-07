@@ -83,21 +83,19 @@ pip uninstall simplyconvertfile
 
 ## Nemo File Manager Integration
 
-If you use the Cinnamon desktop, you can integrate SimplyConvertFile into Nemo's context menu:
+If you use the Cinnamon desktop, you can integrate SimplyConvertFile into Nemo's context menu.
+
+**If installed from source / pip** (the `packaging/` directory is available):
 
 ```bash
-cp packaging/convert-file.nemo_action ~/.local/share/nemo/actions/
+cp packaging/simplyconvertfile.nemo_action ~/.local/share/nemo/actions/
 ```
 
-Or update an existing `.nemo_action` file:
+**If installed via APT or .deb**:
 
-```ini
-[Nemo Action]
-Name=Convert File
-Exec=simplyconvertfile %F
-Extensions=7z;aac;...;zip;
-Selection=notnone
-Dependencies=simplyconvertfile;
+```bash
+mkdir -p ~/.local/share/nemo/actions
+curl -fsSL https://raw.githubusercontent.com/ThigSchuch/SimplyConvertFile/main/packaging/simplyconvertfile.nemo_action -o ~/.local/share/nemo/actions/simplyconvertfile.nemo_action
 ```
 
 ## Verification
