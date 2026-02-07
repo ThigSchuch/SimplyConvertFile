@@ -45,6 +45,9 @@ jobs:
             exit 1
           fi
 
+      - name: Install build dependencies
+        run: sudo apt-get update && sudo apt-get install -y gettext
+
       - name: Build .deb package
         run: bash packaging/build-deb.sh "${{ steps.version.outputs.VERSION }}"
 
