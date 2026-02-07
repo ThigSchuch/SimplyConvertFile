@@ -2,14 +2,14 @@ Package: simplyconvertfile
 Version: 2.0.0
 Architecture: all
 Maintainer: thigschuch
-Installed-Size: 1076
+Installed-Size: 1176
 Depends: python3 (>= 3.8), python3-gi, gir1.2-gtk-3.0, libnotify-bin, ffmpeg, imagemagick
 Suggests: libreoffice-writer, libreoffice-calc, libreoffice-impress, pandoc, p7zip-full, calibre, poppler-utils, rar, lzop, xz-utils
 Filename: pool/simplyconvertfile_2.0.0_all.deb
-Size: 132042
-MD5sum: 706ec1d3bad859d5082872e496594238
-SHA1: 55c4036531d4e2492f97c258faad8d465c2c6f12
-SHA256: ccf0ca5185284f870e01bac7d2ab8e88df16dbd2d632bf5ba2e1525fe4c5c5dc
+Size: 143710
+MD5sum: d1c28e90ad094e3d5022d5c4e53a5643
+SHA1: ba272007e8d11690e29f64f15c2a590f987a7ca4
+SHA256: 5a3a54b8708cd635d3263951fed53b5ccb9e0f41e7f96b8b33723fc29de68aca
 Section: utils
 Priority: optional
 Homepage: https://github.com/ThigSchuch/SimplyConvertFile
