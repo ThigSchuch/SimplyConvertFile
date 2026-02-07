@@ -25,11 +25,21 @@ jobs:
       - name: Checkout main branch
         uses: actions/checkout@v4
 
-      - name: Checkout gh-pages branch
-        uses: actions/checkout@v4
-        with:
-          ref: gh-pages
-          path: gh-pages
+      - name: Checkout or create gh-pages branch
+        run: |
+          # Try to fetch gh-pages; if it doesn't exist, create an orphan branch
+          if git ls-remote --exit-code origin gh-pages >/dev/null 2>&1; then
+            git fetch origin gh-pages
+            git worktree add gh-pages origin/gh-pages
+          else
+            git worktree add --detach gh-pages
+            cd gh-pages
+            git checkout --orphan gh-pages
+            git rm -rf .
+            echo "# GitHub Pages - SimplyConvertFile settings" > README.md
+            git add README.md
+            git commit -m "Initialize gh-pages branch"
+          fi
 
       - name: Update settings on gh-pages
         run: |
@@ -44,4 +54,4 @@ jobs:
           git add settings/settings.json
           git diff --cached --quiet && echo "No changes to commit" && exit 0
           git commit -m "Update settings.json from main branch"
-          git push
+          git push origin gh-pages
