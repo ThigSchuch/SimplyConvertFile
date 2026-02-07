@@ -1,0 +1,34 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+Date: Sat, 07 Feb 2026 15:41:20 +0000
+MD5Sum:
+ c6e27c2afaecf2b8cfa4f3d25aa5451d               38 Release
+ 8eb5daf4a6d51654d8c9c790a0ede3ca              964 main/binary-all/Packages
+ 38525c711ceb4f486c64709d1eebaefd              649 main/binary-all/Packages.gz
+SHA1:
+ 72dc137f0585380ba4378cb17e094a12d14456fd               38 Release
+ a42efd3613ad0b10248cab094c7a60c976356c82              964 main/binary-all/Packages
+ 5a66586ecbdc49bd9646e620e324e64a068b68f9              649 main/binary-all/Packages.gz
+SHA256:
+ 0d039d9a884ab88d33017ccd220b3491d9a98b3ee08281281526a7f4eb4b13fc               38 Release
+ 2757df85520cf47c1ee393f908c77fd3afcfc815e2f06a9e39cb89b8ab7bc5a5              964 main/binary-all/Packages
+ d1b90cdf4ebea23fb4dabe944930c906cdb3e38de49fc0a29c3a137dd515ea96              649 main/binary-all/Packages.gz
+SHA512:
+ 014227d393f22697ffede8a6a79ba2d6c6c3a3689e0b9a5201870e34b1b8ea9edb3c2f302e14dba24d8bf2d4c5b44d47da3340034c6a0cdfbe1a7b3237325277               38 Release
+ 2ab7e30fc064b69f8b40a7d3663140b12bb39edc734cca39ab944f596c1954152aa55adaadf5baea21e726f183223583fbfbdbe307a4d68024460b536e2969ff              964 main/binary-all/Packages
+ 4fc083fb70ffa47615f186e38f23d70e7601c788227f8cb139c08e0be783125df076d693dc10ded0100b91440cb6c49aaf9fe46268c1ac9e70841d09d539095b              649 main/binary-all/Packages.gz
+-----BEGIN PGP SIGNATURE-----
+
+iQGzBAEBCgAdFiEEMTzUC8/FSe7AWj4cTuxuw3pHL4sFAmmHXSEACgkQTuxuw3pH
+L4sQ7gv/XI/TWMdeSKJA94qKbSk9TNz6dm73u5bloO2MGi4PmUg3rI5tzLs4dYMS
+dpUar0XpipoH9tuq365Gs++7yX38+EhUlHkDNqHobVFTCqIcbS4iAvx85BmVtM8V
+1UJ/F3iVuEb9RzSzV/jRj27B4v4IMGNDHjF+WT9PQEUtPXBWloxptVPkxUlHklji
+kM4Zvklh/a840h5zUcmDshC21MFWnGMSpNuzE1rBtL7sjtr52fECk6HTlPW73Zx4
+Fb2Ca06igqjdraFpSZHQuVnWPA5gWeYnRJaRsTgUCcNihnai2LNBKi+lt/3Pk/PT
+wJUen43BR4S6CpHYGB2QSxOyAMU1sdzxoELmdJBBK5bfieaf5dH5p9zwX3OkxMIe
+GYPtN8IJmnGaz/nZr9jauktqiUTSkqGkEsdC1ymM5gAH4+oGLEwDBWd9xuBHT4oU
+rNDMdg1SmcvTfBvkZUKtShkeUKqo7ErQFZRjXs00coSfwZUqyE444DJjXVW5Ra92
+x6e3jOOy
+=9K5L
+-----END PGP SIGNATURE-----

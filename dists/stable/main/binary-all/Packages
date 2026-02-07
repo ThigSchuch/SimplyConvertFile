@@ -1,0 +1,23 @@
+Package: simplyconvertfile
+Version: 2.0.0
+Architecture: all
+Maintainer: thigschuch
+Installed-Size: 1076
+Depends: python3 (>= 3.8), python3-gi, gir1.2-gtk-3.0
+Recommends: ffmpeg, imagemagick, libreoffice, pandoc, p7zip-full, libnotify-bin
+Suggests: calibre, poppler-utils, rar, lzop, xz-utils
+Filename: pool/simplyconvertfile_2.0.0_all.deb
+Size: 132018
+MD5sum: 6bdf974d0b099a0073357f8f74c12efc
+SHA1: fd95ab504ada25a78eefff24aa03315748d36bb1
+SHA256: a6905d26d55ddb6c1ef54e54dada80baa5c3b9a02916f547eb77f782dca2f085
+Section: utils
+Priority: optional
+Homepage: https://github.com/ThigSchuch/SimplyConvertFile
+Description: Universal file format converter for Linux
+ SimplyConvertFile supports 80+ formats including images, videos,
+ audio, documents, spreadsheets, presentations, markup, data formats, and
+ archives. It provides a GTK 3 graphical interface with single and batch
+ conversion, progress tracking, desktop notifications, and intelligent
+ format detection.
+
