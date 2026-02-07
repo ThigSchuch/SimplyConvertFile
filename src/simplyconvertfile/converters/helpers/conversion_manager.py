@@ -6,14 +6,21 @@ This module provides centralized command execution and progress tracking
 functionality extracted from the base converter.
 """
 
+import threading
 from typing import Callable, List, Optional
 
+from simplyconvertfile.config.settings import settings_manager
 from simplyconvertfile.converters.helpers.execution import (
     CommandExecutionResult,
     CommandExecutor,
     ProgressManager,
 )
-from simplyconvertfile.ui import ErrorDialogWindow, notification
+from simplyconvertfile.ui import (
+    DangerousCommandDialogWindow,
+    ErrorDialogWindow,
+    GLib,
+    notification,
+)
 from simplyconvertfile.utils import dependency_manager, text
 
 from .commands import CommandParser
@@ -109,7 +116,12 @@ class ConversionManager:
                 return False
 
             executor = CommandExecutor(
-                cancel_check=cancel_check, batch_mode=self.batch_mode
+                cancel_check=cancel_check,
+                batch_mode=self.batch_mode,
+                allow_dangerous_commands=settings_manager.get(
+                    "allow_dangerous_commands", False
+                ),
+                dangerous_command_confirm_fn=self._create_dangerous_command_confirm_fn(),
             )
 
             progress_manager = ProgressManager(
@@ -134,6 +146,40 @@ class ConversionManager:
                 error_message=f"Conversion execution failed: {str(e)}",
                 cancelled=False,
             )
+
+    def _create_dangerous_command_confirm_fn(self):
+        """Create a thread-safe confirmation callback for dangerous commands.
+
+        Returns a callable that shows a GTK confirmation dialog on the main
+        thread (via GLib.idle_add) and blocks the worker thread until the
+        user responds. This is necessary because command execution runs on
+        a background thread but GTK dialogs must run on the main thread.
+
+        Returns:
+            Callable[[str, str], bool]: Function taking (reason, command_str)
+                                       that returns True if user confirms.
+        """
+
+        def confirm_dangerous_command(reason: str, command_str: str) -> bool:
+            result_event = threading.Event()
+            user_confirmed = [False]
+
+            def show_dialog() -> bool:
+                message = text.Security.DANGEROUS_COMMAND_CONFIRM_MESSAGE.format(
+                    reason=reason, command=command_str
+                )
+                confirmed = DangerousCommandDialogWindow(
+                    message=message, command=command_str
+                ).run()
+                user_confirmed[0] = confirmed
+                result_event.set()
+                return False  # Don't repeat GLib.idle_add
+
+            GLib.idle_add(show_dialog)
+            result_event.wait()
+            return user_confirmed[0]
+
+        return confirm_dangerous_command
 
     def _perform_conversion_execution(
         self,

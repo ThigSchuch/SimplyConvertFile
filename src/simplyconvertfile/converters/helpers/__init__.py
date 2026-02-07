@@ -12,12 +12,14 @@ from .errors import ErrorHandler
 from .execution import CommandExecutionResult, CommandExecutor, ProgressManager
 from .file_manager import FileManager
 from .progress_tracker import ProgressTracker
+from .sanitizer import CommandSanitizer
 from .temp_file import TempFileManager
 from .template_processor import TemplateProcessor
 from .validation import ToolValidator
 
 __all__ = [
     "CommandParser",
+    "CommandSanitizer",
     "ConversionManager",
     "ErrorManager",
     "ErrorHandler",

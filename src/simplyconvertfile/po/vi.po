@@ -1,14 +1,14 @@
-# CONVERT FILE
+# SIMPLY CONVERT FILE
 # This file is put in the public domain.
-# ThigSchuch, 2024
+# ThigSchuch, 2026
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: convert-file@thigschuch 2.0.0\n"
-"Report-Msgid-Bugs-To: https://github.com/ThigSchuch/SimplyConvertFile/issues"
+"Project-Id-Version: simplyconvertfile 2.0.0\n"
+"Report-Msgid-Bugs-To: https://github.com/ThigSchuch/SimplyConvertFile/"
 "issues\n"
-"POT-Creation-Date: 2025-10-25 04:20+0000\n"
-"PO-Revision-Date: 2025-10-25 12:00+0000\n"
+"POT-Creation-Date: 2026-02-07 17:51+0000\n"
+"PO-Revision-Date: 2026-02-07 12:00+0000\n"
 "Last-Translator: AI\n"
 "Language-Team: loccun <huynhloc.contact@gmail.com>, AI\n"
 "Language: vi\n"
@@ -16,19 +16,15 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#. ui/aui.py:164 utils/text.py:63
-msgid "OK"
-msgstr "Đồng ý"
-
-#. utils/text.py:57
+#: src/simplyconvertfile/utils/text.py:74
 msgid "File Converter"
 msgstr "Trình chuyển đổi tệp"
 
-#. utils/text.py:58
+#: src/simplyconvertfile/utils/text.py:75
 msgid "Choose output format:"
 msgstr "Chọn định dạng đầu ra:"
 
-#. utils/text.py:59
+#: src/simplyconvertfile/utils/text.py:76
 #, python-brace-format
 msgid ""
 "Converting\n"
@@ -37,55 +33,58 @@ msgstr ""
 "Đang chuyển đổi\n"
 "{file} thành {extension}"
 
-#. utils/text.py:60
+#: src/simplyconvertfile/utils/text.py:77
 msgid "Copy Error"
 msgstr "Sao chép lỗi"
 
-#. utils/text.py:61
+#: src/simplyconvertfile/utils/text.py:78
 msgid "Copy Command"
 msgstr "Sao chép lệnh"
 
-#. utils/text.py:62
+#: src/simplyconvertfile/utils/text.py:79
 msgid "Report Error"
 msgstr "Báo cáo lỗi"
 
-#. utils/text.py:64
+#: src/simplyconvertfile/utils/text.py:80 src/simplyconvertfile/ui/aui.py:175
+msgid "OK"
+msgstr "Đồng ý"
+
+#: src/simplyconvertfile/utils/text.py:81
 msgid "Cancel"
 msgstr "Hủy"
 
-#. utils/text.py:65
+#: src/simplyconvertfile/utils/text.py:82
 msgid "Cancelling..."
 msgstr "Đang hủy..."
 
-#. utils/text.py:66
+#: src/simplyconvertfile/utils/text.py:83
 msgid "Start"
 msgstr "Bắt đầu"
 
-#. utils/text.py:67
+#: src/simplyconvertfile/utils/text.py:84
 msgid "Error details copied to clipboard"
 msgstr "Chi tiết lỗi đã được sao chép vào clipboard"
 
-#. utils/text.py:68
+#: src/simplyconvertfile/utils/text.py:85
 msgid "Install command copied to clipboard"
 msgstr "Lệnh cài đặt đã được sao chép vào clipboard"
 
-#. utils/text.py:70
+#: src/simplyconvertfile/utils/text.py:87
 #, python-brace-format
 msgid ""
 "No installation instructions available. Please install '{dependency}' "
 "manually."
-msgstr ""
-"Không có hướng dẫn cài đặt. Vui lòng cài đặt '{dependency}' thủ công."
+msgstr "Không có hướng dẫn cài đặt. Vui lòng cài đặt '{dependency}' thủ công."
 
-#. utils/text.py:72
+#: src/simplyconvertfile/utils/text.py:89
 msgid "multiple files selected"
 msgstr "đã chọn nhiều tệp"
 
-#. utils/text.py:77
+#: src/simplyconvertfile/utils/text.py:94
 msgid "Select one or more files to convert."
 msgstr "Chọn một hoặc nhiều tệp để chuyển đổi."
 
-#. utils/text.py:79
+#: src/simplyconvertfile/utils/text.py:96
 #, python-brace-format
 msgid ""
 "File not found:\n"
@@ -98,7 +97,7 @@ msgstr ""
 "\n"
 "Kiểm tra xem tệp có tồn tại không."
 
-#. utils/text.py:82
+#: src/simplyconvertfile/utils/text.py:99
 #, python-brace-format
 msgid ""
 "Invalid file:\n"
@@ -111,7 +110,7 @@ msgstr ""
 "\n"
 "Chọn một tệp, không phải thư mục."
 
-#. utils/text.py:85
+#: src/simplyconvertfile/utils/text.py:102
 #, python-brace-format
 msgid ""
 "No file extension:\n"
@@ -124,12 +123,12 @@ msgstr ""
 "\n"
 "Thêm phần mở rộng (ví dụ: .jpg, .mp4, .pdf) để xác định định dạng."
 
-#. utils/text.py:88
+#: src/simplyconvertfile/utils/text.py:105
 #, python-brace-format
 msgid "Unsupported file format: {extension}"
 msgstr "Định dạng tệp không được hỗ trợ: {extension}"
 
-#. utils/text.py:90
+#: src/simplyconvertfile/utils/text.py:107
 #, python-brace-format
 msgid ""
 "The file '{filename}' has an unsupported format ({extension}).\n"
@@ -139,9 +138,10 @@ msgid ""
 msgstr ""
 "Tệp '{filename}' có định dạng không được hỗ trợ ({extension}).\n"
 "\n"
-"Định dạng này không được nhận dạng bởi trình chuyển đổi hoặc các công cụ cần thiết chưa được cài đặt trên hệ thống của bạn."
+"Định dạng này không được nhận dạng bởi trình chuyển đổi hoặc các công cụ cần "
+"thiết chưa được cài đặt trên hệ thống của bạn."
 
-#. utils/text.py:95
+#: src/simplyconvertfile/utils/text.py:112
 #, python-brace-format
 msgid ""
 "Found {error_count} validation error(s) in the selected files:\n"
@@ -156,15 +156,15 @@ msgstr ""
 "\n"
 "Quy trình sẽ tiếp tục chỉ với các tệp hợp lệ."
 
-#. utils/text.py:103
+#: src/simplyconvertfile/utils/text.py:120
 msgid "Conversion failed."
 msgstr "Chuyển đổi thất bại."
 
-#. utils/text.py:104
+#: src/simplyconvertfile/utils/text.py:121
 msgid "No converter found for this format"
 msgstr "Không tìm thấy trình chuyển đổi cho định dạng này"
 
-#. utils/text.py:106
+#: src/simplyconvertfile/utils/text.py:123
 #, python-brace-format
 msgid ""
 "No converters available for {extension} files.\n"
@@ -191,7 +191,7 @@ msgstr ""
 "\n"
 "Kiểm tra phụ thuộc hệ thống."
 
-#. utils/text.py:116
+#: src/simplyconvertfile/utils/text.py:133
 #, python-brace-format
 msgid ""
 "Failed to create converter for {source} → {target}\n"
@@ -212,7 +212,7 @@ msgstr ""
 "• Sự kết hợp định dạng không tương thích\n"
 "• Vấn đề cấu hình hệ thống"
 
-#. utils/text.py:124
+#: src/simplyconvertfile/utils/text.py:141
 #, python-brace-format
 msgid ""
 "Converting {current} of {total} files to {extension}\n"
@@ -221,7 +221,7 @@ msgstr ""
 "Đang chuyển đổi {current} trong {total} tệp thành {extension}\n"
 "{file}"
 
-#. utils/text.py:127
+#: src/simplyconvertfile/utils/text.py:144
 #, python-brace-format
 msgid ""
 "Failed to create or access output directory.\n"
@@ -232,38 +232,43 @@ msgstr ""
 "\n"
 "Lỗi: {error}"
 
-#. utils/text.py:129
+#: src/simplyconvertfile/utils/text.py:146
 #, python-brace-format
 msgid "Conversion failed: {error}"
 msgstr "Chuyển đổi thất bại: {error}"
 
-#. utils/text.py:130
+#: src/simplyconvertfile/utils/text.py:147
 msgid "Conversion cancelled by user"
 msgstr "Chuyển đổi bị hủy bởi người dùng"
 
-#. utils/text.py:132
+#: src/simplyconvertfile/utils/text.py:149
 msgid ""
 "Conversion failed - check if required tools are installed (e.g., ffmpeg, "
 "convert, 7z, rar, etc.) and the file format is supported"
 msgstr ""
-"Chuyển đổi thất bại - kiểm tra xem các công cụ cần thiết có được cài đặt không (ví dụ: ffmpeg, convert, 7z, rar, v.v.) và định dạng tệp có được hỗ trợ không"
+"Chuyển đổi thất bại - kiểm tra xem các công cụ cần thiết có được cài đặt "
+"không (ví dụ: ffmpeg, convert, 7z, rar, v.v.) và định dạng tệp có được hỗ "
+"trợ không"
 
-#. utils/text.py:135
+#: src/simplyconvertfile/utils/text.py:152
 #, python-brace-format
 msgid "Template error: {error}"
 msgstr "Lỗi mẫu: {error}"
 
-#. utils/text.py:140 utils/text.py:225
+#: src/simplyconvertfile/utils/text.py:157
+#: src/simplyconvertfile/utils/text.py:247
 #, python-brace-format
 msgid "Required tool '{tool}' is not installed."
 msgstr "Công cụ cần thiết '{tool}' chưa được cài đặt."
 
-#. utils/text.py:142
+#: src/simplyconvertfile/utils/text.py:159
 #, python-brace-format
 msgid "The conversion tool '{tool}' is required but not found on your system."
-msgstr "Công cụ chuyển đổi '{tool}' là cần thiết nhưng không tìm thấy trên hệ thống của bạn."
+msgstr ""
+"Công cụ chuyển đổi '{tool}' là cần thiết nhưng không tìm thấy trên hệ thống "
+"của bạn."
 
-#. utils/text.py:145
+#: src/simplyconvertfile/utils/text.py:162
 #, python-brace-format
 msgid ""
 "Missing Tool: {tool}\n"
@@ -282,20 +287,23 @@ msgstr ""
 "{install_command}\n"
 "\n"
 "Hướng dẫn:\n"
-"Sao chép lệnh cài đặt ở trên và chạy nó trong terminal của bạn. Nếu lệnh không hoạt động, vui lòng tham khảo trình quản lý gói của bản phân phối hoặc hướng dẫn cài đặt chính thức của công cụ."
+"Sao chép lệnh cài đặt ở trên và chạy nó trong terminal của bạn. Nếu lệnh "
+"không hoạt động, vui lòng tham khảo trình quản lý gói của bản phân phối hoặc "
+"hướng dẫn cài đặt chính thức của công cụ."
 
-#. utils/text.py:152
+#: src/simplyconvertfile/utils/text.py:169
 msgid "An unexpected error occurred during conversion."
 msgstr "Đã xảy ra lỗi không mong muốn trong quá trình chuyển đổi."
 
-#. utils/text.py:154
+#: src/simplyconvertfile/utils/text.py:171
 msgid ""
 "Required tool not found. Please make sure all required conversion tools are "
 "installed (e.g., ffmpeg, convert, etc.)"
 msgstr ""
-"Không tìm thấy công cụ cần thiết. Vui lòng đảm bảo tất cả các công cụ chuyển đổi cần thiết đã được cài đặt (ví dụ: ffmpeg, convert, v.v.)"
+"Không tìm thấy công cụ cần thiết. Vui lòng đảm bảo tất cả các công cụ chuyển "
+"đổi cần thiết đã được cài đặt (ví dụ: ffmpeg, convert, v.v.)"
 
-#. utils/text.py:158
+#: src/simplyconvertfile/utils/text.py:175
 #, python-brace-format
 msgid ""
 "Shell command execution failed.\n"
@@ -310,7 +318,7 @@ msgstr ""
 "\n"
 "Lệnh: {command}"
 
-#. utils/text.py:161
+#: src/simplyconvertfile/utils/text.py:178
 #, python-brace-format
 msgid ""
 "Chained command execution failed.\n"
@@ -325,7 +333,7 @@ msgstr ""
 "\n"
 "Lệnh: {command}"
 
-#. utils/text.py:163
+#: src/simplyconvertfile/utils/text.py:180
 #, python-brace-format
 msgid ""
 "Failed conversions:\n"
@@ -336,35 +344,35 @@ msgstr ""
 "\n"
 "{errors}"
 
-#. utils/text.py:164
+#: src/simplyconvertfile/utils/text.py:181
 msgid "Failed to create temporary directory"
 msgstr "Không thể tạo thư mục tạm thời"
 
-#. utils/text.py:165
+#: src/simplyconvertfile/utils/text.py:182
 msgid "Temporary directory not available"
 msgstr "Thư mục tạm thời không khả dụng"
 
-#. utils/text.py:166
+#: src/simplyconvertfile/utils/text.py:183
 msgid "Temporary directory does not exist"
 msgstr "Thư mục tạm thời không tồn tại"
 
-#. utils/text.py:167
+#: src/simplyconvertfile/utils/text.py:184
 msgid "No archive template available in settings"
 msgstr "Không có mẫu lưu trữ khả dụng trong cài đặt"
 
-#. utils/text.py:168
+#: src/simplyconvertfile/utils/text.py:185
 msgid "No contents found in extracted archive"
 msgstr "Không tìm thấy nội dung trong lưu trữ đã giải nén"
 
-#. utils/text.py:173
+#: src/simplyconvertfile/utils/text.py:190
 msgid "Operation failed"
 msgstr "Thao tác thất bại"
 
-#. utils/text.py:174
+#: src/simplyconvertfile/utils/text.py:191
 msgid "Operation cancelled by user"
 msgstr "Thao tác bị hủy bởi người dùng"
 
-#. utils/text.py:176
+#: src/simplyconvertfile/utils/text.py:193
 #, python-brace-format
 msgid ""
 "Step {step}/{total} failed.\n"
@@ -379,123 +387,297 @@ msgstr ""
 "\n"
 "Lệnh: {command}"
 
-#. utils/text.py:178
+#: src/simplyconvertfile/utils/text.py:196
+#, python-brace-format
+msgid ""
+"File validation failed: {file}\n"
+"\n"
+"The previous conversion step likely failed.\n"
+"\n"
+"Previous step output:\n"
+"{previous_error}"
+msgstr ""
+
+#: src/simplyconvertfile/utils/text.py:200
 msgid "Batch conversion cancelled"
 msgstr "Chuyển đổi hàng loạt bị hủy"
 
-#. utils/text.py:180
+#: src/simplyconvertfile/utils/text.py:202
 #, python-brace-format
 msgid "Batch conversion completed with {error_count} error(s)."
 msgstr "Chuyển đổi hàng loạt hoàn thành với {error_count} lỗi."
 
-#. utils/text.py:186
+#: src/simplyconvertfile/utils/text.py:208
 msgid "Conversion Complete"
 msgstr "Chuyển đổi hoàn thành"
 
-#. utils/text.py:187
+#: src/simplyconvertfile/utils/text.py:209
 #, python-brace-format
 msgid "Successfully converted {filename} to {extension}"
 msgstr "Đã chuyển đổi thành công {filename} thành {extension}"
 
-#. utils/text.py:188
+#: src/simplyconvertfile/utils/text.py:210
 msgid "Conversion Failed"
 msgstr "Chuyển đổi thất bại"
 
-#. utils/text.py:189
+#: src/simplyconvertfile/utils/text.py:211
 #, python-brace-format
 msgid "Failed to convert {filename} to {extension}"
 msgstr "Không thể chuyển đổi {filename} thành {extension}"
 
-#. utils/text.py:190
+#: src/simplyconvertfile/utils/text.py:212
 msgid "Batch Conversion Complete"
 msgstr "Chuyển đổi hàng loạt hoàn thành"
 
-#. utils/text.py:192
+#: src/simplyconvertfile/utils/text.py:214
 #, python-brace-format
 msgid "Successfully converted {successful} of {total} files to {extension}"
-msgstr "Đã chuyển đổi thành công {successful} trong {total} tệp thành {extension}"
+msgstr ""
+"Đã chuyển đổi thành công {successful} trong {total} tệp thành {extension}"
 
-#. utils/text.py:194
+#: src/simplyconvertfile/utils/text.py:216
 msgid "Batch Conversion Failed"
 msgstr "Chuyển đổi hàng loạt thất bại"
 
-#. utils/text.py:196
+#: src/simplyconvertfile/utils/text.py:218
 #, python-brace-format
 msgid "Failed to convert {failed} of {total} files to {extension}"
 msgstr "Không thể chuyển đổi {failed} trong {total} tệp thành {extension}"
 
-#. utils/text.py:198
+#: src/simplyconvertfile/utils/text.py:220
 msgid "Conversion Started"
 msgstr "Chuyển đổi đã bắt đầu"
 
-#. utils/text.py:200
+#: src/simplyconvertfile/utils/text.py:222
 #, python-brace-format
 msgid "Conversion started for {filename} to {extension}"
 msgstr "Chuyển đổi đã bắt đầu cho {filename} thành {extension}"
 
-#. utils/text.py:202
+#: src/simplyconvertfile/utils/text.py:224
 msgid "Batch Conversion Started"
 msgstr "Chuyển đổi hàng loạt đã bắt đầu"
 
-#. utils/text.py:204
+#: src/simplyconvertfile/utils/text.py:226
 #, python-brace-format
 msgid "Batch conversion of {total} files to {extension} has started"
 msgstr "Chuyển đổi hàng loạt của {total} tệp thành {extension} đã bắt đầu"
 
-#. utils/text.py:206
+#: src/simplyconvertfile/utils/text.py:228
 msgid "Batch Step Conversion Started"
 msgstr "Chuyển đổi bước hàng loạt đã bắt đầu"
 
-#. utils/text.py:208
+#: src/simplyconvertfile/utils/text.py:230
 #, python-brace-format
 msgid "Converting {filename} to {extension}"
 msgstr "Đang chuyển đổi {filename} thành {extension}"
 
-#. utils/text.py:210
+#: src/simplyconvertfile/utils/text.py:232
 msgid "Batch Conversion Cancelled"
 msgstr "Chuyển đổi hàng loạt bị hủy"
 
-#. utils/text.py:212
+#: src/simplyconvertfile/utils/text.py:234
 #, python-brace-format
 msgid ""
 "Conversion cancelled after processing {completed} of {total} files to "
 "{extension}"
 msgstr ""
-"Chuyển đổi bị hủy sau khi xử lý {completed} trong {total} tệp thành {extension}"
+"Chuyển đổi bị hủy sau khi xử lý {completed} trong {total} tệp thành "
+"{extension}"
 
-#. utils/text.py:214
+#: src/simplyconvertfile/utils/text.py:236
 msgid "Conversion Cancelled"
 msgstr "Chuyển đổi bị hủy"
 
-#. utils/text.py:216
+#: src/simplyconvertfile/utils/text.py:238
 #, python-brace-format
 msgid "File conversion to {extension} was cancelled"
 msgstr "Chuyển đổi tệp thành {extension} đã bị hủy"
 
-#. utils/text.py:218
+#: src/simplyconvertfile/utils/text.py:240
 msgid "Settings Error"
 msgstr "Lỗi cài đặt"
 
-#. utils/text.py:220
+#: src/simplyconvertfile/utils/text.py:242
+#, fuzzy
 msgid ""
 "User settings file is corrupted\n"
-"(~/.config/convert-file@thigschuch/user_settings.json)\n"
+"(~/.config/simplyconvertfile/user_settings.json)\n"
 "Using default settings instead."
 msgstr ""
 "Tệp cài đặt người dùng bị hỏng\n"
-"(~/.config/convert-file@thigschuch/user_settings.json)\n"
+"(~/.config/simplyconvertfile/user_settings.json)\n"
 "Sử dụng cài đặt mặc định thay thế."
 
-#. utils/text.py:224
+#: src/simplyconvertfile/utils/text.py:246
 msgid "Missing Conversion Tool"
 msgstr "Thiếu công cụ chuyển đổi"
 
-#. metadata.json->description
-#. convert-file@thigschuch.nemo_action.in->Comment
-msgid "Converts a file to a different format"
-msgstr "Chuyển đổi tệp sang định dạng khác"
+#: src/simplyconvertfile/utils/text.py:252
+msgid "Dangerous Command Blocked"
+msgstr "Lệnh nguy hiểm đã bị chặn"
 
-#. metadata.json->name
-#. convert-file@thigschuch.nemo_action.in->Name
-msgid "Convert File"
-msgstr "Chuyển đổi tệp"
+#: src/simplyconvertfile/utils/text.py:254
+#, python-brace-format
+msgid ""
+"A potentially dangerous command was blocked.\n"
+"\n"
+"Reason: {reason}\n"
+"\n"
+"Command: {command}\n"
+"\n"
+"If you need to allow dangerous commands, enable the "
+"'allow_dangerous_commands' option in your user settings."
+msgstr ""
+"Một lệnh có thể nguy hiểm đã bị chặn.\n"
+"\n"
+"Lý do: {reason}\n"
+"\n"
+"Lệnh: {command}\n"
+"\n"
+"Nếu bạn cần cho phép các lệnh nguy hiểm, hãy bật tùy chọn "
+"'allow_dangerous_commands' trong cài đặt người dùng của bạn."
+
+#: src/simplyconvertfile/utils/text.py:260
+msgid "Potentially Dangerous Command"
+msgstr "Lệnh có thể nguy hiểm"
+
+#: src/simplyconvertfile/utils/text.py:262
+#, python-brace-format
+msgid ""
+"The following command contains a potentially dangerous operation and "
+"requires your confirmation to proceed.\n"
+"\n"
+"Reason: {reason}\n"
+"\n"
+"Command:\n"
+"{command}"
+msgstr ""
+"Lệnh sau chứa một thao tác có thể nguy hiểm và cần sự xác nhận của bạn để "
+"tiếp tục.\n"
+"\n"
+"Lý do: {reason}\n"
+"\n"
+"Lệnh:\n"
+"{command}"
+
+#: src/simplyconvertfile/utils/text.py:267
+msgid "Continue Anyway"
+msgstr "Vẫn tiếp tục"
+
+#: src/simplyconvertfile/utils/text.py:270
+msgid "privilege escalation"
+msgstr "nâng cao đặc quyền"
+
+#: src/simplyconvertfile/utils/text.py:271
+msgid "file deletion"
+msgstr "xóa tệp"
+
+#: src/simplyconvertfile/utils/text.py:272
+msgid "directory deletion"
+msgstr "xóa thư mục"
+
+#: src/simplyconvertfile/utils/text.py:273
+msgid "file destruction"
+msgstr "phá hủy tệp"
+
+#: src/simplyconvertfile/utils/text.py:274
+msgid "file truncation"
+msgstr "cắt ngắn tệp"
+
+#: src/simplyconvertfile/utils/text.py:275
+msgid "raw disk operation"
+msgstr "thao tác đĩa thô"
+
+#: src/simplyconvertfile/utils/text.py:276
+msgid "filesystem creation"
+msgstr "tạo hệ thống tệp"
+
+#: src/simplyconvertfile/utils/text.py:277
+msgid "disk partitioning"
+msgstr "phân vùng đĩa"
+
+#: src/simplyconvertfile/utils/text.py:278
+msgid "filesystem signature removal"
+msgstr "loại bỏ chữ ký hệ thống tệp"
+
+#: src/simplyconvertfile/utils/text.py:279
+msgid "block device discard"
+msgstr "loại bỏ thiết bị khối"
+
+#: src/simplyconvertfile/utils/text.py:280
+msgid "system shutdown"
+msgstr "tắt hệ thống"
+
+#: src/simplyconvertfile/utils/text.py:281
+msgid "system reboot"
+msgstr "khởi động lại hệ thống"
+
+#: src/simplyconvertfile/utils/text.py:282
+msgid "system power off"
+msgstr "tắt nguồn hệ thống"
+
+#: src/simplyconvertfile/utils/text.py:283
+msgid "system halt"
+msgstr "dừng hệ thống"
+
+#: src/simplyconvertfile/utils/text.py:284
+msgid "system init control"
+msgstr "kiểm soát init hệ thống"
+
+#: src/simplyconvertfile/utils/text.py:285
+msgid "system service control"
+msgstr "kiểm soát dịch vụ hệ thống"
+
+#: src/simplyconvertfile/utils/text.py:286
+msgid "network access"
+msgstr "truy cập mạng"
+
+#: src/simplyconvertfile/utils/text.py:287
+msgid "network download"
+msgstr "tải xuống mạng"
+
+#: src/simplyconvertfile/utils/text.py:288
+msgid "network connection"
+msgstr "kết nối mạng"
+
+#: src/simplyconvertfile/utils/text.py:289
+msgid "remote shell access"
+msgstr "truy cập shell từ xa"
+
+#: src/simplyconvertfile/utils/text.py:290
+msgid "remote file copy"
+msgstr "sao chép tệp từ xa"
+
+#: src/simplyconvertfile/utils/text.py:291
+msgid "remote file sync"
+msgstr "đồng bộ tệp từ xa"
+
+#: src/simplyconvertfile/utils/text.py:292
+msgid "file transfer"
+msgstr "chuyển tệp"
+
+#: src/simplyconvertfile/utils/text.py:293
+msgid "permission change"
+msgstr "thay đổi quyền"
+
+#: src/simplyconvertfile/utils/text.py:294
+msgid "ownership change"
+msgstr "thay đổi quyền sở hữu"
+
+#: src/simplyconvertfile/utils/text.py:295
+msgid "group ownership change"
+msgstr "thay đổi quyền sở hữu nhóm"
+
+#: src/simplyconvertfile/utils/text.py:296
+msgid "shell code execution"
+msgstr "thực thi mã shell"
+
+#: src/simplyconvertfile/utils/text.py:297
+msgid "dangerous operation"
+msgstr "hoạt động nguy hiểm"
+
+#~ msgid "Converts a file to a different format"
+#~ msgstr "Chuyển đổi tệp sang định dạng khác"
+
+#~ msgid "Convert File"
+#~ msgstr "Chuyển đổi tệp"

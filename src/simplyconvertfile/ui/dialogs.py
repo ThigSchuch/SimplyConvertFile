@@ -508,3 +508,148 @@ class ErrorDialogWindow(DialogWindow):
             width=width,
             height=height,
         )
+
+
+class _DangerousCommandDialog(Gtk.Dialog):
+    """Confirmation dialog for potentially dangerous commands.
+
+    Displays the flagged command and reason, allowing the user to either
+    cancel the operation (default) or continue anyway.
+
+    Attributes:
+        box: Main vertical container for dialog elements.
+    """
+
+    def __init__(
+        self,
+        message: str,
+        command: str,
+        width: int = 600,
+        height: int = 152,
+        **kwargs,
+    ):
+        """Initialize the dangerous command confirmation dialog.
+
+        Args:
+            message: Formatted message containing the reason and command details.
+            command: The raw command string (for display in details).
+            width: Dialog window width in pixels.
+            height: Dialog window height in pixels.
+            **kwargs: Additional arguments passed to Gtk.Dialog constructor.
+
+        Returns:
+            None
+        """
+        logger.debug("Initializing dangerous command confirmation dialog")
+        super().__init__(**kwargs)
+
+        self.add_buttons(
+            text.UI.CANCEL_BUTTON_LABEL,
+            Gtk.ResponseType.CANCEL,
+            text.Security.CONTINUE_ANYWAY_BUTTON_LABEL,
+            Gtk.ResponseType.YES,
+        )
+
+        # Style "Continue Anyway" button as destructive (red background)
+        continue_button = self.get_widget_for_response(Gtk.ResponseType.YES)
+        if continue_button:
+            continue_button.get_style_context().add_class("destructive-action")
+
+        self.box = Gtk.VBox(spacing=8)
+
+        self.label = Gtk.Label(xalign=0)
+        self.label.set_markup(
+            f"<b>{GLib.markup_escape_text(text.Security.DANGEROUS_COMMAND_CONFIRM_TITLE)}</b>"
+        )
+        self.label.set_margin_top(8)
+        self.label.set_margin_start(8)
+        self.label.set_margin_end(8)
+
+        self.message = Gtk.Label(xalign=0)
+        self.message.set_markup(GLib.markup_escape_text(message))
+        self.message.set_margin_start(8)
+        self.message.set_margin_end(8)
+        self.message.set_margin_bottom(8)
+        self.message.set_line_wrap(True)
+
+        self.box.pack_start(self.label, False, False, 0)
+        self.box.pack_start(self.message, False, False, 0)
+        self.get_content_area().add(self.box)
+        self.set_default_size(width, height)
+        self.show_all()
+
+        self.connect("key-press-event", self._on_key_press)
+
+    def _on_key_press(self, widget, event) -> bool:
+        """Handle keyboard events.
+
+        Escape triggers Cancel, Enter also triggers Cancel (safe default).
+
+        Args:
+            widget: The dialog widget.
+            event: The key press event.
+
+        Returns:
+            bool: True to stop event propagation, False otherwise.
+        """
+        if event.keyval == Gdk.KEY_Escape:
+            self.response(Gtk.ResponseType.CANCEL)
+            return True
+        if event.keyval in (Gdk.KEY_Return, Gdk.KEY_KP_Enter):
+            self.response(Gtk.ResponseType.CANCEL)
+            return True
+        return False
+
+
+class DangerousCommandDialogWindow(DialogWindow):
+    """Dialog window wrapper for dangerous command confirmation.
+
+    Shows a confirmation dialog when a potentially dangerous command is
+    detected, allowing the user to cancel or continue.
+
+    Attributes:
+        dialog: Internal _DangerousCommandDialog instance.
+        _confirmed: Whether the user chose to continue.
+    """
+
+    def __init__(
+        self,
+        message: str,
+        command: str,
+        width: int = 600,
+        height: int = 152,
+        **kwargs,
+    ):
+        """Initialize the dangerous command dialog window.
+
+        Args:
+            message: Formatted message with reason and command details.
+            command: The raw command string.
+            width: Dialog window width in pixels.
+            height: Dialog window height in pixels.
+            **kwargs: Additional arguments passed to DialogWindow constructor.
+
+        Returns:
+            None
+        """
+        logger.debug("Creating dangerous command dialog window")
+        super().__init__(**kwargs)
+        self.dialog = _DangerousCommandDialog(
+            message=message,
+            command=command,
+            width=width,
+            height=height,
+        )
+        self._confirmed = False
+
+    def run(self) -> bool:
+        """Run the dialog and return whether the user confirmed.
+
+        Returns:
+            bool: True if user clicked "Continue Anyway", False if cancelled.
+        """
+        response = self.dialog.run()
+        self._confirmed = response == Gtk.ResponseType.YES
+        logger.debug("Dangerous command dialog response: confirmed={}", self._confirmed)
+        self.destroy()
+        return self._confirmed

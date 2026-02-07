@@ -1,14 +1,14 @@
-# CONVERT FILE
+# SIMPLY CONVERT FILE
 # This file is put in the public domain.
-# ThigSchuch, 2024
+# ThigSchuch, 2026
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: convert-file@thigschuch 2.0.0\n"
-"Report-Msgid-Bugs-To: https://github.com/ThigSchuch/SimplyConvertFile/issues"
+"Project-Id-Version: simplyconvertfile 2.0.0\n"
+"Report-Msgid-Bugs-To: https://github.com/ThigSchuch/SimplyConvertFile/"
 "issues\n"
-"POT-Creation-Date: 2025-10-25 04:20+0000\n"
-"PO-Revision-Date: 2025-10-25 12:00+0000\n"
+"POT-Creation-Date: 2026-02-07 17:51+0000\n"
+"PO-Revision-Date: 2026-02-07 12:00+0000\n"
 "Last-Translator: AI\n"
 "Language-Team: Sveinn í Felli <sv1@fellsnet.is>, AI\n"
 "Language: is\n"
@@ -16,20 +16,15 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#. ui/aui.py:164 utils/text.py:63
-#. utils/text.py:63
-msgid "OK"
-msgstr "Í lagi"
-
-#. utils/text.py:57
+#: src/simplyconvertfile/utils/text.py:74
 msgid "File Converter"
 msgstr "Skráarumbreytir"
 
-#. utils/text.py:58
+#: src/simplyconvertfile/utils/text.py:75
 msgid "Choose output format:"
 msgstr "Veldu úttaksform:"
 
-#. utils/text.py:59
+#: src/simplyconvertfile/utils/text.py:76
 #, python-brace-format
 msgid ""
 "Converting\n"
@@ -38,56 +33,60 @@ msgstr ""
 "Umbreyti\n"
 "{file} í {extension}"
 
-#. utils/text.py:60
+#: src/simplyconvertfile/utils/text.py:77
 msgid "Copy Error"
 msgstr "Afrita villu"
 
-#. utils/text.py:61
+#: src/simplyconvertfile/utils/text.py:78
 msgid "Copy Command"
 msgstr "Afrita skipun"
 
-#. utils/text.py:62
+#: src/simplyconvertfile/utils/text.py:79
 msgid "Report Error"
 msgstr "Tilkynna villu"
 
-#. utils/text.py:64
+#: src/simplyconvertfile/utils/text.py:80 src/simplyconvertfile/ui/aui.py:175
+msgid "OK"
+msgstr "Í lagi"
+
+#: src/simplyconvertfile/utils/text.py:81
 msgid "Cancel"
 msgstr "Hætta við"
 
-#. utils/text.py:65
+#: src/simplyconvertfile/utils/text.py:82
 msgid "Cancelling..."
 msgstr "Hætti við..."
 
-#. utils/text.py:66
+#: src/simplyconvertfile/utils/text.py:83
 msgid "Start"
 msgstr "Byrja"
 
-#. utils/text.py:67
+#: src/simplyconvertfile/utils/text.py:84
 msgid "Error details copied to clipboard"
 msgstr "Villuupplýsingar afritaðar á klippispjald"
 
-#. utils/text.py:68
+#: src/simplyconvertfile/utils/text.py:85
 msgid "Install command copied to clipboard"
 msgstr "Uppsetningarskipun afrituð á klippispjald"
 
-#. utils/text.py:70
+#: src/simplyconvertfile/utils/text.py:87
 #, python-brace-format
 msgid ""
 "No installation instructions available. Please install '{dependency}' "
 "manually."
 msgstr ""
-"Engar uppsetningarleiðbeiningar tiltækar. Vinsamlegast settu upp '{dependency}' "
-"handvirkt."
+"Engar uppsetningarleiðbeiningar tiltækar. Vinsamlegast settu upp "
+"'{dependency}' handvirkt."
 
-#. utils/text.py:72
+#: src/simplyconvertfile/utils/text.py:89
 msgid "multiple files selected"
 msgstr "margar skrár valdar"
 
-#. utils/text.py:77
+#: src/simplyconvertfile/utils/text.py:94
 msgid "Select one or more files to convert."
 msgstr "Veldu eina eða fleiri skrár til að umbreyta."
 
-#. utils/text.py:79
+#: src/simplyconvertfile/utils/text.py:96
 #, python-brace-format
 msgid ""
 "File not found:\n"
@@ -100,7 +99,7 @@ msgstr ""
 "\n"
 "Athugaðu hvort skráin sé til."
 
-#. utils/text.py:82
+#: src/simplyconvertfile/utils/text.py:99
 #, python-brace-format
 msgid ""
 "Invalid file:\n"
@@ -113,7 +112,7 @@ msgstr ""
 "\n"
 "Veldu skrá, ekki möppu."
 
-#. utils/text.py:85
+#: src/simplyconvertfile/utils/text.py:102
 #, python-brace-format
 msgid ""
 "No file extension:\n"
@@ -126,12 +125,12 @@ msgstr ""
 "\n"
 "Bættu við endingunni (t.d. .jpg, .mp4, .pdf) til að ákvarða formið."
 
-#. utils/text.py:88
+#: src/simplyconvertfile/utils/text.py:105
 #, python-brace-format
 msgid "Unsupported file format: {extension}"
 msgstr "Óstudd skráarform: {extension}"
 
-#. utils/text.py:90
+#: src/simplyconvertfile/utils/text.py:107
 #, python-brace-format
 msgid ""
 "The file '{filename}' has an unsupported format ({extension}).\n"
@@ -144,7 +143,7 @@ msgstr ""
 "Þetta form er ekki þekkt af umbreytinum eða nauðsynlegu verkfærum er ekki "
 "sett upp á kerfinu þínu."
 
-#. utils/text.py:95
+#: src/simplyconvertfile/utils/text.py:112
 #, python-brace-format
 msgid ""
 "Found {error_count} validation error(s) in the selected files:\n"
@@ -159,15 +158,15 @@ msgstr ""
 "\n"
 "Ferlið mun halda áfram með gildum skrám eingöngu."
 
-#. utils/text.py:103
+#: src/simplyconvertfile/utils/text.py:120
 msgid "Conversion failed."
 msgstr "Umbreyting mistókst."
 
-#. utils/text.py:104
+#: src/simplyconvertfile/utils/text.py:121
 msgid "No converter found for this format"
 msgstr "Enginn umbreytir fannst fyrir þetta form"
 
-#. utils/text.py:106
+#: src/simplyconvertfile/utils/text.py:123
 #, python-brace-format
 msgid ""
 "No converters available for {extension} files.\n"
@@ -194,7 +193,7 @@ msgstr ""
 "\n"
 "Athugaðu kerfisafleiður."
 
-#. utils/text.py:116
+#: src/simplyconvertfile/utils/text.py:133
 #, python-brace-format
 msgid ""
 "Failed to create converter for {source} → {target}\n"
@@ -215,7 +214,7 @@ msgstr ""
 "• Ósamhæfð formasamsetning\n"
 "• Kerfisstillingarvandamál"
 
-#. utils/text.py:124
+#: src/simplyconvertfile/utils/text.py:141
 #, python-brace-format
 msgid ""
 "Converting {current} of {total} files to {extension}\n"
@@ -224,7 +223,7 @@ msgstr ""
 "Umbreyti {current} af {total} skrám í {extension}\n"
 "{file}"
 
-#. utils/text.py:127
+#: src/simplyconvertfile/utils/text.py:144
 #, python-brace-format
 msgid ""
 "Failed to create or access output directory.\n"
@@ -235,39 +234,41 @@ msgstr ""
 "\n"
 "Villa: {error}"
 
-#. utils/text.py:129
+#: src/simplyconvertfile/utils/text.py:146
 #, python-brace-format
 msgid "Conversion failed: {error}"
 msgstr "Umbreyting mistókst: {error}"
 
-#. utils/text.py:130
+#: src/simplyconvertfile/utils/text.py:147
 msgid "Conversion cancelled by user"
 msgstr "Umbreyting hætt við af notanda"
 
-#. utils/text.py:132
+#: src/simplyconvertfile/utils/text.py:149
 msgid ""
 "Conversion failed - check if required tools are installed (e.g., ffmpeg, "
 "convert, 7z, rar, etc.) and the file format is supported"
 msgstr ""
-"Umbreyting mistókst - athugaðu hvort nauðsynleg verkfæri séu sett upp (t.d. ffmpeg, "
-"convert, 7z, rar, o.s.frv.) og skráarformið sé stutt"
+"Umbreyting mistókst - athugaðu hvort nauðsynleg verkfæri séu sett upp (t.d. "
+"ffmpeg, convert, 7z, rar, o.s.frv.) og skráarformið sé stutt"
 
-#. utils/text.py:135
+#: src/simplyconvertfile/utils/text.py:152
 #, python-brace-format
 msgid "Template error: {error}"
 msgstr "Sniðmátsvilla: {error}"
 
-#. utils/text.py:140 utils/text.py:225
+#: src/simplyconvertfile/utils/text.py:157
+#: src/simplyconvertfile/utils/text.py:247
 #, python-brace-format
 msgid "Required tool '{tool}' is not installed."
 msgstr "Nauðsynlegt verkfæri '{tool}' er ekki sett upp."
 
-#. utils/text.py:142
+#: src/simplyconvertfile/utils/text.py:159
 #, python-brace-format
 msgid "The conversion tool '{tool}' is required but not found on your system."
-msgstr "Umbreytarverkfærið '{tool}' er nauðsynlegt en fannst ekki á kerfinu þínu."
+msgstr ""
+"Umbreytarverkfærið '{tool}' er nauðsynlegt en fannst ekki á kerfinu þínu."
 
-#. utils/text.py:145
+#: src/simplyconvertfile/utils/text.py:162
 #, python-brace-format
 msgid ""
 "Missing Tool: {tool}\n"
@@ -286,23 +287,23 @@ msgstr ""
 "{install_command}\n"
 "\n"
 "Leiðbeiningar:\n"
-"Afritaðu uppsetningarskipunina hér að ofan og keyrðu hana í útstöðinni þinni. Ef skipunin "
-"virkar ekki, vinsamlegast vísaðu til pakkastjóra dreifingarinnar þinnar eða "
-"opinberu uppsetningarleiðbeiningar verkfærisins."
+"Afritaðu uppsetningarskipunina hér að ofan og keyrðu hana í útstöðinni "
+"þinni. Ef skipunin virkar ekki, vinsamlegast vísaðu til pakkastjóra "
+"dreifingarinnar þinnar eða opinberu uppsetningarleiðbeiningar verkfærisins."
 
-#. utils/text.py:152
+#: src/simplyconvertfile/utils/text.py:169
 msgid "An unexpected error occurred during conversion."
 msgstr "Óvænt villa kom upp við umbreytingu."
 
-#. utils/text.py:154
+#: src/simplyconvertfile/utils/text.py:171
 msgid ""
 "Required tool not found. Please make sure all required conversion tools are "
 "installed (e.g., ffmpeg, convert, etc.)"
 msgstr ""
-"Nauðsynlegt verkfæri fannst ekki. Vinsamlegast gangaðu úr skugga um að öll nauðsynleg umbreytarverkfæri séu "
-"sett upp (t.d. ffmpeg, convert, o.s.frv.)"
+"Nauðsynlegt verkfæri fannst ekki. Vinsamlegast gangaðu úr skugga um að öll "
+"nauðsynleg umbreytarverkfæri séu sett upp (t.d. ffmpeg, convert, o.s.frv.)"
 
-#. utils/text.py:158
+#: src/simplyconvertfile/utils/text.py:175
 #, python-brace-format
 msgid ""
 "Shell command execution failed.\n"
@@ -317,7 +318,7 @@ msgstr ""
 "\n"
 "Skipun: {command}"
 
-#. utils/text.py:161
+#: src/simplyconvertfile/utils/text.py:178
 #, python-brace-format
 msgid ""
 "Chained command execution failed.\n"
@@ -332,7 +333,7 @@ msgstr ""
 "\n"
 "Skipun: {command}"
 
-#. utils/text.py:163
+#: src/simplyconvertfile/utils/text.py:180
 #, python-brace-format
 msgid ""
 "Failed conversions:\n"
@@ -343,35 +344,35 @@ msgstr ""
 "\n"
 "{errors}"
 
-#. utils/text.py:164
+#: src/simplyconvertfile/utils/text.py:181
 msgid "Failed to create temporary directory"
 msgstr "Mistókst að búa til tímabundna möppu"
 
-#. utils/text.py:165
+#: src/simplyconvertfile/utils/text.py:182
 msgid "Temporary directory not available"
 msgstr "Tímabundin mappa ekki tiltæk"
 
-#. utils/text.py:166
+#: src/simplyconvertfile/utils/text.py:183
 msgid "Temporary directory does not exist"
 msgstr "Tímabundin mappa er ekki til"
 
-#. utils/text.py:167
+#: src/simplyconvertfile/utils/text.py:184
 msgid "No archive template available in settings"
 msgstr "Engin safnskráarsniðmát tiltæk í stillingum"
 
-#. utils/text.py:168
+#: src/simplyconvertfile/utils/text.py:185
 msgid "No contents found in extracted archive"
 msgstr "Engin efni fundust í útdreginni safnskrá"
 
-#. utils/text.py:173
+#: src/simplyconvertfile/utils/text.py:190
 msgid "Operation failed"
 msgstr "Aðgerð mistókst"
 
-#. utils/text.py:174
+#: src/simplyconvertfile/utils/text.py:191
 msgid "Operation cancelled by user"
 msgstr "Aðgerð hætt við af notanda"
 
-#. utils/text.py:176
+#: src/simplyconvertfile/utils/text.py:193
 #, python-brace-format
 msgid ""
 "Step {step}/{total} failed.\n"
@@ -386,95 +387,94 @@ msgstr ""
 "\n"
 "Skipun: {command}"
 
-#. utils/text.py:178
+#: src/simplyconvertfile/utils/text.py:196
+#, python-brace-format
+msgid ""
+"File validation failed: {file}\n"
+"\n"
+"The previous conversion step likely failed.\n"
+"\n"
+"Previous step output:\n"
+"{previous_error}"
+msgstr ""
+
+#: src/simplyconvertfile/utils/text.py:200
 msgid "Batch conversion cancelled"
 msgstr "Runumbreyting hætt við"
 
-#. utils/text.py:180
+#: src/simplyconvertfile/utils/text.py:202
 #, python-brace-format
 msgid "Batch conversion completed with {error_count} error(s)."
 msgstr "Runumbreyting lokið með {error_count} villu(m)."
 
-#. utils/text.py:186
+#: src/simplyconvertfile/utils/text.py:208
 msgid "Conversion Complete"
 msgstr "Umbreyting lokið"
 
-#. utils/text.py:187
+#: src/simplyconvertfile/utils/text.py:209
 #, python-brace-format
 msgid "Successfully converted {filename} to {extension}"
 msgstr "Tókst að umbreyta {filename} í {extension}"
 
-#. utils/text.py:188
+#: src/simplyconvertfile/utils/text.py:210
 msgid "Conversion Failed"
 msgstr "Umbreyting mistókst"
 
-#. utils/text.py:189
+#: src/simplyconvertfile/utils/text.py:211
 #, python-brace-format
 msgid "Failed to convert {filename} to {extension}"
 msgstr "Mistókst að umbreyta {filename} í {extension}"
 
-#. utils/text.py:190
+#: src/simplyconvertfile/utils/text.py:212
 msgid "Batch Conversion Complete"
 msgstr "Runumbreyting lokið"
 
-#. utils/text.py:192
+#: src/simplyconvertfile/utils/text.py:214
 #, python-brace-format
-#. utils/text.py:192
-#, python-brace-format
-msgid ""
-"Successfully converted {successful} of {total} files to {extension}"
-msgstr ""
-"Tókst að umbreyta {successful} af {total} skrám í {extension}"
+msgid "Successfully converted {successful} of {total} files to {extension}"
+msgstr "Tókst að umbreyta {successful} af {total} skrám í {extension}"
 
-#. utils/text.py:194
+#: src/simplyconvertfile/utils/text.py:216
 msgid "Batch Conversion Failed"
 msgstr "Runumbreyting mistókst"
 
-#. utils/text.py:196
+#: src/simplyconvertfile/utils/text.py:218
 #, python-brace-format
-#. utils/text.py:196
-#, python-brace-format
-msgid ""
-"Failed to convert {failed} of {total} files to {extension}"
-msgstr ""
-"Mistókst að umbreyta {failed} af {total} skrám í {extension}"
+msgid "Failed to convert {failed} of {total} files to {extension}"
+msgstr "Mistókst að umbreyta {failed} af {total} skrám í {extension}"
 
-#. utils/text.py:198
+#: src/simplyconvertfile/utils/text.py:220
 msgid "Conversion Started"
 msgstr "Umbreyting hafin"
 
-#. utils/text.py:200
+#: src/simplyconvertfile/utils/text.py:222
 #, python-brace-format
 msgid "Conversion started for {filename} to {extension}"
 msgstr "Umbreyting hafin fyrir {filename} í {extension}"
 
-#. utils/text.py:202
+#: src/simplyconvertfile/utils/text.py:224
 msgid "Batch Conversion Started"
 msgstr "Runumbreyting hafin"
 
-#. utils/text.py:204
+#: src/simplyconvertfile/utils/text.py:226
 #, python-brace-format
-#. utils/text.py:204
-#, python-brace-format
-msgid ""
-"Batch conversion of {total} files to {extension} has started"
-msgstr ""
-"Runumbreyting af {total} skrám í {extension} hefur hafist"
+msgid "Batch conversion of {total} files to {extension} has started"
+msgstr "Runumbreyting af {total} skrám í {extension} hefur hafist"
 
-#. utils/text.py:206
+#: src/simplyconvertfile/utils/text.py:228
 msgid "Batch Step Conversion Started"
 msgstr "Runskref umbreyting hafin"
 
-#. utils/text.py:208
+#: src/simplyconvertfile/utils/text.py:230
 #, python-brace-format
 msgid "Converting {filename} to {extension}"
 msgstr "Umbreyti {filename} í {extension}"
 
-#. utils/text.py:210
+#: src/simplyconvertfile/utils/text.py:232
 msgid "Batch Conversion Cancelled"
 msgstr "Runumbreyting hætt við"
 
-#. utils/text.py:212
+#: src/simplyconvertfile/utils/text.py:234
 #, python-brace-format
 msgid ""
 "Conversion cancelled after processing {completed} of {total} files to "
@@ -483,39 +483,200 @@ msgstr ""
 "Umbreyting hætt við eftir að hafa unnið {completed} af {total} skrám í "
 "{extension}"
 
-#. utils/text.py:214
+#: src/simplyconvertfile/utils/text.py:236
 msgid "Conversion Cancelled"
 msgstr "Umbreyting hætt við"
 
-#. utils/text.py:216
+#: src/simplyconvertfile/utils/text.py:238
 #, python-brace-format
 msgid "File conversion to {extension} was cancelled"
 msgstr "Skráarumbreyting í {extension} var hætt við"
 
-#. utils/text.py:218
+#: src/simplyconvertfile/utils/text.py:240
 msgid "Settings Error"
 msgstr "Stillingarvilla"
 
-#. utils/text.py:220
+#: src/simplyconvertfile/utils/text.py:242
+#, fuzzy
 msgid ""
 "User settings file is corrupted\n"
-"(~/.config/convert-file@thigschuch/user_settings.json)\n"
+"(~/.config/simplyconvertfile/user_settings.json)\n"
 "Using default settings instead."
 msgstr ""
 "Notandastillingaskrá er skemmd\n"
-"(~/.config/convert-file@thigschuch/user_settings.json)\n"
+"(~/.config/simplyconvertfile/user_settings.json)\n"
 "Nota sjálfgefnar stillingar í staðinn."
 
-#. utils/text.py:224
+#: src/simplyconvertfile/utils/text.py:246
 msgid "Missing Conversion Tool"
 msgstr "Vantar umbreytarverkfæri"
 
-#. metadata.json->description
-#. convert-file@thigschuch.nemo_action.in->Comment
-msgid "Converts a file to a different format"
-msgstr "Umbreytir skrá í annað form"
+#: src/simplyconvertfile/utils/text.py:252
+msgid "Dangerous Command Blocked"
+msgstr "Hættuleg skipun lokuð"
 
-#. metadata.json->name
-#. convert-file@thigschuch.nemo_action.in->Name
-msgid "Convert File"
-msgstr "Umbreyta skrá"
+#: src/simplyconvertfile/utils/text.py:254
+#, python-brace-format
+msgid ""
+"A potentially dangerous command was blocked.\n"
+"\n"
+"Reason: {reason}\n"
+"\n"
+"Command: {command}\n"
+"\n"
+"If you need to allow dangerous commands, enable the "
+"'allow_dangerous_commands' option in your user settings."
+msgstr ""
+"Hugsanlega hættuleg skipun var lokuð.\n"
+"\n"
+"Ástæða: {reason}\n"
+"\n"
+"Skipun: {command}\n"
+"\n"
+"Ef þú þarft að leyfa hættulegar skipanir, virkjaðu valkostinn "
+"'allow_dangerous_commands' í notendastillingunum þínum."
+
+#: src/simplyconvertfile/utils/text.py:260
+msgid "Potentially Dangerous Command"
+msgstr "Hugsanlega hættuleg skipun"
+
+#: src/simplyconvertfile/utils/text.py:262
+#, python-brace-format
+msgid ""
+"The following command contains a potentially dangerous operation and "
+"requires your confirmation to proceed.\n"
+"\n"
+"Reason: {reason}\n"
+"\n"
+"Command:\n"
+"{command}"
+msgstr ""
+"Eftirfarandi skipun inniheldur hugsanlega hættulega aðgerð og krefst "
+"staðfestingar þinnar til að halda áfram.\n"
+"\n"
+"Ástæða: {reason}\n"
+"\n"
+"Skipun:\n"
+"{command}"
+
+#: src/simplyconvertfile/utils/text.py:267
+msgid "Continue Anyway"
+msgstr "Halda áfram samt"
+
+#: src/simplyconvertfile/utils/text.py:270
+msgid "privilege escalation"
+msgstr "réttindaupphækkun"
+
+#: src/simplyconvertfile/utils/text.py:271
+msgid "file deletion"
+msgstr "skrá eyðing"
+
+#: src/simplyconvertfile/utils/text.py:272
+msgid "directory deletion"
+msgstr "möppu eyðing"
+
+#: src/simplyconvertfile/utils/text.py:273
+msgid "file destruction"
+msgstr "skrá eyðilegging"
+
+#: src/simplyconvertfile/utils/text.py:274
+msgid "file truncation"
+msgstr "skrá stytting"
+
+#: src/simplyconvertfile/utils/text.py:275
+msgid "raw disk operation"
+msgstr "hrá disk aðgerð"
+
+#: src/simplyconvertfile/utils/text.py:276
+msgid "filesystem creation"
+msgstr "skráarkerfis stofnun"
+
+#: src/simplyconvertfile/utils/text.py:277
+msgid "disk partitioning"
+msgstr "disk skipting"
+
+#: src/simplyconvertfile/utils/text.py:278
+msgid "filesystem signature removal"
+msgstr "skráarkerfis undirritunar fjarlæging"
+
+#: src/simplyconvertfile/utils/text.py:279
+msgid "block device discard"
+msgstr "blokk tækis fleyging"
+
+#: src/simplyconvertfile/utils/text.py:280
+msgid "system shutdown"
+msgstr "kerfis lokun"
+
+#: src/simplyconvertfile/utils/text.py:281
+msgid "system reboot"
+msgstr "kerfis endurræsing"
+
+#: src/simplyconvertfile/utils/text.py:282
+msgid "system power off"
+msgstr "kerfis slökktun"
+
+#: src/simplyconvertfile/utils/text.py:283
+msgid "system halt"
+msgstr "kerfis stöðvun"
+
+#: src/simplyconvertfile/utils/text.py:284
+msgid "system init control"
+msgstr "kerfis init stjórn"
+
+#: src/simplyconvertfile/utils/text.py:285
+msgid "system service control"
+msgstr "kerfis þjónustu stjórn"
+
+#: src/simplyconvertfile/utils/text.py:286
+msgid "network access"
+msgstr "net aðgangur"
+
+#: src/simplyconvertfile/utils/text.py:287
+msgid "network download"
+msgstr "net niðurhal"
+
+#: src/simplyconvertfile/utils/text.py:288
+msgid "network connection"
+msgstr "net tenging"
+
+#: src/simplyconvertfile/utils/text.py:289
+msgid "remote shell access"
+msgstr "fjartengdur shell aðgangur"
+
+#: src/simplyconvertfile/utils/text.py:290
+msgid "remote file copy"
+msgstr "fjartengd skrá afritun"
+
+#: src/simplyconvertfile/utils/text.py:291
+msgid "remote file sync"
+msgstr "fjartengd skrá samstilling"
+
+#: src/simplyconvertfile/utils/text.py:292
+msgid "file transfer"
+msgstr "skrá flutningur"
+
+#: src/simplyconvertfile/utils/text.py:293
+msgid "permission change"
+msgstr "heimildar breyting"
+
+#: src/simplyconvertfile/utils/text.py:294
+msgid "ownership change"
+msgstr "eignar breyting"
+
+#: src/simplyconvertfile/utils/text.py:295
+msgid "group ownership change"
+msgstr "hóps eignar breyting"
+
+#: src/simplyconvertfile/utils/text.py:296
+msgid "shell code execution"
+msgstr "shell kóða keyrsla"
+
+#: src/simplyconvertfile/utils/text.py:297
+msgid "dangerous operation"
+msgstr "hættuleg aðgerð"
+
+#~ msgid "Converts a file to a different format"
+#~ msgstr "Umbreytir skrá í annað form"
+
+#~ msgid "Convert File"
+#~ msgstr "Umbreyta skrá"

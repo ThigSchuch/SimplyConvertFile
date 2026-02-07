@@ -18,6 +18,7 @@ from simplyconvertfile.utils import text
 from simplyconvertfile.utils.logging import logger
 
 from .constants import SHELL_OPERATORS
+from .sanitizer import CommandSanitizer
 
 
 class CommandExecutionResult:
@@ -149,6 +150,8 @@ class CommandExecutor:
         self,
         cancel_check: Optional[Callable[[], bool]] = None,
         batch_mode: bool = False,
+        allow_dangerous_commands: bool = False,
+        dangerous_command_confirm_fn: Optional[Callable[[str, str], bool]] = None,
     ):
         """Initialize the command executor.
 
@@ -157,10 +160,21 @@ class CommandExecutor:
                          the operation should be cancelled.
             batch_mode: Whether operating in batch mode, affecting progress
                        display behavior.
+            allow_dangerous_commands: If True, dangerous commands show a
+                                    confirmation dialog instead of being
+                                    hard-blocked.
+            dangerous_command_confirm_fn: Optional callback that takes
+                                        (reason, command_str) and returns
+                                        True if the user confirms execution.
+                                        Only used when allow_dangerous_commands
+                                        is True.
         """
         self.cancel_check = cancel_check
         self.batch_mode = batch_mode
         self._cancelled = False
+        self._allow_dangerous_commands = allow_dangerous_commands
+        self._dangerous_command_confirm_fn = dangerous_command_confirm_fn
+        self._sanitizer = CommandSanitizer()
 
     def execute_single_command(
         self,
@@ -194,6 +208,11 @@ class CommandExecutor:
             return CommandExecutionResult(
                 success=False, cancelled=True, error_message="Operation cancelled"
             )
+
+        # Security check: detect dangerous commands before execution
+        safety_result = self._check_command_safety(command)
+        if safety_result is not None:
+            return safety_result
 
         result = self.run_cancellable_command(
             command, shell=shell, cancel_check=self._is_cancelled
@@ -288,6 +307,11 @@ class CommandExecutor:
 
         command_str = " && ".join(command_parts)
 
+        # Security check: detect dangerous commands before execution
+        safety_result = self._check_command_safety(command_str)
+        if safety_result is not None:
+            return safety_result
+
         result = self.run_cancellable_command(
             command_str, shell=True, cancel_check=self._is_cancelled
         )
@@ -318,6 +342,13 @@ class CommandExecutor:
         """
         total_steps = len(commands)
         previous_result = None
+
+        # Security check: detect dangerous commands before execution
+        # Check all commands upfront so we don't run half the chain
+        for cmd in commands:
+            safety_result = self._check_command_safety(cmd)
+            if safety_result is not None:
+                return safety_result
 
         for step_index, cmd in enumerate(commands):
             if self._is_cancelled():
@@ -509,6 +540,76 @@ class CommandExecutor:
             self._cancelled = True
             return True
         return False
+
+    def _check_command_safety(
+        self, command: Union[str, List[str]]
+    ) -> Optional[CommandExecutionResult]:
+        """Check if a command is safe to execute.
+
+        Uses the CommandSanitizer to detect dangerous commands. If a dangerous
+        command is detected:
+        - When allow_dangerous_commands is False: returns a hard-block failure result.
+        - When allow_dangerous_commands is True: invokes the confirmation callback.
+          If the user confirms, caches the confirmation and returns None (proceed).
+          If the user cancels, returns a failure result.
+
+        Previously confirmed commands (same command string) are automatically
+        allowed without re-prompting.
+
+        Args:
+            command: Command to check, either as string or list.
+
+        Returns:
+            Optional[CommandExecutionResult]: Failure result if blocked/cancelled,
+                                            or None if safe to proceed.
+        """
+        # Build the command string for checking and caching
+        if isinstance(command, str):
+            cmd_str = command
+        elif isinstance(command, list):
+            cmd_str = " ".join(str(c) for c in command)
+        else:
+            cmd_str = str(command)
+
+        reason = self._sanitizer.check_command(command)
+        if reason is None:
+            return None  # Command is safe
+
+        if not self._allow_dangerous_commands:
+            # Hard block — no dialog, just fail
+            error_msg = text.Security.DANGEROUS_COMMAND_BLOCKED_MESSAGE.format(
+                reason=reason, command=cmd_str
+            )
+            logger.warning("Dangerous command hard-blocked: {}", cmd_str[:100])
+            return CommandExecutionResult(
+                success=False,
+                error_message=error_msg,
+                command=cmd_str,
+            )
+
+        # allow_dangerous_commands is True — ask user via confirmation callback
+        if self._dangerous_command_confirm_fn:
+            confirmed = self._dangerous_command_confirm_fn(reason, cmd_str)
+            if confirmed:
+                logger.info("User confirmed dangerous command: {}", cmd_str[:100])
+                return None  # Proceed
+            else:
+                logger.info("User rejected dangerous command: {}", cmd_str[:100])
+                return CommandExecutionResult(
+                    success=False,
+                    error_message=text.Security.DANGEROUS_COMMAND_BLOCKED_MESSAGE.format(
+                        reason=reason, command=cmd_str
+                    ),
+                    command=cmd_str,
+                    cancelled=True,
+                )
+
+        # allow_dangerous_commands is True but no confirm callback — proceed
+        logger.warning(
+            "Dangerous command allowed without confirmation (no callback): {}",
+            cmd_str[:100],
+        )
+        return None
 
 
 class ProgressManager:

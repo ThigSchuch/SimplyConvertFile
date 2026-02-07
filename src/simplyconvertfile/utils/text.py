@@ -9,7 +9,7 @@ location for all user-facing strings in the application.
 import gettext
 from pathlib import Path
 
-from simplyconvertfile import APP_ID, LEGACY_GETTEXT_DOMAIN
+from simplyconvertfile import APP_ID
 
 # Locale directory resolution:
 # 1. Package-relative po/ directory (development / pip install)
@@ -27,8 +27,6 @@ _locale_dirs = [
 # Try binding with the new domain first, then legacy
 for _locale_dir in _locale_dirs:
     gettext.bindtextdomain(APP_ID, _locale_dir)
-    # Also bind legacy domain for backward compatibility with existing .mo files
-    gettext.bindtextdomain(LEGACY_GETTEXT_DOMAIN, _locale_dir)
 
 gettext.textdomain(APP_ID)
 
@@ -245,6 +243,56 @@ class Text:
         )
         MISSING_TOOL_TITLE = _("Missing Conversion Tool")
         MISSING_TOOL_MESSAGE = _("Required tool '{tool}' is not installed.")
+
+    class Security:
+        """Security-related messages for dangerous command detection."""
+
+        DANGEROUS_COMMAND_BLOCKED_TITLE = _("Dangerous Command Blocked")
+        DANGEROUS_COMMAND_BLOCKED_MESSAGE = _(
+            "A potentially dangerous command was blocked.\n\n"
+            "Reason: {reason}\n\n"
+            "Command: {command}\n\n"
+            "If you need to allow dangerous commands, enable the "
+            "'allow_dangerous_commands' option in your user settings."
+        )
+        DANGEROUS_COMMAND_CONFIRM_TITLE = _("Potentially Dangerous Command")
+        DANGEROUS_COMMAND_CONFIRM_MESSAGE = _(
+            "The following command contains a potentially dangerous operation "
+            "and requires your confirmation to proceed.\n\n"
+            "Reason: {reason}\n\n"
+            "Command:\n{command}"
+        )
+        CONTINUE_ANYWAY_BUTTON_LABEL = _("Continue Anyway")
+
+        # Dangerous command category labels
+        CATEGORY_PRIVILEGE_ESCALATION = _("privilege escalation")
+        CATEGORY_FILE_DELETION = _("file deletion")
+        CATEGORY_DIRECTORY_DELETION = _("directory deletion")
+        CATEGORY_FILE_DESTRUCTION = _("file destruction")
+        CATEGORY_FILE_TRUNCATION = _("file truncation")
+        CATEGORY_RAW_DISK_OPERATION = _("raw disk operation")
+        CATEGORY_FILESYSTEM_CREATION = _("filesystem creation")
+        CATEGORY_DISK_PARTITIONING = _("disk partitioning")
+        CATEGORY_FILESYSTEM_SIGNATURE_REMOVAL = _("filesystem signature removal")
+        CATEGORY_BLOCK_DEVICE_DISCARD = _("block device discard")
+        CATEGORY_SYSTEM_SHUTDOWN = _("system shutdown")
+        CATEGORY_SYSTEM_REBOOT = _("system reboot")
+        CATEGORY_SYSTEM_POWER_OFF = _("system power off")
+        CATEGORY_SYSTEM_HALT = _("system halt")
+        CATEGORY_SYSTEM_INIT_CONTROL = _("system init control")
+        CATEGORY_SYSTEM_SERVICE_CONTROL = _("system service control")
+        CATEGORY_NETWORK_ACCESS = _("network access")
+        CATEGORY_NETWORK_DOWNLOAD = _("network download")
+        CATEGORY_NETWORK_CONNECTION = _("network connection")
+        CATEGORY_REMOTE_SHELL_ACCESS = _("remote shell access")
+        CATEGORY_REMOTE_FILE_COPY = _("remote file copy")
+        CATEGORY_REMOTE_FILE_SYNC = _("remote file sync")
+        CATEGORY_FILE_TRANSFER = _("file transfer")
+        CATEGORY_PERMISSION_CHANGE = _("permission change")
+        CATEGORY_OWNERSHIP_CHANGE = _("ownership change")
+        CATEGORY_GROUP_OWNERSHIP_CHANGE = _("group ownership change")
+        CATEGORY_SHELL_CODE_EXECUTION = _("shell code execution")
+        CATEGORY_DANGEROUS_OPERATION = _("dangerous operation")
 
 
 text = Text()

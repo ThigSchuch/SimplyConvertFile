@@ -1,14 +1,14 @@
-# CONVERT FILE
+# SIMPLY CONVERT FILE
 # This file is put in the public domain.
-# ThigSchuch, 2024
+# ThigSchuch, 2026
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: convert-file@thigschuch 2.0.0\n"
-"Report-Msgid-Bugs-To: https://github.com/ThigSchuch/SimplyConvertFile/issues"
+"Project-Id-Version: simplyconvertfile 2.0.0\n"
+"Report-Msgid-Bugs-To: https://github.com/ThigSchuch/SimplyConvertFile/"
 "issues\n"
-"POT-Creation-Date: 2025-10-25 04:20+0000\n"
+"POT-Creation-Date: 2026-02-07 17:51+0000\n"
 "PO-Revision-Date: \n"
 "Last-Translator: AI\n"
 "Language-Team: rlbxku1r, AI\n"
@@ -17,19 +17,15 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#. ui/aui.py:164 utils/text.py:63
-msgid "OK"
-msgstr "OK"
-
-#. utils/text.py:57
+#: src/simplyconvertfile/utils/text.py:74
 msgid "File Converter"
 msgstr "ファイルコンバーター"
 
-#. utils/text.py:58
+#: src/simplyconvertfile/utils/text.py:75
 msgid "Choose output format:"
 msgstr "出力形式を選択:"
 
-#. utils/text.py:59
+#: src/simplyconvertfile/utils/text.py:76
 #, python-brace-format
 msgid ""
 "Converting\n"
@@ -38,55 +34,60 @@ msgstr ""
 "変換中\n"
 "{file} を {extension} に"
 
-#. utils/text.py:60
+#: src/simplyconvertfile/utils/text.py:77
 msgid "Copy Error"
 msgstr "エラーをコピー"
 
-#. utils/text.py:61
+#: src/simplyconvertfile/utils/text.py:78
 msgid "Copy Command"
 msgstr "コマンドをコピー"
 
-#. utils/text.py:62
+#: src/simplyconvertfile/utils/text.py:79
 msgid "Report Error"
 msgstr "エラーを報告"
 
-#. utils/text.py:64
+#: src/simplyconvertfile/utils/text.py:80 src/simplyconvertfile/ui/aui.py:175
+msgid "OK"
+msgstr "OK"
+
+#: src/simplyconvertfile/utils/text.py:81
 msgid "Cancel"
 msgstr "キャンセル"
 
-#. utils/text.py:65
+#: src/simplyconvertfile/utils/text.py:82
 msgid "Cancelling..."
 msgstr "キャンセル中..."
 
-#. utils/text.py:66
+#: src/simplyconvertfile/utils/text.py:83
 msgid "Start"
 msgstr "開始"
 
-#. utils/text.py:67
+#: src/simplyconvertfile/utils/text.py:84
 msgid "Error details copied to clipboard"
 msgstr "エラーの詳細をクリップボードにコピーしました"
 
-#. utils/text.py:68
+#: src/simplyconvertfile/utils/text.py:85
 msgid "Install command copied to clipboard"
 msgstr "インストールコマンドをクリップボードにコピーしました"
 
-#. utils/text.py:70
+#: src/simplyconvertfile/utils/text.py:87
 #, python-brace-format
 msgid ""
 "No installation instructions available. Please install '{dependency}' "
 "manually."
 msgstr ""
-"インストール手順が利用できません。'{dependency}' を手動でインストールしてください。"
+"インストール手順が利用できません。'{dependency}' を手動でインストールしてくだ"
+"さい。"
 
-#. utils/text.py:72
+#: src/simplyconvertfile/utils/text.py:89
 msgid "multiple files selected"
 msgstr "複数のファイルが選択されました"
 
-#. utils/text.py:77
+#: src/simplyconvertfile/utils/text.py:94
 msgid "Select one or more files to convert."
 msgstr "変換するファイルを選択してください。"
 
-#. utils/text.py:79
+#: src/simplyconvertfile/utils/text.py:96
 #, python-brace-format
 msgid ""
 "File not found:\n"
@@ -99,7 +100,7 @@ msgstr ""
 "\n"
 "ファイルが存在するか確認してください。"
 
-#. utils/text.py:82
+#: src/simplyconvertfile/utils/text.py:99
 #, python-brace-format
 msgid ""
 "Invalid file:\n"
@@ -112,7 +113,7 @@ msgstr ""
 "\n"
 "フォルダではなくファイルをを選択してください。"
 
-#. utils/text.py:85
+#: src/simplyconvertfile/utils/text.py:102
 #, python-brace-format
 msgid ""
 "No file extension:\n"
@@ -125,12 +126,12 @@ msgstr ""
 "\n"
 "形式を決定するために拡張子を追加してください (例: .jpg, .mp4, .pdf)。"
 
-#. utils/text.py:88
+#: src/simplyconvertfile/utils/text.py:105
 #, python-brace-format
 msgid "Unsupported file format: {extension}"
 msgstr "サポートされていないファイル形式: {extension}"
 
-#. utils/text.py:90
+#: src/simplyconvertfile/utils/text.py:107
 #, python-brace-format
 msgid ""
 "The file '{filename}' has an unsupported format ({extension}).\n"
@@ -140,9 +141,10 @@ msgid ""
 msgstr ""
 "ファイル '{filename}' はサポートされていない形式 ({extension}) です。\n"
 "\n"
-"この形式はコンバーターで認識されないか、必要なツールがシステムにインストールされていません。"
+"この形式はコンバーターで認識されないか、必要なツールがシステムにインストール"
+"されていません。"
 
-#. utils/text.py:95
+#: src/simplyconvertfile/utils/text.py:112
 #, python-brace-format
 msgid ""
 "Found {error_count} validation error(s) in the selected files:\n"
@@ -157,15 +159,15 @@ msgstr ""
 "\n"
 "プロセスは有効なファイルのみで続行されます。"
 
-#. utils/text.py:103
+#: src/simplyconvertfile/utils/text.py:120
 msgid "Conversion failed."
 msgstr "変換に失敗しました。"
 
-#. utils/text.py:104
+#: src/simplyconvertfile/utils/text.py:121
 msgid "No converter found for this format"
 msgstr "この形式のコンバーターが見つかりません"
 
-#. utils/text.py:106
+#: src/simplyconvertfile/utils/text.py:123
 #, python-brace-format
 msgid ""
 "No converters available for {extension} files.\n"
@@ -192,7 +194,7 @@ msgstr ""
 "\n"
 "システム依存関係を確認してください。"
 
-#. utils/text.py:116
+#: src/simplyconvertfile/utils/text.py:133
 #, python-brace-format
 msgid ""
 "Failed to create converter for {source} → {target}\n"
@@ -213,7 +215,7 @@ msgstr ""
 "• 互換性のない形式の組み合わせ\n"
 "• システム構成の問題"
 
-#. utils/text.py:124
+#: src/simplyconvertfile/utils/text.py:141
 #, python-brace-format
 msgid ""
 "Converting {current} of {total} files to {extension}\n"
@@ -222,7 +224,7 @@ msgstr ""
 "{total} ファイル中 {current} を {extension} に変換\n"
 "{file}"
 
-#. utils/text.py:127
+#: src/simplyconvertfile/utils/text.py:144
 #, python-brace-format
 msgid ""
 "Failed to create or access output directory.\n"
@@ -233,39 +235,40 @@ msgstr ""
 "\n"
 "エラー: {error}"
 
-#. utils/text.py:129
+#: src/simplyconvertfile/utils/text.py:146
 #, python-brace-format
 msgid "Conversion failed: {error}"
 msgstr "変換に失敗しました: {error}"
 
-#. utils/text.py:130
+#: src/simplyconvertfile/utils/text.py:147
 msgid "Conversion cancelled by user"
 msgstr "変換がユーザーによってキャンセルされました"
 
-#. utils/text.py:132
+#: src/simplyconvertfile/utils/text.py:149
 msgid ""
 "Conversion failed - check if required tools are installed (e.g., ffmpeg, "
 "convert, 7z, rar, etc.) and the file format is supported"
 msgstr ""
-"変換に失敗しました - 必要なツールがインストールされているか確認してください (例: ffmpeg, "
-"convert, 7z, rar, etc.) およびファイル形式がサポートされているか"
+"変換に失敗しました - 必要なツールがインストールされているか確認してください "
+"(例: ffmpeg, convert, 7z, rar, etc.) およびファイル形式がサポートされているか"
 
-#. utils/text.py:135
+#: src/simplyconvertfile/utils/text.py:152
 #, python-brace-format
 msgid "Template error: {error}"
 msgstr "テンプレートエラー: {error}"
 
-#. utils/text.py:140 utils/text.py:225
+#: src/simplyconvertfile/utils/text.py:157
+#: src/simplyconvertfile/utils/text.py:247
 #, python-brace-format
 msgid "Required tool '{tool}' is not installed."
 msgstr "必要なツール '{tool}' がインストールされていません。"
 
-#. utils/text.py:142
+#: src/simplyconvertfile/utils/text.py:159
 #, python-brace-format
 msgid "The conversion tool '{tool}' is required but not found on your system."
 msgstr "変換ツール '{tool}' が必要ですが見つかりません。"
 
-#. utils/text.py:145
+#: src/simplyconvertfile/utils/text.py:162
 #, python-brace-format
 msgid ""
 "Missing Tool: {tool}\n"
@@ -284,21 +287,23 @@ msgstr ""
 "{install_command}\n"
 "\n"
 "手順:\n"
-"上記のインストールコマンドをコピーしてターミナルで実行してください。コマンドが動作しない場合、"
-"ディストリビューションのパッケージマネージャーまたはツールの公式インストール手順を参照してください。"
+"上記のインストールコマンドをコピーしてターミナルで実行してください。コマンド"
+"が動作しない場合、ディストリビューションのパッケージマネージャーまたはツール"
+"の公式インストール手順を参照してください。"
 
-#. utils/text.py:152
+#: src/simplyconvertfile/utils/text.py:169
 msgid "An unexpected error occurred during conversion."
 msgstr "変換中に予期しないエラーが発生しました。"
 
-#. utils/text.py:154
+#: src/simplyconvertfile/utils/text.py:171
 msgid ""
 "Required tool not found. Please make sure all required conversion tools are "
 "installed (e.g., ffmpeg, convert, etc.)"
 msgstr ""
-"必要なツールが見つかりません。すべての必要な変換ツールがインストールされていることを確認してください (例: ffmpeg, convert, etc.)"
+"必要なツールが見つかりません。すべての必要な変換ツールがインストールされてい"
+"ることを確認してください (例: ffmpeg, convert, etc.)"
 
-#. utils/text.py:158
+#: src/simplyconvertfile/utils/text.py:175
 #, python-brace-format
 msgid ""
 "Shell command execution failed.\n"
@@ -313,7 +318,7 @@ msgstr ""
 "\n"
 "コマンド: {command}"
 
-#. utils/text.py:161
+#: src/simplyconvertfile/utils/text.py:178
 #, python-brace-format
 msgid ""
 "Chained command execution failed.\n"
@@ -328,7 +333,7 @@ msgstr ""
 "\n"
 "コマンド: {command}"
 
-#. utils/text.py:163
+#: src/simplyconvertfile/utils/text.py:180
 #, python-brace-format
 msgid ""
 "Failed conversions:\n"
@@ -339,35 +344,35 @@ msgstr ""
 "\n"
 "{errors}"
 
-#. utils/text.py:164
+#: src/simplyconvertfile/utils/text.py:181
 msgid "Failed to create temporary directory"
 msgstr "一時ディレクトリの作成に失敗しました"
 
-#. utils/text.py:165
+#: src/simplyconvertfile/utils/text.py:182
 msgid "Temporary directory not available"
 msgstr "一時ディレクトリが利用できません"
 
-#. utils/text.py:166
+#: src/simplyconvertfile/utils/text.py:183
 msgid "Temporary directory does not exist"
 msgstr "一時ディレクトリが存在しません"
 
-#. utils/text.py:167
+#: src/simplyconvertfile/utils/text.py:184
 msgid "No archive template available in settings"
 msgstr "設定にアーカイブテンプレートがありません"
 
-#. utils/text.py:168
+#: src/simplyconvertfile/utils/text.py:185
 msgid "No contents found in extracted archive"
 msgstr "抽出されたアーカイブに内容が見つかりません"
 
-#. utils/text.py:173
+#: src/simplyconvertfile/utils/text.py:190
 msgid "Operation failed"
 msgstr "操作に失敗しました"
 
-#. utils/text.py:174
+#: src/simplyconvertfile/utils/text.py:191
 msgid "Operation cancelled by user"
 msgstr "操作がユーザーによってキャンセルされました"
 
-#. utils/text.py:176
+#: src/simplyconvertfile/utils/text.py:193
 #, python-brace-format
 msgid ""
 "Step {step}/{total} failed.\n"
@@ -382,123 +387,296 @@ msgstr ""
 "\n"
 "コマンド: {command}"
 
-#. utils/text.py:178
+#: src/simplyconvertfile/utils/text.py:196
+#, python-brace-format
+msgid ""
+"File validation failed: {file}\n"
+"\n"
+"The previous conversion step likely failed.\n"
+"\n"
+"Previous step output:\n"
+"{previous_error}"
+msgstr ""
+
+#: src/simplyconvertfile/utils/text.py:200
 msgid "Batch conversion cancelled"
 msgstr "バッチ変換がキャンセルされました"
 
-#. utils/text.py:180
+#: src/simplyconvertfile/utils/text.py:202
 #, python-brace-format
 msgid "Batch conversion completed with {error_count} error(s)."
 msgstr "バッチ変換が {error_count} 個のエラーで完了しました。"
 
-#. utils/text.py:186
+#: src/simplyconvertfile/utils/text.py:208
 msgid "Conversion Complete"
 msgstr "変換完了"
 
-#. utils/text.py:187
+#: src/simplyconvertfile/utils/text.py:209
 #, python-brace-format
 msgid "Successfully converted {filename} to {extension}"
 msgstr "{filename} を {extension} に正常に変換しました"
 
-#. utils/text.py:188
+#: src/simplyconvertfile/utils/text.py:210
 msgid "Conversion Failed"
 msgstr "変換失敗"
 
-#. utils/text.py:189
+#: src/simplyconvertfile/utils/text.py:211
 #, python-brace-format
 msgid "Failed to convert {filename} to {extension}"
 msgstr "{filename} を {extension} に変換できませんでした"
 
-#. utils/text.py:190
+#: src/simplyconvertfile/utils/text.py:212
 msgid "Batch Conversion Complete"
 msgstr "バッチ変換完了"
 
-#. utils/text.py:192
+#: src/simplyconvertfile/utils/text.py:214
 #, python-brace-format
 msgid "Successfully converted {successful} of {total} files to {extension}"
 msgstr "{total} ファイル中 {successful} を {extension} に正常に変換しました"
 
-#. utils/text.py:194
+#: src/simplyconvertfile/utils/text.py:216
 msgid "Batch Conversion Failed"
 msgstr "バッチ変換失敗"
 
-#. utils/text.py:196
+#: src/simplyconvertfile/utils/text.py:218
 #, python-brace-format
 msgid "Failed to convert {failed} of {total} files to {extension}"
 msgstr "{total} ファイル中 {failed} を {extension} に変換できませんでした"
 
-#. utils/text.py:198
+#: src/simplyconvertfile/utils/text.py:220
 msgid "Conversion Started"
 msgstr "変換開始"
 
-#. utils/text.py:200
+#: src/simplyconvertfile/utils/text.py:222
 #, python-brace-format
 msgid "Conversion started for {filename} to {extension}"
 msgstr "{filename} を {extension} への変換を開始しました"
 
-#. utils/text.py:202
+#: src/simplyconvertfile/utils/text.py:224
 msgid "Batch Conversion Started"
 msgstr "バッチ変換開始"
 
-#. utils/text.py:204
+#: src/simplyconvertfile/utils/text.py:226
 #, python-brace-format
 msgid "Batch conversion of {total} files to {extension} has started"
 msgstr "{total} ファイルの {extension} へのバッチ変換が開始されました"
 
-#. utils/text.py:206
+#: src/simplyconvertfile/utils/text.py:228
 msgid "Batch Step Conversion Started"
 msgstr "バッチステップ変換開始"
 
-#. utils/text.py:208
+#: src/simplyconvertfile/utils/text.py:230
 #, python-brace-format
 msgid "Converting {filename} to {extension}"
 msgstr "{filename} を {extension} に変換中"
 
-#. utils/text.py:210
+#: src/simplyconvertfile/utils/text.py:232
 msgid "Batch Conversion Cancelled"
 msgstr "バッチ変換キャンセル"
 
-#. utils/text.py:212
+#: src/simplyconvertfile/utils/text.py:234
 #, python-brace-format
 msgid ""
 "Conversion cancelled after processing {completed} of {total} files to "
 "{extension}"
 msgstr ""
-"{total} ファイル中 {completed} を {extension} に処理した後、変換がキャンセルされました"
+"{total} ファイル中 {completed} を {extension} に処理した後、変換がキャンセル"
+"されました"
 
-#. utils/text.py:214
+#: src/simplyconvertfile/utils/text.py:236
 msgid "Conversion Cancelled"
 msgstr "変換キャンセル"
 
-#. utils/text.py:216
+#: src/simplyconvertfile/utils/text.py:238
 #, python-brace-format
 msgid "File conversion to {extension} was cancelled"
 msgstr "{extension} へのファイル変換がキャンセルされました"
 
-#. utils/text.py:218
+#: src/simplyconvertfile/utils/text.py:240
 msgid "Settings Error"
 msgstr "設定エラー"
 
-#. utils/text.py:220
+#: src/simplyconvertfile/utils/text.py:242
+#, fuzzy
 msgid ""
 "User settings file is corrupted\n"
-"(~/.config/convert-file@thigschuch/user_settings.json)\n"
+"(~/.config/simplyconvertfile/user_settings.json)\n"
 "Using default settings instead."
 msgstr ""
 "ユーザー設定ファイルが破損しています\n"
-"(~/.config/convert-file@thigschuch/user_settings.json)\n"
+"(~/.config/simplyconvertfile/user_settings.json)\n"
 "代わりにデフォルト設定を使用します。"
 
-#. utils/text.py:224
+#: src/simplyconvertfile/utils/text.py:246
 msgid "Missing Conversion Tool"
 msgstr "欠けている変換ツール"
 
-#. metadata.json->description
-#. convert-file@thigschuch.nemo_action.in->Comment
-msgid "Converts a file to a different format"
-msgstr "ファイルを別の形式に変換します"
+#: src/simplyconvertfile/utils/text.py:252
+msgid "Dangerous Command Blocked"
+msgstr "危険なコマンドがブロックされました"
 
-#. metadata.json->name
-#. convert-file@thigschuch.nemo_action.in->Name
-msgid "Convert File"
-msgstr "ファイルを変換"
+#: src/simplyconvertfile/utils/text.py:254
+#, python-brace-format
+msgid ""
+"A potentially dangerous command was blocked.\n"
+"\n"
+"Reason: {reason}\n"
+"\n"
+"Command: {command}\n"
+"\n"
+"If you need to allow dangerous commands, enable the "
+"'allow_dangerous_commands' option in your user settings."
+msgstr ""
+"潜在的に危険なコマンドがブロックされました。\n"
+"\n"
+"理由: {reason}\n"
+"\n"
+"コマンド: {command}\n"
+"\n"
+"危険なコマンドを許可する必要がある場合は、ユーザー設定"
+"で'allow_dangerous_commands' オプションを有効にしてください。"
+
+#: src/simplyconvertfile/utils/text.py:260
+msgid "Potentially Dangerous Command"
+msgstr "潜在的に危険なコマンド"
+
+#: src/simplyconvertfile/utils/text.py:262
+#, python-brace-format
+msgid ""
+"The following command contains a potentially dangerous operation and "
+"requires your confirmation to proceed.\n"
+"\n"
+"Reason: {reason}\n"
+"\n"
+"Command:\n"
+"{command}"
+msgstr ""
+"次のコマンドには潜在的に危険な操作が含まれており、続行するには確認が必要で"
+"す。\n"
+"\n"
+"理由: {reason}\n"
+"\n"
+"コマンド:\n"
+"{command}"
+
+#: src/simplyconvertfile/utils/text.py:267
+msgid "Continue Anyway"
+msgstr "それでも続行"
+
+#: src/simplyconvertfile/utils/text.py:270
+msgid "privilege escalation"
+msgstr "権限昇格"
+
+#: src/simplyconvertfile/utils/text.py:271
+msgid "file deletion"
+msgstr "ファイル削除"
+
+#: src/simplyconvertfile/utils/text.py:272
+msgid "directory deletion"
+msgstr "ディレクトリ削除"
+
+#: src/simplyconvertfile/utils/text.py:273
+msgid "file destruction"
+msgstr "ファイル破壊"
+
+#: src/simplyconvertfile/utils/text.py:274
+msgid "file truncation"
+msgstr "ファイル切り詰め"
+
+#: src/simplyconvertfile/utils/text.py:275
+msgid "raw disk operation"
+msgstr "生ディスク操作"
+
+#: src/simplyconvertfile/utils/text.py:276
+msgid "filesystem creation"
+msgstr "ファイルシステム作成"
+
+#: src/simplyconvertfile/utils/text.py:277
+msgid "disk partitioning"
+msgstr "ディスクパーティション"
+
+#: src/simplyconvertfile/utils/text.py:278
+msgid "filesystem signature removal"
+msgstr "ファイルシステム署名削除"
+
+#: src/simplyconvertfile/utils/text.py:279
+msgid "block device discard"
+msgstr "ブロックデバイス破棄"
+
+#: src/simplyconvertfile/utils/text.py:280
+msgid "system shutdown"
+msgstr "システムシャットダウン"
+
+#: src/simplyconvertfile/utils/text.py:281
+msgid "system reboot"
+msgstr "システム再起動"
+
+#: src/simplyconvertfile/utils/text.py:282
+msgid "system power off"
+msgstr "システム電源オフ"
+
+#: src/simplyconvertfile/utils/text.py:283
+msgid "system halt"
+msgstr "システム停止"
+
+#: src/simplyconvertfile/utils/text.py:284
+msgid "system init control"
+msgstr "システム init 制御"
+
+#: src/simplyconvertfile/utils/text.py:285
+msgid "system service control"
+msgstr "システムサービス制御"
+
+#: src/simplyconvertfile/utils/text.py:286
+msgid "network access"
+msgstr "ネットワークアクセス"
+
+#: src/simplyconvertfile/utils/text.py:287
+msgid "network download"
+msgstr "ネットワークダウンロード"
+
+#: src/simplyconvertfile/utils/text.py:288
+msgid "network connection"
+msgstr "ネットワーク接続"
+
+#: src/simplyconvertfile/utils/text.py:289
+msgid "remote shell access"
+msgstr "リモートシェルアクセス"
+
+#: src/simplyconvertfile/utils/text.py:290
+msgid "remote file copy"
+msgstr "リモートファイルコピー"
+
+#: src/simplyconvertfile/utils/text.py:291
+msgid "remote file sync"
+msgstr "リモートファイル同期"
+
+#: src/simplyconvertfile/utils/text.py:292
+msgid "file transfer"
+msgstr "ファイル転送"
+
+#: src/simplyconvertfile/utils/text.py:293
+msgid "permission change"
+msgstr "権限変更"
+
+#: src/simplyconvertfile/utils/text.py:294
+msgid "ownership change"
+msgstr "所有権変更"
+
+#: src/simplyconvertfile/utils/text.py:295
+msgid "group ownership change"
+msgstr "グループ所有権変更"
+
+#: src/simplyconvertfile/utils/text.py:296
+msgid "shell code execution"
+msgstr "シェルコード実行"
+
+#: src/simplyconvertfile/utils/text.py:297
+msgid "dangerous operation"
+msgstr "危険な操作"
+
+#~ msgid "Converts a file to a different format"
+#~ msgstr "ファイルを別の形式に変換します"
+
+#~ msgid "Convert File"
+#~ msgstr "ファイルを変換"

@@ -1,14 +1,14 @@
-# CONVERT FILE
+# SIMPLY CONVERT FILE
 # This file is put in the public domain.
-# ThigSchuch, 2024
+# ThigSchuch, 2026
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: convert-file@thigschuch 2.0.0\n"
-"Report-Msgid-Bugs-To: https://github.com/ThigSchuch/SimplyConvertFile/issues"
+"Project-Id-Version: simplyconvertfile 2.0.0\n"
+"Report-Msgid-Bugs-To: https://github.com/ThigSchuch/SimplyConvertFile/"
 "issues\n"
-"POT-Creation-Date: 2025-10-25 04:20+0000\n"
+"POT-Creation-Date: 2026-02-07 17:51+0000\n"
 "PO-Revision-Date: \n"
 "Last-Translator: AI\n"
 "Language-Team: Rutar Andriy, AI\n"
@@ -17,19 +17,15 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#. ui/aui.py:164 utils/text.py:63
-msgid "OK"
-msgstr "Гаразд"
-
-#. utils/text.py:57
+#: src/simplyconvertfile/utils/text.py:74
 msgid "File Converter"
 msgstr "Конвертер файлів"
 
-#. utils/text.py:58
+#: src/simplyconvertfile/utils/text.py:75
 msgid "Choose output format:"
 msgstr "Виберіть вихідний формат:"
 
-#. utils/text.py:59
+#: src/simplyconvertfile/utils/text.py:76
 #, python-brace-format
 msgid ""
 "Converting\n"
@@ -38,39 +34,43 @@ msgstr ""
 "Конвертування\n"
 "{file} у {extension}"
 
-#. utils/text.py:60
+#: src/simplyconvertfile/utils/text.py:77
 msgid "Copy Error"
 msgstr "Копіювати помилку"
 
-#. utils/text.py:61
+#: src/simplyconvertfile/utils/text.py:78
 msgid "Copy Command"
 msgstr "Копіювати команду"
 
-#. utils/text.py:62
+#: src/simplyconvertfile/utils/text.py:79
 msgid "Report Error"
 msgstr "Повідомити про помилку"
 
-#. utils/text.py:64
+#: src/simplyconvertfile/utils/text.py:80 src/simplyconvertfile/ui/aui.py:175
+msgid "OK"
+msgstr "Гаразд"
+
+#: src/simplyconvertfile/utils/text.py:81
 msgid "Cancel"
 msgstr "Скасувати"
 
-#. utils/text.py:65
+#: src/simplyconvertfile/utils/text.py:82
 msgid "Cancelling..."
 msgstr "Скасування..."
 
-#. utils/text.py:66
+#: src/simplyconvertfile/utils/text.py:83
 msgid "Start"
 msgstr "Почати"
 
-#. utils/text.py:67
+#: src/simplyconvertfile/utils/text.py:84
 msgid "Error details copied to clipboard"
 msgstr "Деталі помилки скопійовано до буфера обміну"
 
-#. utils/text.py:68
+#: src/simplyconvertfile/utils/text.py:85
 msgid "Install command copied to clipboard"
 msgstr "Команду встановлення скопійовано до буфера обміну"
 
-#. utils/text.py:70
+#: src/simplyconvertfile/utils/text.py:87
 #, python-brace-format
 msgid ""
 "No installation instructions available. Please install '{dependency}' "
@@ -79,15 +79,15 @@ msgstr ""
 "Інструкції з встановлення недоступні. Будь ласка, встановіть '{dependency}' "
 "вручну."
 
-#. utils/text.py:72
+#: src/simplyconvertfile/utils/text.py:89
 msgid "multiple files selected"
 msgstr "вибрано кілька файлів"
 
-#. utils/text.py:77
+#: src/simplyconvertfile/utils/text.py:94
 msgid "Select one or more files to convert."
 msgstr "Виберіть один або більше файлів для конвертації."
 
-#. utils/text.py:79
+#: src/simplyconvertfile/utils/text.py:96
 #, python-brace-format
 msgid ""
 "File not found:\n"
@@ -100,7 +100,7 @@ msgstr ""
 "\n"
 "Перевірте, чи файл існує."
 
-#. utils/text.py:82
+#: src/simplyconvertfile/utils/text.py:99
 #, python-brace-format
 msgid ""
 "Invalid file:\n"
@@ -113,7 +113,7 @@ msgstr ""
 "\n"
 "Виберіть файл, а не папку."
 
-#. utils/text.py:85
+#: src/simplyconvertfile/utils/text.py:102
 #, python-brace-format
 msgid ""
 "No file extension:\n"
@@ -126,12 +126,12 @@ msgstr ""
 "\n"
 "Додайте розширення (наприклад, .jpg, .mp4, .pdf), щоб визначити формат."
 
-#. utils/text.py:88
+#: src/simplyconvertfile/utils/text.py:105
 #, python-brace-format
 msgid "Unsupported file format: {extension}"
 msgstr "Непідтримуваний формат файлу: {extension}"
 
-#. utils/text.py:90
+#: src/simplyconvertfile/utils/text.py:107
 #, python-brace-format
 msgid ""
 "The file '{filename}' has an unsupported format ({extension}).\n"
@@ -144,7 +144,7 @@ msgstr ""
 "Цей формат не розпізнається конвертером або необхідні інструменти не "
 "встановлені у вашій системі."
 
-#. utils/text.py:95
+#: src/simplyconvertfile/utils/text.py:112
 #, python-brace-format
 msgid ""
 "Found {error_count} validation error(s) in the selected files:\n"
@@ -159,15 +159,15 @@ msgstr ""
 "\n"
 "Процес продовжиться лише з дійсними файлами."
 
-#. utils/text.py:103
+#: src/simplyconvertfile/utils/text.py:120
 msgid "Conversion failed."
 msgstr "Конвертація не вдалася."
 
-#. utils/text.py:104
+#: src/simplyconvertfile/utils/text.py:121
 msgid "No converter found for this format"
 msgstr "Не знайдено конвертера для цього формату"
 
-#. utils/text.py:106
+#: src/simplyconvertfile/utils/text.py:123
 #, python-brace-format
 msgid ""
 "No converters available for {extension} files.\n"
@@ -194,7 +194,7 @@ msgstr ""
 "\n"
 "Перевірте системні залежності."
 
-#. utils/text.py:116
+#: src/simplyconvertfile/utils/text.py:133
 #, python-brace-format
 msgid ""
 "Failed to create converter for {source} → {target}\n"
@@ -215,7 +215,7 @@ msgstr ""
 "• Несумісне поєднання форматів\n"
 "• Проблему з конфігурацією системи"
 
-#. utils/text.py:124
+#: src/simplyconvertfile/utils/text.py:141
 #, python-brace-format
 msgid ""
 "Converting {current} of {total} files to {extension}\n"
@@ -224,7 +224,7 @@ msgstr ""
 "Конвертування {current} з {total} файлів у {extension}\n"
 "{file}"
 
-#. utils/text.py:127
+#: src/simplyconvertfile/utils/text.py:144
 #, python-brace-format
 msgid ""
 "Failed to create or access output directory.\n"
@@ -235,39 +235,41 @@ msgstr ""
 "\n"
 "Помилка: {error}"
 
-#. utils/text.py:129
+#: src/simplyconvertfile/utils/text.py:146
 #, python-brace-format
 msgid "Conversion failed: {error}"
 msgstr "Конвертація не вдалася: {error}"
 
-#. utils/text.py:130
+#: src/simplyconvertfile/utils/text.py:147
 msgid "Conversion cancelled by user"
 msgstr "Конвертацію скасовано користувачем"
 
-#. utils/text.py:132
+#: src/simplyconvertfile/utils/text.py:149
 msgid ""
 "Conversion failed - check if required tools are installed (e.g., ffmpeg, "
 "convert, 7z, rar, etc.) and the file format is supported"
 msgstr ""
-"Конвертація не вдалася - перевірте, чи встановлені необхідні інструменти (наприклад, ffmpeg, "
-"convert, 7z, rar тощо) і чи підтримується формат файлу"
+"Конвертація не вдалася - перевірте, чи встановлені необхідні інструменти "
+"(наприклад, ffmpeg, convert, 7z, rar тощо) і чи підтримується формат файлу"
 
-#. utils/text.py:135
+#: src/simplyconvertfile/utils/text.py:152
 #, python-brace-format
 msgid "Template error: {error}"
 msgstr "Помилка шаблону: {error}"
 
-#. utils/text.py:140 utils/text.py:225
+#: src/simplyconvertfile/utils/text.py:157
+#: src/simplyconvertfile/utils/text.py:247
 #, python-brace-format
 msgid "Required tool '{tool}' is not installed."
 msgstr "Необхідний інструмент '{tool}' не встановлений."
 
-#. utils/text.py:142
+#: src/simplyconvertfile/utils/text.py:159
 #, python-brace-format
 msgid "The conversion tool '{tool}' is required but not found on your system."
-msgstr "Інструмент конвертації '{tool}' необхідний, але не знайдений у вашій системі."
+msgstr ""
+"Інструмент конвертації '{tool}' необхідний, але не знайдений у вашій системі."
 
-#. utils/text.py:145
+#: src/simplyconvertfile/utils/text.py:162
 #, python-brace-format
 msgid ""
 "Missing Tool: {tool}\n"
@@ -290,19 +292,20 @@ msgstr ""
 "не працює, зверніться до менеджера пакетів вашого дистрибутива або офіційних "
 "інструкцій з встановлення інструменту."
 
-#. utils/text.py:152
+#: src/simplyconvertfile/utils/text.py:169
 msgid "An unexpected error occurred during conversion."
 msgstr "Під час конвертації сталася неочікувана помилка."
 
-#. utils/text.py:154
+#: src/simplyconvertfile/utils/text.py:171
 msgid ""
 "Required tool not found. Please make sure all required conversion tools are "
 "installed (e.g., ffmpeg, convert, etc.)"
 msgstr ""
-"Необхідний інструмент не знайдено. Будь ласка, переконайтеся, що всі необхідні інструменти конвертації "
-"встановлені (наприклад, ffmpeg, convert тощо)"
+"Необхідний інструмент не знайдено. Будь ласка, переконайтеся, що всі "
+"необхідні інструменти конвертації встановлені (наприклад, ffmpeg, convert "
+"тощо)"
 
-#. utils/text.py:158
+#: src/simplyconvertfile/utils/text.py:175
 #, python-brace-format
 msgid ""
 "Shell command execution failed.\n"
@@ -317,7 +320,7 @@ msgstr ""
 "\n"
 "Команда: {command}"
 
-#. utils/text.py:161
+#: src/simplyconvertfile/utils/text.py:178
 #, python-brace-format
 msgid ""
 "Chained command execution failed.\n"
@@ -332,7 +335,7 @@ msgstr ""
 "\n"
 "Команда: {command}"
 
-#. utils/text.py:163
+#: src/simplyconvertfile/utils/text.py:180
 #, python-brace-format
 msgid ""
 "Failed conversions:\n"
@@ -343,35 +346,35 @@ msgstr ""
 "\n"
 "{errors}"
 
-#. utils/text.py:164
+#: src/simplyconvertfile/utils/text.py:181
 msgid "Failed to create temporary directory"
 msgstr "Не вдалося створити тимчасову директорію"
 
-#. utils/text.py:165
+#: src/simplyconvertfile/utils/text.py:182
 msgid "Temporary directory not available"
 msgstr "Тимчасова директорія недоступна"
 
-#. utils/text.py:166
+#: src/simplyconvertfile/utils/text.py:183
 msgid "Temporary directory does not exist"
 msgstr "Тимчасова директорія не існує"
 
-#. utils/text.py:167
+#: src/simplyconvertfile/utils/text.py:184
 msgid "No archive template available in settings"
 msgstr "Немає доступного шаблону архіву в налаштуваннях"
 
-#. utils/text.py:168
+#: src/simplyconvertfile/utils/text.py:185
 msgid "No contents found in extracted archive"
 msgstr "Не знайдено вмісту у витягнутому архіві"
 
-#. utils/text.py:173
+#: src/simplyconvertfile/utils/text.py:190
 msgid "Operation failed"
 msgstr "Операція не вдалася"
 
-#. utils/text.py:174
+#: src/simplyconvertfile/utils/text.py:191
 msgid "Operation cancelled by user"
 msgstr "Операцію скасовано користувачем"
 
-#. utils/text.py:176
+#: src/simplyconvertfile/utils/text.py:193
 #, python-brace-format
 msgid ""
 "Step {step}/{total} failed.\n"
@@ -386,83 +389,94 @@ msgstr ""
 "\n"
 "Команда: {command}"
 
-#. utils/text.py:178
+#: src/simplyconvertfile/utils/text.py:196
+#, python-brace-format
+msgid ""
+"File validation failed: {file}\n"
+"\n"
+"The previous conversion step likely failed.\n"
+"\n"
+"Previous step output:\n"
+"{previous_error}"
+msgstr ""
+
+#: src/simplyconvertfile/utils/text.py:200
 msgid "Batch conversion cancelled"
 msgstr "Пакетну конвертацію скасовано"
 
-#. utils/text.py:180
+#: src/simplyconvertfile/utils/text.py:202
 #, python-brace-format
 msgid "Batch conversion completed with {error_count} error(s)."
 msgstr "Пакетну конвертацію завершено з {error_count} помилками."
 
-#. utils/text.py:186
+#: src/simplyconvertfile/utils/text.py:208
 msgid "Conversion Complete"
 msgstr "Конвертація завершена"
 
-#. utils/text.py:187
+#: src/simplyconvertfile/utils/text.py:209
 #, python-brace-format
 msgid "Successfully converted {filename} to {extension}"
 msgstr "Успішно конвертовано {filename} у {extension}"
 
-#. utils/text.py:188
+#: src/simplyconvertfile/utils/text.py:210
 msgid "Conversion Failed"
 msgstr "Конвертація не вдалася"
 
-#. utils/text.py:189
+#: src/simplyconvertfile/utils/text.py:211
 #, python-brace-format
 msgid "Failed to convert {filename} to {extension}"
 msgstr "Не вдалося конвертувати {filename} у {extension}"
 
-#. utils/text.py:190
+#: src/simplyconvertfile/utils/text.py:212
 msgid "Batch Conversion Complete"
 msgstr "Пакетну конвертацію завершено"
 
-#. utils/text.py:192
+#: src/simplyconvertfile/utils/text.py:214
 #, python-brace-format
 msgid "Successfully converted {successful} of {total} files to {extension}"
 msgstr "Успішно конвертовано {successful} з {total} файлів у {extension}"
 
-#. utils/text.py:194
+#: src/simplyconvertfile/utils/text.py:216
 msgid "Batch Conversion Failed"
 msgstr "Пакетна конвертація не вдалася"
 
-#. utils/text.py:196
+#: src/simplyconvertfile/utils/text.py:218
 #, python-brace-format
 msgid "Failed to convert {failed} of {total} files to {extension}"
 msgstr "Не вдалося конвертувати {failed} з {total} файлів у {extension}"
 
-#. utils/text.py:198
+#: src/simplyconvertfile/utils/text.py:220
 msgid "Conversion Started"
 msgstr "Конвертацію розпочато"
 
-#. utils/text.py:200
+#: src/simplyconvertfile/utils/text.py:222
 #, python-brace-format
 msgid "Conversion started for {filename} to {extension}"
 msgstr "Конвертацію розпочато для {filename} у {extension}"
 
-#. utils/text.py:202
+#: src/simplyconvertfile/utils/text.py:224
 msgid "Batch Conversion Started"
 msgstr "Пакетну конвертацію розпочато"
 
-#. utils/text.py:204
+#: src/simplyconvertfile/utils/text.py:226
 #, python-brace-format
 msgid "Batch conversion of {total} files to {extension} has started"
 msgstr "Пакетну конвертацію {total} файлів у {extension} розпочато"
 
-#. utils/text.py:206
+#: src/simplyconvertfile/utils/text.py:228
 msgid "Batch Step Conversion Started"
 msgstr "Пакетний крок конвертації розпочато"
 
-#. utils/text.py:208
+#: src/simplyconvertfile/utils/text.py:230
 #, python-brace-format
 msgid "Converting {filename} to {extension}"
 msgstr "Конвертування {filename} у {extension}"
 
-#. utils/text.py:210
+#: src/simplyconvertfile/utils/text.py:232
 msgid "Batch Conversion Cancelled"
 msgstr "Пакетну конвертацію скасовано"
 
-#. utils/text.py:212
+#: src/simplyconvertfile/utils/text.py:234
 #, python-brace-format
 msgid ""
 "Conversion cancelled after processing {completed} of {total} files to "
@@ -471,39 +485,200 @@ msgstr ""
 "Конвертацію скасовано після обробки {completed} з {total} файлів у "
 "{extension}"
 
-#. utils/text.py:214
+#: src/simplyconvertfile/utils/text.py:236
 msgid "Conversion Cancelled"
 msgstr "Конвертацію скасовано"
 
-#. utils/text.py:216
+#: src/simplyconvertfile/utils/text.py:238
 #, python-brace-format
 msgid "File conversion to {extension} was cancelled"
 msgstr "Конвертацію файлу у {extension} скасовано"
 
-#. utils/text.py:218
+#: src/simplyconvertfile/utils/text.py:240
 msgid "Settings Error"
 msgstr "Помилка налаштувань"
 
-#. utils/text.py:220
+#: src/simplyconvertfile/utils/text.py:242
+#, fuzzy
 msgid ""
 "User settings file is corrupted\n"
-"(~/.config/convert-file@thigschuch/user_settings.json)\n"
+"(~/.config/simplyconvertfile/user_settings.json)\n"
 "Using default settings instead."
 msgstr ""
 "Файл налаштувань користувача пошкоджено\n"
-"(~/.config/convert-file@thigschuch/user_settings.json)\n"
+"(~/.config/simplyconvertfile/user_settings.json)\n"
 "Використовуються налаштування за замовчуванням."
 
-#. utils/text.py:224
+#: src/simplyconvertfile/utils/text.py:246
 msgid "Missing Conversion Tool"
 msgstr "Відсутній інструмент конвертації"
 
-#. metadata.json->description
-#. convert-file@thigschuch.nemo_action.in->Comment
-msgid "Converts a file to a different format"
-msgstr "Конвертує файл у інший формат"
+#: src/simplyconvertfile/utils/text.py:252
+msgid "Dangerous Command Blocked"
+msgstr "Небезпечну команду заблоковано"
 
-#. metadata.json->name
-#. convert-file@thigschuch.nemo_action.in->Name
-msgid "Convert File"
-msgstr "Конвертувати файл"
+#: src/simplyconvertfile/utils/text.py:254
+#, python-brace-format
+msgid ""
+"A potentially dangerous command was blocked.\n"
+"\n"
+"Reason: {reason}\n"
+"\n"
+"Command: {command}\n"
+"\n"
+"If you need to allow dangerous commands, enable the "
+"'allow_dangerous_commands' option in your user settings."
+msgstr ""
+"Потенційно небезпечну команду було заблоковано.\n"
+"\n"
+"Причина: {reason}\n"
+"\n"
+"Команда: {command}\n"
+"\n"
+"Якщо вам потрібно дозволити небезпечні команди, увімкніть опцію "
+"'allow_dangerous_commands' у налаштуваннях користувача."
+
+#: src/simplyconvertfile/utils/text.py:260
+msgid "Potentially Dangerous Command"
+msgstr "Потенційно небезпечна команда"
+
+#: src/simplyconvertfile/utils/text.py:262
+#, python-brace-format
+msgid ""
+"The following command contains a potentially dangerous operation and "
+"requires your confirmation to proceed.\n"
+"\n"
+"Reason: {reason}\n"
+"\n"
+"Command:\n"
+"{command}"
+msgstr ""
+"Наступна команда містить потенційно небезпечну операцію і потребує вашого "
+"підтвердження для продовження.\n"
+"\n"
+"Причина: {reason}\n"
+"\n"
+"Команда:\n"
+"{command}"
+
+#: src/simplyconvertfile/utils/text.py:267
+msgid "Continue Anyway"
+msgstr "Все одно продовжити"
+
+#: src/simplyconvertfile/utils/text.py:270
+msgid "privilege escalation"
+msgstr "підвищення привілеїв"
+
+#: src/simplyconvertfile/utils/text.py:271
+msgid "file deletion"
+msgstr "видалення файлу"
+
+#: src/simplyconvertfile/utils/text.py:272
+msgid "directory deletion"
+msgstr "видалення каталогу"
+
+#: src/simplyconvertfile/utils/text.py:273
+msgid "file destruction"
+msgstr "знищення файлу"
+
+#: src/simplyconvertfile/utils/text.py:274
+msgid "file truncation"
+msgstr "обрізання файлу"
+
+#: src/simplyconvertfile/utils/text.py:275
+msgid "raw disk operation"
+msgstr "операція з сирим диском"
+
+#: src/simplyconvertfile/utils/text.py:276
+msgid "filesystem creation"
+msgstr "створення файлової системи"
+
+#: src/simplyconvertfile/utils/text.py:277
+msgid "disk partitioning"
+msgstr "розбиття диска"
+
+#: src/simplyconvertfile/utils/text.py:278
+msgid "filesystem signature removal"
+msgstr "видалення підпису файлової системи"
+
+#: src/simplyconvertfile/utils/text.py:279
+msgid "block device discard"
+msgstr "відкидання блочного пристрою"
+
+#: src/simplyconvertfile/utils/text.py:280
+msgid "system shutdown"
+msgstr "вимкнення системи"
+
+#: src/simplyconvertfile/utils/text.py:281
+msgid "system reboot"
+msgstr "перезапуск системи"
+
+#: src/simplyconvertfile/utils/text.py:282
+msgid "system power off"
+msgstr "вимкнення живлення системи"
+
+#: src/simplyconvertfile/utils/text.py:283
+msgid "system halt"
+msgstr "зупинка системи"
+
+#: src/simplyconvertfile/utils/text.py:284
+msgid "system init control"
+msgstr "керування init системи"
+
+#: src/simplyconvertfile/utils/text.py:285
+msgid "system service control"
+msgstr "керування службами системи"
+
+#: src/simplyconvertfile/utils/text.py:286
+msgid "network access"
+msgstr "доступ до мережі"
+
+#: src/simplyconvertfile/utils/text.py:287
+msgid "network download"
+msgstr "завантаження з мережі"
+
+#: src/simplyconvertfile/utils/text.py:288
+msgid "network connection"
+msgstr "мережеве з'єднання"
+
+#: src/simplyconvertfile/utils/text.py:289
+msgid "remote shell access"
+msgstr "віддалений доступ до оболонки"
+
+#: src/simplyconvertfile/utils/text.py:290
+msgid "remote file copy"
+msgstr "копіювання віддаленого файлу"
+
+#: src/simplyconvertfile/utils/text.py:291
+msgid "remote file sync"
+msgstr "синхронізація віддаленого файлу"
+
+#: src/simplyconvertfile/utils/text.py:292
+msgid "file transfer"
+msgstr "передача файлу"
+
+#: src/simplyconvertfile/utils/text.py:293
+msgid "permission change"
+msgstr "зміна дозволів"
+
+#: src/simplyconvertfile/utils/text.py:294
+msgid "ownership change"
+msgstr "зміна власності"
+
+#: src/simplyconvertfile/utils/text.py:295
+msgid "group ownership change"
+msgstr "зміна власності групи"
+
+#: src/simplyconvertfile/utils/text.py:296
+msgid "shell code execution"
+msgstr "виконання коду оболонки"
+
+#: src/simplyconvertfile/utils/text.py:297
+msgid "dangerous operation"
+msgstr "небезпечна операція"
+
+#~ msgid "Converts a file to a different format"
+#~ msgstr "Конвертує файл у інший формат"
+
+#~ msgid "Convert File"
+#~ msgstr "Конвертувати файл"
