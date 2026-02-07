@@ -89,6 +89,28 @@ jobs:
         with:
           ref: gh-pages
           path: gh-pages
+          fetch-depth: 0
+        continue-on-error: true
+
+      - name: Create gh-pages branch if missing
+        if: steps.checkout-ghpages.outcome == 'failure' || !hashFiles('gh-pages/.git')
+        run: |
+          rm -rf gh-pages
+          git clone --bare "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" gh-pages-bare
+          cd gh-pages-bare
+          git symbolic-ref HEAD refs/heads/gh-pages
+          cd ..
+          mkdir gh-pages && cd gh-pages
+          git init
+          git remote add origin "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git"
+          git checkout --orphan gh-pages
+          echo '# GitHub Pages – SimplyConvertFile' > README.md
+          git add README.md
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git commit -m "Initialize gh-pages branch"
+          git push origin gh-pages
+          rm -rf ../gh-pages-bare
 
       - name: Import GPG key
         run: |

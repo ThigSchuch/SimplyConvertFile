@@ -34,7 +34,9 @@ classifiers = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/linuxmint/cinnamon-spices-actions"
+Homepage = "https://github.com/ThigSchuch/SimplyConvertFile"
+Repository = "https://github.com/ThigSchuch/SimplyConvertFile"
+Issues = "https://github.com/ThigSchuch/SimplyConvertFile/issues"
 
 [project.scripts]
 simplyconvertfile = "simplyconvertfile.main:main"

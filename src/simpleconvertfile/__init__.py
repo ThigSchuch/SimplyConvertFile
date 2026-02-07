@@ -21,7 +21,7 @@ APP_ID = "simpleconvertfile"
 APP_DISPLAY_NAME = "Simple Convert File"
 APP_DESCRIPTION = "Converts a file to a different format"
 APP_AUTHOR = "thigschuch"
-APP_URL = "https://github.com/linuxmint/cinnamon-spices-actions"
+APP_URL = "https://github.com/ThigSchuch/SimplyConvertFile"
 
 # Legacy config directory name (for migration)
 LEGACY_CONFIG_DIR_NAME = "convert-file@thigschuch"

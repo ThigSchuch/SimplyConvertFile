@@ -397,7 +397,7 @@ class _ErrorDialog(Gtk.Dialog):
         Returns:
             None
         """
-        github_url = "https://github.com/linuxmint/cinnamon-spices-actions/issues?utf8=%E2%9C%93&q=is%3Aissue+is%3Aopen+convert-file%40thigschuch"
+        github_url = "https://github.com/ThigSchuch/SimplyConvertFile/issues"
         logger.debug("Opening GitHub issues page for error reporting")
 
         try:

@@ -27,6 +27,11 @@ jobs:
       - name: Checkout main branch
         uses: actions/checkout@v4
 
+      - name: Configure git identity
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
       - name: Checkout or create gh-pages branch
         run: |
           # Try to fetch gh-pages; if it doesn't exist, create an orphan branch
@@ -51,8 +56,6 @@ jobs:
       - name: Commit and push
         run: |
           cd gh-pages
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
           git add settings/settings.json
           git diff --cached --quiet && echo "No changes to commit" && exit 0
           git commit -m "Update settings.json from main branch"

@@ -32,7 +32,7 @@ LONG_DESCRIPTION=" SimplyConvertFile supports 80+ formats including images, vide
  archives. It provides a GTK 3 graphical interface with single and batch
  conversion, progress tracking, desktop notifications, and intelligent
  format detection."
-HOMEPAGE="https://github.com/linuxmint/cinnamon-spices-actions"
+HOMEPAGE="https://github.com/ThigSchuch/SimplyConvertFile"
 PYTHON_VERSION="3"
 
 # --- Paths ---
