@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Name=Simply Convert File
+GenericName=File Converter
+Comment=Convert files between 80+ formats - images, videos, audio, documents, and archives
+Exec=simplyconvertfile %F
+Icon=simplyconvertfile
+Terminal=false
+Categories=Utility;FileTools;GTK;
+Keywords=convert;converter;file;format;image;video;audio;document;archive;ffmpeg;
+MimeType=image/jpeg;image/png;image/gif;image/bmp;image/tiff;image/webp;image/svg+xml;image/x-icon;image/heic;image/heif;image/avif;video/mp4;video/x-matroska;video/webm;video/x-msvideo;video/quicktime;video/mpeg;video/x-ms-wmv;audio/mpeg;audio/x-wav;audio/flac;audio/ogg;audio/aac;audio/opus;audio/x-aiff;audio/x-ms-wma;audio/mp4;application/pdf;application/msword;application/vnd.openxmlformats-officedocument.wordprocessingml.document;application/vnd.oasis.opendocument.text;application/rtf;application/epub+zip;text/html;text/plain;text/markdown;text/csv;text/xml;application/json;application/x-yaml;application/vnd.ms-excel;application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;application/vnd.oasis.opendocument.spreadsheet;application/vnd.ms-powerpoint;application/vnd.openxmlformats-officedocument.presentationml.presentation;application/vnd.oasis.opendocument.presentation;application/zip;application/x-7z-compressed;application/x-tar;application/gzip;application/x-bzip2;application/x-xz;application/x-rar-compressed;application/x-iso9660-image;application/x-rpm;application/x-deb;
+StartupNotify=true

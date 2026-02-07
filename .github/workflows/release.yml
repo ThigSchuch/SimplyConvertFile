@@ -1,0 +1,131 @@
+# =============================================================================
+# SimplyConvertFile — Build .deb, create GitHub Release & publish APT repository
+# =============================================================================
+# Triggered when a version tag (v*) is pushed.
+#
+# Required GitHub Secrets:
+#   GPG_PRIVATE_KEY  — ASCII-armored GPG private key for signing the APT repo
+#
+# Required GitHub Pages:
+#   Enable Pages on the `gh-pages` branch (root).
+# =============================================================================
+
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+
+jobs:
+  # ---------------------------------------------------------------------------
+  # 1. Build the .deb package
+  # ---------------------------------------------------------------------------
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Extract version from tag
+        id: version
+        run: echo "VERSION=${GITHUB_REF_NAME#v}" >> "$GITHUB_OUTPUT"
+
+      - name: Validate version matches pyproject.toml
+        run: |
+          TOML_VERSION=$(grep -Po '(?<=^version = ")[^"]+' pyproject.toml)
+          TAG_VERSION="${{ steps.version.outputs.VERSION }}"
+          if [ "$TOML_VERSION" != "$TAG_VERSION" ]; then
+            echo "ERROR: Tag version ($TAG_VERSION) does not match pyproject.toml ($TOML_VERSION)"
+            exit 1
+          fi
+
+      - name: Build .deb package
+        run: bash packaging/build-deb.sh "${{ steps.version.outputs.VERSION }}"
+
+      - name: Upload .deb artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: deb-package
+          path: dist/*.deb
+
+  # ---------------------------------------------------------------------------
+  # 2. Create GitHub Release with the .deb attached
+  # ---------------------------------------------------------------------------
+  release:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download .deb artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: deb-package
+          path: dist/
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: dist/*.deb
+          generate_release_notes: true
+
+  # ---------------------------------------------------------------------------
+  # 3. Publish to GitHub Pages APT repository
+  # ---------------------------------------------------------------------------
+  publish-apt:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download .deb artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: deb-package
+          path: dist/
+
+      - name: Checkout gh-pages branch
+        uses: actions/checkout@v4
+        with:
+          ref: gh-pages
+          path: gh-pages
+
+      - name: Import GPG key
+        run: |
+          echo "${{ secrets.GPG_PRIVATE_KEY }}" | gpg --batch --import
+
+      - name: Update APT repository
+        run: |
+          cd gh-pages
+
+          # Copy new .deb into pool/
+          mkdir -p pool
+          cp ../dist/*.deb pool/
+
+          # Regenerate package index
+          mkdir -p dists/stable/main/binary-all
+          dpkg-scanpackages pool/ /dev/null > dists/stable/main/binary-all/Packages
+          gzip -kf dists/stable/main/binary-all/Packages
+
+          # Generate Release file
+          cd dists/stable
+          apt-ftparchive release . > Release
+
+          # Sign the Release file
+          GPG_KEY_ID=$(gpg --list-keys --with-colons | grep '^pub' | head -1 | cut -d: -f5)
+          gpg --batch --yes --armor --detach-sign \
+              --default-key "$GPG_KEY_ID" \
+              -o Release.gpg Release
+          gpg --batch --yes --armor --clearsign \
+              --default-key "$GPG_KEY_ID" \
+              -o InRelease Release
+          cd ../..
+
+      - name: Commit and push APT repo
+        run: |
+          cd gh-pages
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Update APT repository for ${GITHUB_REF_NAME}" || echo "No changes to commit"
+          git push
