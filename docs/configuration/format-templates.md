@@ -50,7 +50,7 @@ Each format group has a rules section with two parts:
 ```
 
 **Adjustable parameters:**
-- `-quality 90` — JPEG quality (1–100, higher = better)
+- `-quality 90` — JPEG quality (1—100, higher = better)
 - `-depth 8` — PNG bit depth
 - `webp:lossless=false` — WEBP compression mode
 
@@ -68,8 +68,8 @@ Each format group has a rules section with two parts:
 
 **Adjustable parameters:**
 - `-b:a 192k` — Bitrate (128k, 192k, 256k, 320k)
-- `-q:a 2` — Quality level (0–9, lower = better)
-- `-compression_level 5` — FLAC compression (0–8)
+- `-q:a 2` — Quality level (0—9, lower = better)
+- `-compression_level 5` — FLAC compression (0—8)
 
 ## Video Rules
 
@@ -83,7 +83,7 @@ Each format group has a rules section with two parts:
 ```
 
 **Quality parameters:**
-- `-crf 23` — Constant Rate Factor (18–28, lower = better quality, larger file)
+- `-crf 23` — Constant Rate Factor (18—28, lower = better quality, larger file)
 - `-codec:v libx264` — Video codec (h264, h265/hevc, vp9)
 - `-codec:a aac` — Audio codec
 

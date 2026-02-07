@@ -5,6 +5,7 @@
 #
 # Required GitHub Secrets:
 #   GPG_PRIVATE_KEY  — ASCII-armored GPG private key for signing the APT repo
+#   GPG_PASSPHRASE   — Passphrase for the GPG private key
 #
 # Required GitHub Pages:
 #   Enable Pages on the `gh-pages` branch (root).
@@ -105,7 +106,7 @@ jobs:
           git init
           git remote add origin "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git"
           git checkout --orphan gh-pages
-          echo '# GitHub Pages – SimplyConvertFile' > README.md
+          echo '# GitHub Pages — SimplyConvertFile' > README.md
           git add README.md
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
@@ -116,6 +117,8 @@ jobs:
       - name: Import GPG key
         run: |
           echo "${{ secrets.GPG_PRIVATE_KEY }}" | gpg --batch --import
+          echo "allow-loopback-pinentry" >> ~/.gnupg/gpg-agent.conf
+          gpgconf --reload gpg-agent
 
       - name: Export public key
         run: |
@@ -141,11 +144,13 @@ jobs:
 
           # Sign the Release file
           GPG_KEY_ID=$(gpg --list-keys --with-colons | grep '^pub' | head -1 | cut -d: -f5)
-          gpg --batch --yes --armor --detach-sign \
-              --default-key "$GPG_KEY_ID" \
+          gpg --batch --yes --armor --pinentry-mode loopback \
+              --passphrase "${{ secrets.GPG_PASSPHRASE }}" \
+              --detach-sign --default-key "$GPG_KEY_ID" \
               -o Release.gpg Release
-          gpg --batch --yes --armor --clearsign \
-              --default-key "$GPG_KEY_ID" \
+          gpg --batch --yes --armor --pinentry-mode loopback \
+              --passphrase "${{ secrets.GPG_PASSPHRASE }}" \
+              --clearsign --default-key "$GPG_KEY_ID" \
               -o InRelease Release
           cd ../..
 

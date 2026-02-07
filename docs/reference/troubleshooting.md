@@ -69,9 +69,9 @@ See [Dependencies]({% link getting-started/dependencies.md %}) for the full list
 
 **Solutions:**
 1. Edit `user_settings.json` to increase quality parameters (see [Format Templates]({% link configuration/format-templates.md %}))
-2. For JPEG: Increase `-quality` value (85–100)
+2. For JPEG: Increase `-quality` value (85—100)
 3. For MP3: Increase bitrate `-b:a` (256k or 320k)
-4. For video: Decrease `-crf` value (18–23 for high quality)
+4. For video: Decrease `-crf` value (18—23 for high quality)
 
 ## Slow conversion speed
 
