@@ -23,68 +23,69 @@ The project follows clean code principles with a well-organized, modular archite
 src/simplyconvertfile/
 ├── __init__.py
 ├── __main__.py          # Module entry point (python -m simplyconvertfile)
-├── main.py              # Application entry point
 ├── actions/             # Workflow orchestration
 │   ├── base.py          # Abstract base class for actions
-│   ├── single.py        # Single file conversion workflow
 │   ├── batch.py         # Batch conversion workflow
-│   └── batch_helpers/   # Batch processing utilities
-│       ├── error_handler.py     # Error collection and reporting
-│       ├── file_processor.py    # Individual file conversion logic
-│       ├── format_validator.py  # Format validation and compatibility
-│       ├── output_manager.py    # Output directory management
-│       ├── progress_tracker.py  # Progress tracking for batch ops
-│       └── state_manager.py     # Batch state tracking and UI
-├── converters/          # Format-specific conversion logic
-│   ├── base.py          # Base converter with template-based commands
-│   ├── image.py         # Image format converter
-│   ├── audio.py         # Audio format converter
-│   ├── video.py         # Video format converter
-│   ├── document.py      # Document format converter
-│   ├── archive.py       # Archive format converter
-│   ├── markup.py        # Markup format converter
-│   ├── data.py          # Data format converter
-│   ├── office.py        # Office format converter
-│   ├── presentation.py  # Presentation format converter
-│   ├── special.py       # Special cross-format converter
-│   ├── spreadsheet.py   # Spreadsheet format converter
-│   ├── task_converter.py # Task-based converter orchestration
-│   └── helpers/         # Conversion execution utilities
-│       ├── commands.py           # Command template processing
-│       ├── constants.py          # Converter constants and defaults
-│       ├── conversion_manager.py # Conversion coordination
-│       ├── error_manager.py      # Error handling and reporting
-│       ├── errors.py             # Error type definitions
-│       ├── execution.py          # Command execution engine
-│       ├── file_manager.py       # File operations and temp files
-│       ├── multi_file_handler.py # Multi-file conversion support
-│       ├── progress_tracker.py   # Progress monitoring
-│       ├── subprocess.py         # Subprocess management
-│       ├── temp_file.py          # Temporary file management
-│       ├── template_processor.py # Template processing utilities
-│       └── validation.py         # Conversion validation
+│   ├── batch_helpers/   # Batch processing utilities
+│   │   ├── error_handler.py     # Error collection and reporting
+│   │   ├── file_processor.py    # Individual file conversion logic
+│   │   ├── format_validator.py  # Format validation and compatibility
+│   │   ├── output_manager.py    # Output directory management
+│   │   ├── progress_tracker.py  # Progress tracking for batch ops
+│   │   └── state_manager.py     # Batch state tracking and UI
+│   └── single.py        # Single file conversion workflow
 ├── config/              # Configuration and format definitions
 │   ├── formats.py       # Format groups and conversion rules
 │   ├── settings.json    # Default system settings (read-only)
 │   ├── settings.py      # Settings file parser and manager
 │   ├── types.py         # Type definitions and enums
 │   └── user_settings.json # User customizations template
+├── converters/          # Format-specific conversion logic
+│   ├── archive.py       # Archive format converter
+│   ├── audio.py         # Audio format converter
+│   ├── base.py          # Base converter with template-based commands
+│   ├── data.py          # Data format converter
+│   ├── document.py      # Document format converter
+│   ├── helpers/         # Conversion execution utilities
+│   │   ├── commands.py           # Command template processing
+│   │   ├── constants.py          # Converter constants and defaults
+│   │   ├── conversion_manager.py # Conversion coordination
+│   │   ├── error_manager.py      # Error handling and reporting
+│   │   ├── errors.py             # Error type definitions
+│   │   ├── execution.py          # Command execution engine
+│   │   ├── file_manager.py       # File operations and temp files
+│   │   ├── multi_file_handler.py # Multi-file conversion support
+│   │   ├── progress_tracker.py   # Progress monitoring
+│   │   ├── sanitizer.py          # Dangerous command detection
+│   │   ├── subprocess.py         # Subprocess management
+│   │   ├── temp_file.py          # Temporary file management
+│   │   ├── template_processor.py # Template processing utilities
+│   │   └── validation.py         # Conversion validation
+│   ├── image.py         # Image format converter
+│   ├── markup.py        # Markup format converter
+│   ├── office.py        # Office format converter
+│   ├── presentation.py  # Presentation format converter
+│   ├── special.py       # Special cross-format converter
+│   ├── spreadsheet.py   # Spreadsheet format converter
+│   ├── task_converter.py # Task-based converter orchestration
+│   └── video.py         # Video format converter
 ├── core/                # Core business logic
 │   └── factory.py       # Factory pattern for converter instantiation
+├── main.py              # Application entry point
+├── po/                  # Translation files (18 languages)
+├── resources/           # Application resources (icons)
 ├── ui/                  # User interface components
 │   ├── aui.py           # Advanced UI components
 │   ├── dialogs.py       # GTK dialog windows
 │   ├── gi.py            # GTK initialization
 │   ├── icons.py         # Icon theme management
 │   └── notifications.py # Desktop notification service
-├── utils/               # Utility functions
-│   ├── dependencies.py  # Dependency detection and installation
-│   ├── logging.py       # Logging configuration
-│   ├── text.py          # Internationalization and text constants
-│   ├── usage_tracker.py # Usage tracking and smart preselection
-│   └── validation.py    # File validation utilities
-├── resources/           # Application resources (icons)
-└── po/                  # Translation files (18 languages)
+└── utils/               # Utility functions
+    ├── dependencies.py  # Dependency detection and installation
+    ├── logging.py       # Logging configuration
+    ├── text.py          # Internationalization and text constants
+    ├── usage_tracker.py # Usage tracking and smart preselection
+    └── validation.py    # File validation utilities
 ```
 
 ## Design Patterns
@@ -124,12 +125,13 @@ Implements actual conversion logic with format-specific converters. Features tem
 | Component | Purpose |
 |:----------|:--------|
 | `ConversionManager` | Orchestrates the conversion workflow |
-| `FileManager` | Handles file operations and temporary files |
-| `ExecutionEngine` | Manages subprocess execution with cancellation |
-| `ProgressTracker` | Monitors and reports conversion progress |
+| `CommandSanitizer` | Detects dangerous commands before execution |
 | `ErrorManager` | Collects and formats error information |
-| `TemplateProcessor` | Processes command templates with dynamic substitution |
+| `ExecutionEngine` | Manages subprocess execution with cancellation |
+| `FileManager` | Handles file operations and temporary files |
 | `FileValidator` | Validates intermediate files in multi-step conversions |
+| `ProgressTracker` | Monitors and reports conversion progress |
+| `TemplateProcessor` | Processes command templates with dynamic substitution |
 
 ### Configuration Layer (`config/`)
 

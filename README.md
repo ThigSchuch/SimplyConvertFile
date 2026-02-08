@@ -30,16 +30,32 @@ sudo apt update && sudo apt install simplyconvertfile
 
 ### Via .deb package
 
-Download the latest `.deb` from the [Releases page](https://github.com/ThigSchuch/SimplyConvertFile/releases) and install:
+Download and install the latest `.deb` release directly from the terminal:
+
+```bash
+# Download the latest release
+wget -O /tmp/simplyconvertfile.deb \
+  "$(curl -s https://api.github.com/repos/ThigSchuch/SimplyConvertFile/releases/latest \
+  | grep -o '"browser_download_url": "[^"]*\.deb"' \
+  | cut -d'"' -f4)"
+
+# Install it
+sudo dpkg -i /tmp/simplyconvertfile.deb
+sudo apt-get install -f
+```
+
+Or download manually from the [Releases page](https://github.com/ThigSchuch/SimplyConvertFile/releases) and install:
 
 ```bash
 sudo dpkg -i simplyconvertfile_*.deb
-sudo apt-get install -f
+sudo apt-get install -f  # install dependencies if needed
 ```
 
 ### Via pip
 
 ```bash
+git clone https://github.com/ThigSchuch/SimplyConvertFile.git
+cd SimplyConvertFile
 pip install .
 ```
 

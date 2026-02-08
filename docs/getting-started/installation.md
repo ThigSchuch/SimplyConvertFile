@@ -63,6 +63,8 @@ sudo apt-get install -f  # install dependencies if needed
 ## Via pip
 
 ```bash
+git clone https://github.com/ThigSchuch/SimplyConvertFile.git
+cd SimplyConvertFile
 pip install .
 ```
 
@@ -90,14 +92,30 @@ make deb
 ## Uninstall
 
 ```bash
+sudo apt remove simplyconvertfile
+# or
 sudo make uninstall
 # or
 pip uninstall simplyconvertfile
+# Also delete config files
+rm -rf ~/.config/simplyconvertfile
 ```
+
 
 ## Nemo File Manager Integration
 
 If you use the Cinnamon desktop, you can integrate SimplyConvertFile into Nemo's context menu.
+
+
+**Cinnamon Spices (recommended)**
+
+1. Search in the Menu for "Actions" and open it.
+2. Go to the "Download" tab and search for "Simply".
+3. Click to install "SimplyConvertFile" to your actions.
+4. Back to the "Installed" tab, find "SimplyConvertFile" and click "Enable".
+
+You can get more information on [Cinnamon Spices here](https://cinnamon-spices.linuxmint.com/actions/view/69).
+
 
 **If installed from source / pip** (the `packaging/` directory is available):
 
@@ -110,6 +128,12 @@ cp packaging/simplyconvertfile.nemo_action ~/.local/share/nemo/actions/
 ```bash
 mkdir -p ~/.local/share/nemo/actions
 curl -fsSL https://raw.githubusercontent.com/ThigSchuch/SimplyConvertFile/main/packaging/simplyconvertfile.nemo_action -o ~/.local/share/nemo/actions/simplyconvertfile.nemo_action
+```
+
+**To Uninstall the Nemo Action**:
+
+```bash
+rm -rf ~/.local/share/nemo/actions/simplyconvertfile*
 ```
 
 ## Verification
