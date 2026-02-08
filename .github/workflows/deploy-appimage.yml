@@ -1,0 +1,78 @@
+name: Deploy AppImage
+
+on:
+  push:
+    branches:
+      - development
+    tags:
+      - "v*"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: write
+
+jobs:
+  build-appimage:
+    name: Build AppImage
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Get short SHA
+        id: sha
+        run: echo "short_sha=$(git rev-parse --short=7 HEAD)" >> $GITHUB_OUTPUT
+
+      - name: Extract version
+        id: version
+        run: |
+          if [ "${{ github.ref }}" == "refs/heads/development" ]; then
+            VERSION=$(grep -Po '(?<=^version = ")[^"]+' pyproject.toml).dev0+g$(git rev-parse --short=7 HEAD)
+          else
+            VERSION=$(echo "${{ github.ref_name }}" | sed 's/^v//')
+          fi
+          echo "VERSION=$VERSION" >> $GITHUB_OUTPUT
+
+      - name: Update version in pyproject.toml (development branch only)
+        if: github.ref == 'refs/heads/development'
+        run: |
+          sed -i "s/^version = \".*\"/version = \"${{ steps.version.outputs.VERSION }}\"/" pyproject.toml
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update && sudo apt-get install -y python3-pip python3-gi gir1.2-gtk-3.0 libnotify-bin
+          mkdir -p ~/tools
+          wget -q https://github.com/linuxdeploy/linuxdeploy/releases/download/continuous/linuxdeploy-x86_64.AppImage -O ~/tools/linuxdeploy-x86_64.AppImage
+          chmod +x ~/tools/linuxdeploy-x86_64.AppImage
+
+      - name: Build AppImage
+        run: |
+          rm -rf AppDir
+          mkdir -p AppDir/usr/bin AppDir/usr/lib/python3/dist-packages AppDir/usr/share/applications AppDir/usr/share/icons/hicolor/48x48/apps
+          pip install --target=AppDir/usr/lib/python3/dist-packages --no-deps .
+          cat > AppDir/AppRun << 'EOF'
+          #!/usr/bin/env python3
+          import sys
+          import os
+          appdir = os.path.dirname(os.path.realpath(__file__))
+          sys.path.insert(0, os.path.join(appdir, 'usr', 'lib', 'python3', 'dist-packages'))
+          from simplyconvertfile.main import main
+          main()
+          EOF
+          chmod +x AppDir/AppRun
+          cp packaging/simplyconvertfile.desktop AppDir/usr/share/applications/
+          cp src/simplyconvertfile/resources/icon.png AppDir/usr/share/icons/hicolor/48x48/apps/simplyconvertfile.png
+          ARCH=x86_64 ~/tools/linuxdeploy-x86_64.AppImage \
+            --appdir AppDir \
+            --desktop-file AppDir/usr/share/applications/simplyconvertfile.desktop \
+            --icon-file AppDir/usr/share/icons/hicolor/48x48/apps/simplyconvertfile.png \
+            --output appimage
+          mkdir -p artifacts/appimage
+          mv Simply_Convert_File-x86_64.AppImage artifacts/appimage/simplyconvertfile_${{ steps.version.outputs.VERSION }}_x86_64.AppImage
+
+      - name: Upload AppImage
+        uses: actions/upload-artifact@v4
+        with:
+          name: appimage-package-${{ steps.sha.outputs.short_sha }}
+          path: artifacts/appimage/
