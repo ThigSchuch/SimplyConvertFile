@@ -1,0 +1,7 @@
+Origin: SimplyConvertFile
+Label: SimplyConvertFile
+Codename: stable
+Architectures: amd64 arm64
+Components: main
+Description: SimplyConvertFile APT repository
+SignWith: default

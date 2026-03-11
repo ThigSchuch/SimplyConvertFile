@@ -1,0 +1,5 @@
+Component: main
+Origin: SimplyConvertFile
+Label: SimplyConvertFile
+Architecture: amd64
+Description: SimplyConvertFile APT repository
