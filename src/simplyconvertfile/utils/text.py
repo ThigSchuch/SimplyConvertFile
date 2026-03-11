@@ -245,6 +245,7 @@ class Text:
         BATCH_CONVERSION_COMPLETED_WITH_ERRORS_MESSAGE = _(
             "Batch conversion completed with {error_count} error(s)."
         )
+        EMPTY_COMMAND_MESSAGE = _("No command to execute")
 
     class Notifications:
         """Desktop notification titles and messages."""

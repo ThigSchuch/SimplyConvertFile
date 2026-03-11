@@ -33,6 +33,18 @@ class CommandParser:
         False
     """
 
+    _PATH_KEYS = frozenset(
+        {
+            "input",
+            "input_name",
+            "input_stem",
+            "output",
+            "output_dir",
+            "temp_file",
+            "temp_dir",
+        }
+    )
+
     @staticmethod
     def is_shell_command(command: str) -> bool:
         """Check if a command requires shell execution due to shell operators.
@@ -215,6 +227,52 @@ class CommandParser:
         for key, value in kwargs.items():
             format_args[key] = str(value) if isinstance(value, Path) else value
 
-        formatted = template.format(**format_args)
+        formatted = CommandParser._substitute_with_escaping(template, format_args)
         logger.debug("Formatted command: {}", formatted)
         return formatted
+
+    @staticmethod
+    def _substitute_with_escaping(template: str, format_args: dict) -> str:
+        """Replace {key} placeholders with context-aware shell escaping.
+
+        For each placeholder occurrence, detects the quoting context by
+        counting unescaped double quotes before it in the template:
+        - Even count (normal shell context): escapes ' as '"'"'
+        - Odd count (inside double-quoted string, e.g. python3 -c "..."):
+          escapes ' as \\'
+
+        This handles mixed-context templates where the same placeholder
+        appears in both shell single-quote and Python/double-quote contexts
+        (e.g. chained libreoffice + python3 commands).
+
+        Args:
+            template: Command template with {key} placeholders.
+            format_args: Dict mapping placeholder names to raw values.
+
+        Returns:
+            str: Template with placeholders replaced and paths escaped.
+        """
+        if not format_args:
+            return template
+
+        keys_pattern = "|".join(re.escape(k) for k in format_args)
+        pattern = r"\{(" + keys_pattern + r")\}"
+        matches = list(re.finditer(pattern, template))
+        if not matches:
+            return template
+
+        result = template
+        for match in reversed(matches):
+            key = match.group(1)
+            value = str(format_args[key])
+
+            if key in CommandParser._PATH_KEYS and "'" in value:
+                prefix = template[: match.start()]
+                if prefix.count('"') % 2 == 1:
+                    value = value.replace("'", "\\'")
+                else:
+                    value = value.replace("'", "'\"'\"'")
+
+            result = result[: match.start()] + value + result[match.end() :]
+
+        return result
