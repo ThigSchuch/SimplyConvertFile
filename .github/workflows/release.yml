@@ -182,8 +182,7 @@ jobs:
           KEY_GRIP=$(gpg --list-secret-keys --with-keygrip --with-colons \
             | awk -F: '/^grp/ { print $10; exit }')
           GPG_PRESET="$(gpgconf --list-dirs libexecdir)/gpg-preset-passphrase"
-          echo "${{ secrets.GPG_PASSPHRASE }}" \
-            | "$GPG_PRESET" --passphrase-fd 0 --preset "$KEY_GRIP"
+          echo "${{ secrets.GPG_PASSPHRASE }}" | "$GPG_PRESET" --preset "$KEY_GRIP"
 
       - name: Checkout gh-pages branch
         run: |
