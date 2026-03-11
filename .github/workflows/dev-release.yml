@@ -1,22 +1,16 @@
 # =============================================================================
-# SimplyConvertFile — Build .deb, create GitHub Release & publish APT repository
+# SimplyConvertFile — Build dev packages and publish a rolling pre-release
 # =============================================================================
-# Triggered when a version tag (v*) is pushed.
-#
-# Required GitHub Secrets:
-#   GPG_PRIVATE_KEY  — ASCII-armored GPG private key for signing the APT repo
-#   GPG_PASSPHRASE   — Passphrase for the GPG private key
-#
-# Required GitHub Pages:
-#   Enable Pages on the `gh-pages` branch (root).
+# Triggered on every push to the development branch.
+# Produces a rolling pre-release tagged `dev-latest` that is replaced each run.
 # =============================================================================
 
-name: Release
+name: Dev Release
 
 on:
   push:
-    tags:
-      - "v*"
+    branches:
+      - development
   workflow_dispatch:
 
 permissions:
@@ -38,8 +32,12 @@ jobs:
       - name: Extract version
         id: version
         run: |
-          VERSION=$(echo "${{ github.ref_name }}" | sed 's/^v//')
+          VERSION=$(grep -Po '(?<=^version = ")[^"]+' pyproject.toml).dev0+g$(git rev-parse --short=7 HEAD)
           echo "VERSION=$VERSION" >> $GITHUB_OUTPUT
+
+      - name: Update version in pyproject.toml
+        run: |
+          sed -i "s/^version = \".*\"/version = \"${{ steps.version.outputs.VERSION }}\"/" pyproject.toml
 
       - name: Install build dependencies
         run: sudo apt-get update && sudo apt-get install -y gettext
@@ -67,8 +65,12 @@ jobs:
       - name: Extract version
         id: version
         run: |
-          VERSION=$(echo "${{ github.ref_name }}" | sed 's/^v//')
+          VERSION=$(grep -Po '(?<=^version = ")[^"]+' pyproject.toml).dev0+g$(git rev-parse --short=7 HEAD)
           echo "VERSION=$VERSION" >> $GITHUB_OUTPUT
+
+      - name: Update version in pyproject.toml
+        run: |
+          sed -i "s/^version = \".*\"/version = \"${{ steps.version.outputs.VERSION }}\"/" pyproject.toml
 
       - name: Install dependencies
         run: |
@@ -122,8 +124,12 @@ jobs:
       - name: Extract version
         id: version
         run: |
-          VERSION=$(echo "${{ github.ref_name }}" | sed 's/^v//')
+          VERSION=$(grep -Po '(?<=^version = ")[^"]+' pyproject.toml).dev0+g$(git rev-parse --short=7 HEAD)
           echo "VERSION=$VERSION" >> $GITHUB_OUTPUT
+
+      - name: Update version in pyproject.toml
+        run: |
+          sed -i "s/^version = \".*\"/version = \"${{ steps.version.outputs.VERSION }}\"/" pyproject.toml
 
       - name: Install build dependencies
         run: |
@@ -139,8 +145,8 @@ jobs:
           name: rpm-package-${{ steps.sha.outputs.short_sha }}
           path: dist/*.rpm
 
-  create-release:
-    name: Create GitHub Release
+  create-dev-release:
+    name: Publish Dev Pre-Release
     needs: [build-deb, build-appimage, build-rpm]
     runs-on: ubuntu-latest
     steps:
@@ -169,13 +175,19 @@ jobs:
           name: rpm-package-${{ steps.sha.outputs.short_sha }}
           path: artifacts/rpm/
 
-      - name: Create GitHub Release
+      - name: Publish rolling dev pre-release
         uses: softprops/action-gh-release@v2
         with:
+          tag_name: dev-latest
+          name: "Development Build (latest)"
+          prerelease: true
+          make_latest: false
           files: |
             artifacts/deb/*.deb
             artifacts/appimage/*.AppImage
             artifacts/rpm/*.rpm
-          generate_release_notes: true
+          body: |
+            Automated development build from the `development` branch.
+            Commit: ${{ github.sha }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
