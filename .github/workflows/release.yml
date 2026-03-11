@@ -139,6 +139,83 @@ jobs:
           name: rpm-package-${{ steps.sha.outputs.short_sha }}
           path: dist/*.rpm
 
+  publish-apt:
+    name: Publish APT Repository
+    needs: build-deb
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Get short SHA
+        id: sha
+        run: echo "short_sha=$(git rev-parse --short=7 HEAD)" >> $GITHUB_OUTPUT
+
+      - name: Download .deb Artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: deb-package-${{ steps.sha.outputs.short_sha }}
+          path: artifacts/deb/
+
+      - name: Install reprepro and gnupg
+        run: sudo apt-get update && sudo apt-get install -y reprepro gnupg
+
+      - name: Import GPG key
+        run: |
+          echo "${{ secrets.GPG_PRIVATE_KEY }}" | gpg --batch --import
+          # Mark the imported key as ultimately trusted
+          KEY_FP=$(gpg --list-secret-keys --with-colons | awk -F: '/^fpr/ { print $10; exit }')
+          echo "${KEY_FP}:6:" | gpg --import-ownertrust
+
+      - name: Configure GPG agent for non-interactive signing
+        run: |
+          mkdir -p ~/.gnupg
+          chmod 700 ~/.gnupg
+          echo "allow-loopback-pinentry" >> ~/.gnupg/gpg-agent.conf
+          echo "allow-preset-passphrase" >> ~/.gnupg/gpg-agent.conf
+          echo "pinentry-mode loopback" >> ~/.gnupg/gpg.conf
+          gpgconf --kill gpg-agent
+          gpgconf --launch gpg-agent
+
+      - name: Cache passphrase in GPG agent
+        run: |
+          KEY_GRIP=$(gpg --list-secret-keys --with-keygrip --with-colons \
+            | awk -F: '/^grp/ { print $10; exit }')
+          GPG_PRESET="$(gpgconf --list-dirs libexecdir)/gpg-preset-passphrase"
+          echo "${{ secrets.GPG_PASSPHRASE }}" \
+            | "$GPG_PRESET" --passphrase-fd 0 --preset "$KEY_GRIP"
+
+      - name: Checkout gh-pages branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git fetch origin gh-pages
+          git worktree add gh-pages origin/gh-pages
+
+      - name: Copy reprepro conf (first-time bootstrap)
+        run: |
+          mkdir -p gh-pages/conf
+          # Only copy if conf/distributions doesn't exist yet — preserves existing DB
+          if [ ! -f gh-pages/conf/distributions ]; then
+            cp packaging/apt/conf/distributions gh-pages/conf/distributions
+          fi
+
+      - name: Export GPG public key
+        run: |
+          gpg --armor --export > gh-pages/gpg.key
+
+      - name: Add .deb to APT repository
+        run: |
+          DEB=$(ls artifacts/deb/*.deb | head -n1)
+          reprepro --basedir gh-pages includedeb stable "$DEB"
+
+      - name: Commit and push gh-pages
+        run: |
+          cd gh-pages
+          git add pool/ dists/ conf/ gpg.key
+          git diff --cached --quiet || git commit -m "APT: add $(ls ../artifacts/deb/*.deb | xargs basename) [skip ci]"
+          git push origin HEAD:gh-pages
+
   create-release:
     name: Create GitHub Release
     needs: [build-deb, build-appimage, build-rpm]
