@@ -14,7 +14,7 @@ try:
 
     __version__ = _get_version("simplyconvertfile")
 except Exception:
-    __version__ = "2.0.0"  # Fallback for editable/dev installs
+    __version__ = "2.0.1"  # Fallback for editable/dev installs
 
 APP_NAME = "SimplyConvertFile"
 APP_ID = "simplyconvertfile"
