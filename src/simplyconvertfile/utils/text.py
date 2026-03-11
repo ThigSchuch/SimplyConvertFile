@@ -340,5 +340,18 @@ class Text:
         CATEGORY_SHELL_CODE_EXECUTION = _("shell code execution")
         CATEGORY_DANGEROUS_OPERATION = _("dangerous operation")
 
+    class CLI:
+        """Command-line interface messages."""
+
+        APPLICATION_DESCRIPTION = _(
+            "Universal file format converter for Linux. Supports images, videos, audio, documents, and archives."
+        )
+        FILES_ARGUMENT_HELP = _(
+            "File paths to convert (optional; opens picker if none)"
+        )
+        GITHUB_LINK_MESSAGE = _("For more info, visit {url}").format(
+            url="https://github.com/ThigSchuch/SimplyConvertFile"
+        )
+
 
 text = Text()

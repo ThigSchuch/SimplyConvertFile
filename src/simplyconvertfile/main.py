@@ -45,13 +45,15 @@ Note:
     (e.g., all images, all videos, etc.).
 """
 
+import argparse
 import sys
 import traceback
 from pathlib import Path
 from typing import List, Optional
 
+from simplyconvertfile import __version__
 from simplyconvertfile.actions import Action, BatchAction
-from simplyconvertfile.ui import InfoDialogWindow
+from simplyconvertfile.config.settings import SettingsManager
 from simplyconvertfile.utils import text
 from simplyconvertfile.utils.logging import logger
 
@@ -237,7 +239,24 @@ def main() -> None:
     logger.info("SimplyConvertFile application started")
     logger.debug("Command line arguments: {}", sys.argv)
 
-    file_paths: List[str] = sys.argv[1:]
+    parser = argparse.ArgumentParser(
+        prog="simplyconvertfile",
+        description=text.CLI.APPLICATION_DESCRIPTION,
+        epilog=text.CLI.GITHUB_LINK_MESSAGE,
+    )
+    settings = SettingsManager()
+    version_string = (
+        f"SimplyConvertFile {__version__} (settings version {settings.get('version')})"
+    )
+    parser.add_argument("--version", "-v", action="version", version=version_string)
+    parser.add_argument(
+        "files",
+        nargs="*",
+        help=text.CLI.FILES_ARGUMENT_HELP,
+    )
+    args = parser.parse_args()
+
+    file_paths: List[str] = args.files
 
     # If no files provided, open a file chooser dialog
     if not file_paths:

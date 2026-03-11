@@ -34,6 +34,12 @@ simplyconvertfile document.pdf
 
 # Can also run as a Python module
 python -m simplyconvertfile video.mp4
+
+# Show help and usage information
+simplyconvertfile --help
+
+# Show version information
+simplyconvertfile --version
 ```
 
 ## Conversion Workflow
