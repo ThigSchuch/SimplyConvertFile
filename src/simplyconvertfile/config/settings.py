@@ -17,6 +17,7 @@ Settings are merged with user customizations taking precedence.
 import json
 import shutil
 import subprocess
+import threading
 import time
 import urllib.request
 from functools import lru_cache
@@ -83,7 +84,7 @@ class SettingsManager:
         )
         self._ensure_user_config_exists()
         self.load_settings()
-        self._check_remote_settings()
+        threading.Thread(target=self._check_remote_settings, daemon=True).start()
 
     def _check_remote_settings(self) -> None:
         """Check for remote settings updates from GitHub Pages.
