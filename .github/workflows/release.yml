@@ -215,6 +215,16 @@ jobs:
           git diff --cached --quiet || git commit -m "APT: add $(ls ../artifacts/deb/*.deb | xargs basename) [skip ci]"
           git push origin HEAD:gh-pages
 
+  redeploy-pages:
+    name: Redeploy GitHub Pages
+    needs: publish-apt
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger docs deployment to publish APT repo
+        run: gh workflow run deploy-docs.yml --repo ${{ github.repository }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
   create-release:
     name: Create GitHub Release
     needs: [build-deb, build-appimage, build-rpm]
