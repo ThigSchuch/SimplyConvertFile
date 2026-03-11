@@ -72,6 +72,12 @@ simplyconvertfile document.pdf
 
 # Batch convert
 simplyconvertfile *.heic
+
+# Show help and usage information
+simplyconvertfile --help
+
+# Show version information
+simplyconvertfile --version
 ```
 
 See the [usage guide](https://thigschuch.github.io/SimplyConvertFile/usage/single-conversion) for details.

@@ -203,6 +203,12 @@ class CommandExecutor:
             ...     print(f"Error: {result.error_message}")
         """
         logger.debug("Executing single command: {}, shell: {}", command, shell)
+        if not command:
+            logger.error("Empty command provided")
+            return CommandExecutionResult(
+                success=False, error_message=text.Operations.EMPTY_COMMAND_MESSAGE
+            )
+
         if self._is_cancelled():
             logger.info("Command execution cancelled before start")
             return CommandExecutionResult(

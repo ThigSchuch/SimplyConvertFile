@@ -8,7 +8,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://github.com/ThigSchuch/SimplyConvertFile/"
 "issues\n"
 "POT-Creation-Date: 2026-02-07 17:51+0000\n"
-"PO-Revision-Date: 2026-02-07 12:00+0000\n"
+"PO-Revision-Date: 2026-03-11 19:11+0000\n"
 "Last-Translator: AI\n"
 "Language-Team: Odyssey <odysseyhyd@gmail.com>, AI\n"
 "Language: ca\n"
@@ -16,15 +16,15 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/simplyconvertfile/utils/text.py:74
+#: src/simplyconvertfile/utils/text.py:118
 msgid "File Converter"
 msgstr "Convertidor de fitxers"
 
-#: src/simplyconvertfile/utils/text.py:75
+#: src/simplyconvertfile/utils/text.py:119
 msgid "Choose output format:"
 msgstr "Tria el format de sortida:"
 
-#: src/simplyconvertfile/utils/text.py:76
+#: src/simplyconvertfile/utils/text.py:120
 #, python-brace-format
 msgid ""
 "Converting\n"
@@ -33,43 +33,43 @@ msgstr ""
 "Convertint\n"
 "{file} a {extension}"
 
-#: src/simplyconvertfile/utils/text.py:77
+#: src/simplyconvertfile/utils/text.py:121
 msgid "Copy Error"
 msgstr "Copia l'error"
 
-#: src/simplyconvertfile/utils/text.py:78
+#: src/simplyconvertfile/utils/text.py:122
 msgid "Copy Command"
 msgstr "Copia l'ordre"
 
-#: src/simplyconvertfile/utils/text.py:79
+#: src/simplyconvertfile/utils/text.py:123
 msgid "Report Error"
 msgstr "Informa de l'error"
 
-#: src/simplyconvertfile/utils/text.py:80 src/simplyconvertfile/ui/aui.py:175
+#: src/simplyconvertfile/utils/text.py:124
 msgid "OK"
 msgstr "D'acord"
 
-#: src/simplyconvertfile/utils/text.py:81
+#: src/simplyconvertfile/utils/text.py:125
 msgid "Cancel"
 msgstr "Cancel·la"
 
-#: src/simplyconvertfile/utils/text.py:82
+#: src/simplyconvertfile/utils/text.py:126
 msgid "Cancelling..."
 msgstr "Cancel·lant..."
 
-#: src/simplyconvertfile/utils/text.py:83
+#: src/simplyconvertfile/utils/text.py:127
 msgid "Start"
 msgstr "Inicia"
 
-#: src/simplyconvertfile/utils/text.py:84
+#: src/simplyconvertfile/utils/text.py:128
 msgid "Error details copied to clipboard"
 msgstr "Detalls de l'error copiats al porta-retalls"
 
-#: src/simplyconvertfile/utils/text.py:85
+#: src/simplyconvertfile/utils/text.py:129
 msgid "Install command copied to clipboard"
 msgstr "Ordre d'instal·lació copiada al porta-retalls"
 
-#: src/simplyconvertfile/utils/text.py:87
+#: src/simplyconvertfile/utils/text.py:131
 #, python-brace-format
 msgid ""
 "No installation instructions available. Please install '{dependency}' "
@@ -78,15 +78,15 @@ msgstr ""
 "No hi ha instruccions d'instal·lació disponibles. Instal·la '{dependency}' "
 "manualment."
 
-#: src/simplyconvertfile/utils/text.py:89
+#: src/simplyconvertfile/utils/text.py:133
 msgid "multiple files selected"
 msgstr "múltiples fitxers seleccionats"
 
-#: src/simplyconvertfile/utils/text.py:94
+#: src/simplyconvertfile/utils/text.py:138
 msgid "Select one or more files to convert."
 msgstr "Selecciona un o més fitxers per convertir."
 
-#: src/simplyconvertfile/utils/text.py:96
+#: src/simplyconvertfile/utils/text.py:140
 #, python-brace-format
 msgid ""
 "File not found:\n"
@@ -99,7 +99,7 @@ msgstr ""
 "\n"
 "Comprova si el fitxer existeix."
 
-#: src/simplyconvertfile/utils/text.py:99
+#: src/simplyconvertfile/utils/text.py:143
 #, python-brace-format
 msgid ""
 "Invalid file:\n"
@@ -112,7 +112,7 @@ msgstr ""
 "\n"
 "Selecciona un fitxer, no una carpeta."
 
-#: src/simplyconvertfile/utils/text.py:102
+#: src/simplyconvertfile/utils/text.py:146
 #, python-brace-format
 msgid ""
 "No file extension:\n"
@@ -125,12 +125,12 @@ msgstr ""
 "\n"
 "Afegeix una extensió (p. ex., .jpg, .mp4, .pdf) per determinar el format."
 
-#: src/simplyconvertfile/utils/text.py:105
+#: src/simplyconvertfile/utils/text.py:149
 #, python-brace-format
 msgid "Unsupported file format: {extension}"
 msgstr "Format de fitxer no suportat: {extension}"
 
-#: src/simplyconvertfile/utils/text.py:107
+#: src/simplyconvertfile/utils/text.py:151
 #, python-brace-format
 msgid ""
 "The file '{filename}' has an unsupported format ({extension}).\n"
@@ -143,7 +143,7 @@ msgstr ""
 "Aquest format no és reconegut pel convertidor o les eines requerides no "
 "estan instal·lades al teu sistema."
 
-#: src/simplyconvertfile/utils/text.py:112
+#: src/simplyconvertfile/utils/text.py:156
 #, python-brace-format
 msgid ""
 "Found {error_count} validation error(s) in the selected files:\n"
@@ -158,15 +158,15 @@ msgstr ""
 "\n"
 "El procés continuarà només amb fitxers vàlids."
 
-#: src/simplyconvertfile/utils/text.py:120
+#: src/simplyconvertfile/utils/text.py:164
 msgid "Conversion failed."
 msgstr "La conversió ha fallat."
 
-#: src/simplyconvertfile/utils/text.py:121
+#: src/simplyconvertfile/utils/text.py:165
 msgid "No converter found for this format"
 msgstr "No s'ha trobat cap convertidor per aquest format"
 
-#: src/simplyconvertfile/utils/text.py:123
+#: src/simplyconvertfile/utils/text.py:167
 #, python-brace-format
 msgid ""
 "No converters available for {extension} files.\n"
@@ -193,7 +193,7 @@ msgstr ""
 "\n"
 "Comprova les dependències del sistema."
 
-#: src/simplyconvertfile/utils/text.py:133
+#: src/simplyconvertfile/utils/text.py:177
 #, python-brace-format
 msgid ""
 "Failed to create converter for {source} → {target}\n"
@@ -214,7 +214,7 @@ msgstr ""
 "• Combinació de formats incompatible\n"
 "• Problema de configuració del sistema"
 
-#: src/simplyconvertfile/utils/text.py:141
+#: src/simplyconvertfile/utils/text.py:185
 #, python-brace-format
 msgid ""
 "Converting {current} of {total} files to {extension}\n"
@@ -223,7 +223,7 @@ msgstr ""
 "Convertint {current} de {total} fitxers a {extension}\n"
 "{file}"
 
-#: src/simplyconvertfile/utils/text.py:144
+#: src/simplyconvertfile/utils/text.py:188
 #, python-brace-format
 msgid ""
 "Failed to create or access output directory.\n"
@@ -234,16 +234,16 @@ msgstr ""
 "\n"
 "Error: {error}"
 
-#: src/simplyconvertfile/utils/text.py:146
+#: src/simplyconvertfile/utils/text.py:190
 #, python-brace-format
 msgid "Conversion failed: {error}"
 msgstr "La conversió ha fallat: {error}"
 
-#: src/simplyconvertfile/utils/text.py:147
+#: src/simplyconvertfile/utils/text.py:191
 msgid "Conversion cancelled by user"
 msgstr "Conversió cancel·lada per l'usuari"
 
-#: src/simplyconvertfile/utils/text.py:149
+#: src/simplyconvertfile/utils/text.py:193
 msgid ""
 "Conversion failed - check if required tools are installed (e.g., ffmpeg, "
 "convert, 7z, rar, etc.) and the file format is supported"
@@ -251,24 +251,24 @@ msgstr ""
 "La conversió ha fallat - comprova si les eines requerides estan instal·lades "
 "(p. ex., ffmpeg, convert, 7z, rar, etc.) i el format de fitxer és suportat"
 
-#: src/simplyconvertfile/utils/text.py:152
+#: src/simplyconvertfile/utils/text.py:196
 #, python-brace-format
 msgid "Template error: {error}"
 msgstr "Error de plantilla: {error}"
 
-#: src/simplyconvertfile/utils/text.py:157
-#: src/simplyconvertfile/utils/text.py:247
+#: src/simplyconvertfile/utils/text.py:201
+#: src/simplyconvertfile/utils/text.py:292
 #, python-brace-format
 msgid "Required tool '{tool}' is not installed."
 msgstr "L'eina requerida '{tool}' no està instal·lada."
 
-#: src/simplyconvertfile/utils/text.py:159
+#: src/simplyconvertfile/utils/text.py:203
 #, python-brace-format
 msgid "The conversion tool '{tool}' is required but not found on your system."
 msgstr ""
 "L'eina de conversió '{tool}' és requerida però no s'ha trobat al teu sistema."
 
-#: src/simplyconvertfile/utils/text.py:162
+#: src/simplyconvertfile/utils/text.py:206
 #, python-brace-format
 msgid ""
 "Missing Tool: {tool}\n"
@@ -291,11 +291,11 @@ msgstr ""
 "l'ordre no funciona, consulta el gestor de paquets de la teva distribució o "
 "les instruccions d'instal·lació oficials de l'eina."
 
-#: src/simplyconvertfile/utils/text.py:169
+#: src/simplyconvertfile/utils/text.py:213
 msgid "An unexpected error occurred during conversion."
 msgstr "S'ha produït un error inesperat durant la conversió."
 
-#: src/simplyconvertfile/utils/text.py:171
+#: src/simplyconvertfile/utils/text.py:215
 msgid ""
 "Required tool not found. Please make sure all required conversion tools are "
 "installed (e.g., ffmpeg, convert, etc.)"
@@ -303,7 +303,7 @@ msgstr ""
 "Eina requerida no trobada. Assegura't que totes les eines de conversió "
 "requerides estiguin instal·lades (p. ex., ffmpeg, convert, etc.)"
 
-#: src/simplyconvertfile/utils/text.py:175
+#: src/simplyconvertfile/utils/text.py:219
 #, python-brace-format
 msgid ""
 "Shell command execution failed.\n"
@@ -318,7 +318,7 @@ msgstr ""
 "\n"
 "Ordre: {command}"
 
-#: src/simplyconvertfile/utils/text.py:178
+#: src/simplyconvertfile/utils/text.py:222
 #, python-brace-format
 msgid ""
 "Chained command execution failed.\n"
@@ -333,7 +333,7 @@ msgstr ""
 "\n"
 "Ordre: {command}"
 
-#: src/simplyconvertfile/utils/text.py:180
+#: src/simplyconvertfile/utils/text.py:224
 #, python-brace-format
 msgid ""
 "Failed conversions:\n"
@@ -344,35 +344,35 @@ msgstr ""
 "\n"
 "{errors}"
 
-#: src/simplyconvertfile/utils/text.py:181
+#: src/simplyconvertfile/utils/text.py:225
 msgid "Failed to create temporary directory"
 msgstr "No s'ha pogut crear el directori temporal"
 
-#: src/simplyconvertfile/utils/text.py:182
+#: src/simplyconvertfile/utils/text.py:226
 msgid "Temporary directory not available"
 msgstr "Directori temporal no disponible"
 
-#: src/simplyconvertfile/utils/text.py:183
+#: src/simplyconvertfile/utils/text.py:227
 msgid "Temporary directory does not exist"
 msgstr "El directori temporal no existeix"
 
-#: src/simplyconvertfile/utils/text.py:184
+#: src/simplyconvertfile/utils/text.py:228
 msgid "No archive template available in settings"
 msgstr "No hi ha plantilla d'arxiu disponible a la configuració"
 
-#: src/simplyconvertfile/utils/text.py:185
+#: src/simplyconvertfile/utils/text.py:229
 msgid "No contents found in extracted archive"
 msgstr "No s'ha trobat contingut a l'arxiu extret"
 
-#: src/simplyconvertfile/utils/text.py:190
+#: src/simplyconvertfile/utils/text.py:234
 msgid "Operation failed"
 msgstr "L'operació ha fallat"
 
-#: src/simplyconvertfile/utils/text.py:191
+#: src/simplyconvertfile/utils/text.py:235
 msgid "Operation cancelled by user"
 msgstr "Operació cancel·lada per l'usuari"
 
-#: src/simplyconvertfile/utils/text.py:193
+#: src/simplyconvertfile/utils/text.py:237
 #, python-brace-format
 msgid ""
 "Step {step}/{total} failed.\n"
@@ -387,7 +387,7 @@ msgstr ""
 "\n"
 "Ordre: {command}"
 
-#: src/simplyconvertfile/utils/text.py:196
+#: src/simplyconvertfile/utils/text.py:240
 #, python-brace-format
 msgid ""
 "File validation failed: {file}\n"
@@ -397,85 +397,95 @@ msgid ""
 "Previous step output:\n"
 "{previous_error}"
 msgstr ""
+"La validació del fitxer ha fallat: {file}\n"
+"\n"
+"Probablement el pas de conversió anterior ha fallat.\n"
+"\n"
+"Sortida del pas anterior:\n"
+"{previous_error}"
 
-#: src/simplyconvertfile/utils/text.py:200
+#: src/simplyconvertfile/utils/text.py:244
 msgid "Batch conversion cancelled"
 msgstr "Conversió per lots cancel·lada"
 
-#: src/simplyconvertfile/utils/text.py:202
+#: src/simplyconvertfile/utils/text.py:246
 #, python-brace-format
 msgid "Batch conversion completed with {error_count} error(s)."
 msgstr "Conversió per lots completada amb {error_count} error(s)."
 
-#: src/simplyconvertfile/utils/text.py:208
+#: src/simplyconvertfile/utils/text.py:248
+msgid "No command to execute"
+msgstr "Cap ordre per executar"
+
+#: src/simplyconvertfile/utils/text.py:253
 msgid "Conversion Complete"
 msgstr "Conversió completa"
 
-#: src/simplyconvertfile/utils/text.py:209
+#: src/simplyconvertfile/utils/text.py:254
 #, python-brace-format
 msgid "Successfully converted {filename} to {extension}"
 msgstr "S'ha convertit correctament {filename} a {extension}"
 
-#: src/simplyconvertfile/utils/text.py:210
+#: src/simplyconvertfile/utils/text.py:255
 msgid "Conversion Failed"
 msgstr "Conversió fallida"
 
-#: src/simplyconvertfile/utils/text.py:211
+#: src/simplyconvertfile/utils/text.py:256
 #, python-brace-format
 msgid "Failed to convert {filename} to {extension}"
 msgstr "No s'ha pogut convertir {filename} a {extension}"
 
-#: src/simplyconvertfile/utils/text.py:212
+#: src/simplyconvertfile/utils/text.py:257
 msgid "Batch Conversion Complete"
 msgstr "Conversió per lots completa"
 
-#: src/simplyconvertfile/utils/text.py:214
+#: src/simplyconvertfile/utils/text.py:259
 #, python-brace-format
 msgid "Successfully converted {successful} of {total} files to {extension}"
 msgstr ""
 "S'han convertit correctament {successful} de {total} fitxers a {extension}"
 
-#: src/simplyconvertfile/utils/text.py:216
+#: src/simplyconvertfile/utils/text.py:261
 msgid "Batch Conversion Failed"
 msgstr "Conversió per lots fallida"
 
-#: src/simplyconvertfile/utils/text.py:218
+#: src/simplyconvertfile/utils/text.py:263
 #, python-brace-format
 msgid "Failed to convert {failed} of {total} files to {extension}"
 msgstr "No s'han pogut convertir {failed} de {total} fitxers a {extension}"
 
-#: src/simplyconvertfile/utils/text.py:220
+#: src/simplyconvertfile/utils/text.py:265
 msgid "Conversion Started"
 msgstr "Conversió iniciada"
 
-#: src/simplyconvertfile/utils/text.py:222
+#: src/simplyconvertfile/utils/text.py:267
 #, python-brace-format
 msgid "Conversion started for {filename} to {extension}"
 msgstr "S'ha iniciat la conversió de {filename} a {extension}"
 
-#: src/simplyconvertfile/utils/text.py:224
+#: src/simplyconvertfile/utils/text.py:269
 msgid "Batch Conversion Started"
 msgstr "Conversió per lots iniciada"
 
-#: src/simplyconvertfile/utils/text.py:226
+#: src/simplyconvertfile/utils/text.py:271
 #, python-brace-format
 msgid "Batch conversion of {total} files to {extension} has started"
 msgstr "S'ha iniciat la conversió per lots de {total} fitxers a {extension}"
 
-#: src/simplyconvertfile/utils/text.py:228
+#: src/simplyconvertfile/utils/text.py:273
 msgid "Batch Step Conversion Started"
 msgstr "Conversió per pas per lots iniciada"
 
-#: src/simplyconvertfile/utils/text.py:230
+#: src/simplyconvertfile/utils/text.py:275
 #, python-brace-format
 msgid "Converting {filename} to {extension}"
 msgstr "Convertint {filename} a {extension}"
 
-#: src/simplyconvertfile/utils/text.py:232
+#: src/simplyconvertfile/utils/text.py:277
 msgid "Batch Conversion Cancelled"
 msgstr "Conversió per lots cancel·lada"
 
-#: src/simplyconvertfile/utils/text.py:234
+#: src/simplyconvertfile/utils/text.py:279
 #, python-brace-format
 msgid ""
 "Conversion cancelled after processing {completed} of {total} files to "
@@ -484,20 +494,20 @@ msgstr ""
 "Conversió cancel·lada després de processar {completed} de {total} fitxers a "
 "{extension}"
 
-#: src/simplyconvertfile/utils/text.py:236
+#: src/simplyconvertfile/utils/text.py:281
 msgid "Conversion Cancelled"
 msgstr "Conversió cancel·lada"
 
-#: src/simplyconvertfile/utils/text.py:238
+#: src/simplyconvertfile/utils/text.py:283
 #, python-brace-format
 msgid "File conversion to {extension} was cancelled"
 msgstr "La conversió de fitxer a {extension} s'ha cancel·lat"
 
-#: src/simplyconvertfile/utils/text.py:240
+#: src/simplyconvertfile/utils/text.py:285
 msgid "Settings Error"
 msgstr "Error de configuració"
 
-#: src/simplyconvertfile/utils/text.py:242
+#: src/simplyconvertfile/utils/text.py:287
 #, fuzzy
 msgid ""
 "User settings file is corrupted\n"
@@ -508,15 +518,15 @@ msgstr ""
 "(~/.config/simplyconvertfile/user_settings.json)\n"
 "S'utilitzaran els paràmetres per defecte."
 
-#: src/simplyconvertfile/utils/text.py:246
+#: src/simplyconvertfile/utils/text.py:291
 msgid "Missing Conversion Tool"
 msgstr "Eina de conversió mancante"
 
-#: src/simplyconvertfile/utils/text.py:252
+#: src/simplyconvertfile/utils/text.py:297
 msgid "Dangerous Command Blocked"
 msgstr "Ordre perillosa bloquejada"
 
-#: src/simplyconvertfile/utils/text.py:254
+#: src/simplyconvertfile/utils/text.py:299
 #, python-brace-format
 msgid ""
 "A potentially dangerous command was blocked.\n"
@@ -537,11 +547,11 @@ msgstr ""
 "Si necessiteu permetre ordres perilloses, activeu l'opció "
 "'allow_dangerous_commands' a la configuració d'usuari."
 
-#: src/simplyconvertfile/utils/text.py:260
+#: src/simplyconvertfile/utils/text.py:305
 msgid "Potentially Dangerous Command"
 msgstr "Ordre potencialment perillosa"
 
-#: src/simplyconvertfile/utils/text.py:262
+#: src/simplyconvertfile/utils/text.py:307
 #, python-brace-format
 msgid ""
 "The following command contains a potentially dangerous operation and "
@@ -560,121 +570,140 @@ msgstr ""
 "Ordre:\n"
 "{command}"
 
-#: src/simplyconvertfile/utils/text.py:267
+#: src/simplyconvertfile/utils/text.py:312
 msgid "Continue Anyway"
 msgstr "Continua igualment"
 
-#: src/simplyconvertfile/utils/text.py:270
+#: src/simplyconvertfile/utils/text.py:315
 msgid "privilege escalation"
 msgstr "escalada de privilegis"
 
-#: src/simplyconvertfile/utils/text.py:271
+#: src/simplyconvertfile/utils/text.py:316
 msgid "file deletion"
 msgstr "eliminació de fitxer"
 
-#: src/simplyconvertfile/utils/text.py:272
+#: src/simplyconvertfile/utils/text.py:317
 msgid "directory deletion"
 msgstr "eliminació de directori"
 
-#: src/simplyconvertfile/utils/text.py:273
+#: src/simplyconvertfile/utils/text.py:318
 msgid "file destruction"
 msgstr "destrucció de fitxer"
 
-#: src/simplyconvertfile/utils/text.py:274
+#: src/simplyconvertfile/utils/text.py:319
 msgid "file truncation"
 msgstr "truncament de fitxer"
 
-#: src/simplyconvertfile/utils/text.py:275
+#: src/simplyconvertfile/utils/text.py:320
 msgid "raw disk operation"
 msgstr "operació de disc raw"
 
-#: src/simplyconvertfile/utils/text.py:276
+#: src/simplyconvertfile/utils/text.py:321
 msgid "filesystem creation"
 msgstr "creació de sistema de fitxers"
 
-#: src/simplyconvertfile/utils/text.py:277
+#: src/simplyconvertfile/utils/text.py:322
 msgid "disk partitioning"
 msgstr "particionament de disc"
 
-#: src/simplyconvertfile/utils/text.py:278
+#: src/simplyconvertfile/utils/text.py:323
 msgid "filesystem signature removal"
 msgstr "eliminació de signatura de sistema de fitxers"
 
-#: src/simplyconvertfile/utils/text.py:279
+#: src/simplyconvertfile/utils/text.py:324
 msgid "block device discard"
 msgstr "descartar dispositiu de bloc"
 
-#: src/simplyconvertfile/utils/text.py:280
+#: src/simplyconvertfile/utils/text.py:325
 msgid "system shutdown"
 msgstr "aturada del sistema"
 
-#: src/simplyconvertfile/utils/text.py:281
+#: src/simplyconvertfile/utils/text.py:326
 msgid "system reboot"
 msgstr "reinici del sistema"
 
-#: src/simplyconvertfile/utils/text.py:282
+#: src/simplyconvertfile/utils/text.py:327
 msgid "system power off"
 msgstr "apagada del sistema"
 
-#: src/simplyconvertfile/utils/text.py:283
+#: src/simplyconvertfile/utils/text.py:328
 msgid "system halt"
 msgstr "aturada del sistema"
 
-#: src/simplyconvertfile/utils/text.py:284
+#: src/simplyconvertfile/utils/text.py:329
 msgid "system init control"
 msgstr "control init del sistema"
 
-#: src/simplyconvertfile/utils/text.py:285
+#: src/simplyconvertfile/utils/text.py:330
 msgid "system service control"
 msgstr "control de serveis del sistema"
 
-#: src/simplyconvertfile/utils/text.py:286
+#: src/simplyconvertfile/utils/text.py:331
 msgid "network access"
 msgstr "accés a xarxa"
 
-#: src/simplyconvertfile/utils/text.py:287
+#: src/simplyconvertfile/utils/text.py:332
 msgid "network download"
 msgstr "descàrrega de xarxa"
 
-#: src/simplyconvertfile/utils/text.py:288
+#: src/simplyconvertfile/utils/text.py:333
 msgid "network connection"
 msgstr "connexió de xarxa"
 
-#: src/simplyconvertfile/utils/text.py:289
+#: src/simplyconvertfile/utils/text.py:334
 msgid "remote shell access"
 msgstr "accés shell remot"
 
-#: src/simplyconvertfile/utils/text.py:290
+#: src/simplyconvertfile/utils/text.py:335
 msgid "remote file copy"
 msgstr "còpia de fitxer remot"
 
-#: src/simplyconvertfile/utils/text.py:291
+#: src/simplyconvertfile/utils/text.py:336
 msgid "remote file sync"
 msgstr "sincronització de fitxer remot"
 
-#: src/simplyconvertfile/utils/text.py:292
+#: src/simplyconvertfile/utils/text.py:337
 msgid "file transfer"
 msgstr "transferència de fitxer"
 
-#: src/simplyconvertfile/utils/text.py:293
+#: src/simplyconvertfile/utils/text.py:338
 msgid "permission change"
 msgstr "canvi de permisos"
 
-#: src/simplyconvertfile/utils/text.py:294
+#: src/simplyconvertfile/utils/text.py:339
 msgid "ownership change"
 msgstr "canvi de propietat"
 
-#: src/simplyconvertfile/utils/text.py:295
+#: src/simplyconvertfile/utils/text.py:340
 msgid "group ownership change"
 msgstr "canvi de propietat de grup"
 
-#: src/simplyconvertfile/utils/text.py:296
+#: src/simplyconvertfile/utils/text.py:341
 msgid "shell code execution"
 msgstr "execució de codi shell"
 
-#: src/simplyconvertfile/utils/text.py:297
+#: src/simplyconvertfile/utils/text.py:342
 msgid "dangerous operation"
 msgstr "operació perillosa"
+
+#: src/simplyconvertfile/utils/text.py:348
+msgid ""
+"Universal file format converter for Linux. Supports images, videos, audio, "
+"documents, and archives."
+msgstr ""
+"Convertidor universal de formats de fitxer per a Linux. Suporta imatges, "
+"vídeos, àudio, documents i arxius."
+
+#: src/simplyconvertfile/utils/text.py:351
+msgid "File paths to convert (optional; opens picker if none)"
+msgstr ""
+"Camins de fitxers a convertir (opcional; obre el selector si no se'n "
+"proporciona cap)"
+
+#: src/simplyconvertfile/utils/text.py:353
+#, python-brace-format
+msgid "For more info, visit {url}"
+msgstr "Per a més informació, visiteu {url}"
 
 #~ msgid "Converts a file to a different format"
 #~ msgstr "Converteix un fitxer a un format diferent"

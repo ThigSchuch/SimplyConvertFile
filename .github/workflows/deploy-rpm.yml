@@ -1,0 +1,54 @@
+name: Deploy RPM Package
+
+on:
+  push:
+    branches:
+      - development
+    tags:
+      - "v*"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: write
+
+jobs:
+  build-rpm:
+    name: Build RPM Package
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Get short SHA
+        id: sha
+        run: echo "short_sha=$(git rev-parse --short=7 HEAD)" >> $GITHUB_OUTPUT
+
+      - name: Extract version
+        id: version
+        run: |
+          if [ "${{ github.ref }}" == "refs/heads/development" ]; then
+            VERSION=$(grep -Po '(?<=^version = ")[^"]+' pyproject.toml).dev0+g$(git rev-parse --short=7 HEAD)
+          else
+            VERSION=$(echo "${{ github.ref_name }}" | sed 's/^v//')
+          fi
+          echo "VERSION=$VERSION" >> $GITHUB_OUTPUT
+
+      - name: Update version in pyproject.toml (development branch only)
+        if: github.ref == 'refs/heads/development'
+        run: |
+          sed -i "s/^version = \".*\"/version = \"${{ steps.version.outputs.VERSION }}\"/" pyproject.toml
+
+      - name: Install build dependencies
+        run: |
+          sudo apt-get update && sudo apt-get install -y gettext ruby-dev build-essential
+          sudo gem install fpm
+
+      - name: Build RPM package
+        run: bash packaging/build-rpm.sh "${{ steps.version.outputs.VERSION }}"
+
+      - name: Upload RPM artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: rpm-package-${{ steps.sha.outputs.short_sha }}
+          path: dist/*.rpm

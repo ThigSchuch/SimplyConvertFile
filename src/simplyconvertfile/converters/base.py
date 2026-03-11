@@ -196,7 +196,7 @@ class Converter:
             None, self.file, self.target_file
         )
 
-        if temp_manager:
+        if temp_manager and not isinstance(temp_manager, str):
             self.file_manager.set_temp_manager(temp_manager)
 
         return template_used

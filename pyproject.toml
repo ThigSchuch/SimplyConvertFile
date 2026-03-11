@@ -7,7 +7,7 @@ path = "hatch_build.py"
 
 [project]
 name = "simplyconvertfile"
-version = "2.0.0"
+version = "2.0.1"
 description = "Universal file format converter for Linux - supports 80+ formats including images, videos, audio, documents, and archives"
 readme = "README.md"
 license = {text = "GPL-3.0-or-later"}

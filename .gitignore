@@ -22,6 +22,7 @@ ENV/
 *.swp
 *.swo
 *~
+copilot-*
 
 # OS files
 .DS_Store

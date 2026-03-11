@@ -17,173 +17,49 @@ on:
   push:
     tags:
       - "v*"
+  workflow_dispatch:
 
 permissions:
   contents: write
   actions: write
 
 jobs:
-  # ---------------------------------------------------------------------------
-  # 1. Build the .deb package
-  # ---------------------------------------------------------------------------
-  build:
+  create-release:
+    name: Create GitHub Release
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Extract version from tag
-        id: version
-        run: echo "VERSION=${GITHUB_REF_NAME#v}" >> "$GITHUB_OUTPUT"
+      - name: Get short SHA
+        id: sha
+        run: echo "short_sha=$(git rev-parse --short=7 HEAD)" >> $GITHUB_OUTPUT
 
-      - name: Validate version matches pyproject.toml
-        run: |
-          TOML_VERSION=$(grep -Po '(?<=^version = ")[^"]+' pyproject.toml)
-          TAG_VERSION="${{ steps.version.outputs.VERSION }}"
-          if [ "$TOML_VERSION" != "$TAG_VERSION" ]; then
-            echo "ERROR: Tag version ($TAG_VERSION) does not match pyproject.toml ($TOML_VERSION)"
-            exit 1
-          fi
-
-      - name: Install build dependencies
-        run: sudo apt-get update && sudo apt-get install -y gettext
-
-      - name: Build .deb package
-        run: bash packaging/build-deb.sh "${{ steps.version.outputs.VERSION }}"
-
-      - name: Upload .deb artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: deb-package
-          path: dist/*.deb
-
-  # ---------------------------------------------------------------------------
-  # 2. Create GitHub Release with the .deb attached
-  # ---------------------------------------------------------------------------
-  release:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Download .deb artifact
+      - name: Download .deb Artifacts
         uses: actions/download-artifact@v4
         with:
-          name: deb-package
-          path: dist/
+          name: deb-package-${{ steps.sha.outputs.short_sha }}
+          path: artifacts/deb/
+
+      - name: Download AppImage Artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: appimage-package-${{ steps.sha.outputs.short_sha }}
+          path: artifacts/appimage/
+
+      - name: Download RPM Artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: rpm-package-${{ steps.sha.outputs.short_sha }}
+          path: artifacts/rpm/
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
-          files: dist/*.deb
+          files: |
+            artifacts/deb/*.deb
+            artifacts/appimage/*.AppImage
+            artifacts/rpm/*.rpm
           generate_release_notes: true
-
-  # ---------------------------------------------------------------------------
-  # 3. Publish to GitHub Pages APT repository
-  # ---------------------------------------------------------------------------
-  publish-apt:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Download .deb artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: deb-package
-          path: dist/
-
-      - name: Checkout gh-pages branch
-        uses: actions/checkout@v4
-        with:
-          ref: gh-pages
-          path: gh-pages
-          fetch-depth: 0
-        continue-on-error: true
-
-      - name: Create gh-pages branch if missing
-        if: steps.checkout-ghpages.outcome == 'failure' || !hashFiles('gh-pages/.git')
-        run: |
-          rm -rf gh-pages
-          git clone --bare "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" gh-pages-bare
-          cd gh-pages-bare
-          git symbolic-ref HEAD refs/heads/gh-pages
-          cd ..
-          mkdir gh-pages && cd gh-pages
-          git init
-          git remote add origin "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git"
-          git checkout --orphan gh-pages
-          echo '# GitHub Pages — SimplyConvertFile' > README.md
-          git add README.md
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git commit -m "Initialize gh-pages branch"
-          git push origin gh-pages
-          rm -rf ../gh-pages-bare
-
-      - name: Import GPG key
-        run: |
-          echo "${{ secrets.GPG_PRIVATE_KEY }}" | gpg --batch --import
-          echo "allow-loopback-pinentry" >> ~/.gnupg/gpg-agent.conf
-          gpgconf --reload gpg-agent
-
-      - name: Export public key
-        run: |
-          GPG_KEY_ID=$(gpg --list-keys --with-colons | grep '^pub' | head -1 | cut -d: -f5)
-          gpg --armor --export "$GPG_KEY_ID" > gh-pages/gpg.key
-
-      - name: Update APT repository
-        run: |
-          cd gh-pages
-
-          # Copy new .deb into pool/
-          mkdir -p pool
-          cp ../dist/*.deb pool/
-
-          # Regenerate package index
-          mkdir -p dists/stable/main/binary-all
-          mkdir -p dists/stable/main/binary-amd64
-          dpkg-scanpackages pool/ /dev/null > dists/stable/main/binary-all/Packages
-          cp dists/stable/main/binary-all/Packages dists/stable/main/binary-amd64/Packages
-          gzip -kf dists/stable/main/binary-all/Packages
-          gzip -kf dists/stable/main/binary-amd64/Packages
-
-          # Generate Release file with proper metadata
-          cd dists/stable
-          cat > release.conf <<EOF
-          APT::FTPArchive::Release::Suite "stable";
-          APT::FTPArchive::Release::Codename "stable";
-          APT::FTPArchive::Release::Architectures "all amd64";
-          APT::FTPArchive::Release::Components "main";
-          EOF
-          apt-ftparchive -c release.conf release . > Release
-          rm release.conf
-
-          # Sign the Release file
-          GPG_KEY_ID=$(gpg --list-keys --with-colons | grep '^pub' | head -1 | cut -d: -f5)
-          gpg --batch --yes --armor --pinentry-mode loopback \
-              --passphrase "${{ secrets.GPG_PASSPHRASE }}" \
-              --detach-sign --default-key "$GPG_KEY_ID" \
-              -o Release.gpg Release
-          gpg --batch --yes --armor --pinentry-mode loopback \
-              --passphrase "${{ secrets.GPG_PASSPHRASE }}" \
-              --clearsign --default-key "$GPG_KEY_ID" \
-              -o InRelease Release
-          cd ../..
-
-      - name: Commit and push APT repo
-        run: |
-          cd gh-pages
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add -A
-          git commit -m "Update APT repository for ${GITHUB_REF_NAME}" || echo "No changes to commit"
-          git push
-
-      - name: Trigger docs rebuild
-        if: success()
-        uses: actions/github-script@v7
-        with:
-          script: |
-            await github.rest.actions.createWorkflowDispatch({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              workflow_id: 'deploy-docs.yml',
-              ref: 'main'
-            })
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

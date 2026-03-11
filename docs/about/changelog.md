@@ -9,7 +9,12 @@ nav_order: 1
 
 ---
 
-## Version 2.0.0 (Latest)
+## Version 2.0.1 (Latest)
+
+- **New** — Added `--help` and `--version` flags for terminal usage
+- **Fixed** — Filenames containing apostrophes (e.g., `It's fun time.7z`) no longer cause conversion failures
+
+## Version 2.0.0
 
 - **Standalone Application** — Converted from Nemo action to standalone Linux application with pip installation support
 - **Expanded Format Support** — 80+ formats across 9 categories
@@ -27,6 +32,7 @@ nav_order: 1
 - **Internationalization** — Full gettext support with translations for 18 languages
 - **Debug Mode** — Color-coded logging to stdout via DEBUG trigger file
 - **Desktop Integration** — Makefile, .deb packaging, and .desktop file support
+- **Command Line Options** — Added --help and --version flags for terminal usage
 
 ## Version 1.1 (Nemo action)
 
